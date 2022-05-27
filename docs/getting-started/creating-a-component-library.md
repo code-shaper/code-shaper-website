@@ -14,7 +14,7 @@ shaper
 ? Which plugin would you like to run? React
 ? Which generator would you like to run? react-library
 ? Library name? ui-lib
-? Parent directory? ./packages
+? Parent directory? packages
 ? Package name used for publishing? @movie-magic/ui-lib
 
 # In the root directory, edit package.json to force the latest version
@@ -57,7 +57,7 @@ shaper
 npm run storybook
 ```
 
-Point your browser to http://localhost:6006. Storybook shows a placeholder
+Point your browser to `http://localhost:6006`. Storybook shows a placeholder
 implementation of the button. However, it does not look like a button at all.
 It's simply a `<div>` with some text.
 
@@ -95,12 +95,11 @@ download the `Inter` font required by the CSS.
 
 You should immediately see the change in Storybook.
 
-Finally, overwrite the code in
-`packages/ui-lib/src/components/Button/Button.tsx` with the required
-implementation of the button. Note that the button has a color property with 3
-possible values: `'default' | 'primary' | 'secondary'`.
+Finally, overwrite the code in `Button.tsx` with the real implementation of the
+button. Note that the button has a color property with 3 possible values:
+`'default' | 'primary' | 'secondary'`.
 
-```tsx
+```tsx title="packages/ui-lib/src/components/Button/Button.tsx"
 import * as React from 'react';
 
 interface ButtonProps {
@@ -150,10 +149,9 @@ export const Button = ({
 ## Implement a Storybook story
 
 Modify the placeholder Button story to demonstrate its color variations. Simply
-overwrite `packages/ui-lib/src/components/Button/Button.stories.tsx` with the
-following code:
+overwrite `Button.stories.tsx` with the following code:
 
-```tsx
+```tsx title="packages/ui-lib/src/components/Button/Button.stories.tsx"
 import { Story, Meta } from '@storybook/react';
 import { Button } from './Button';
 
@@ -194,14 +192,14 @@ button.
 ## Implement unit tests
 
 Unit tests are important to automate the testing of our components. They also
-serve as documentation for the component's requirements. Finally, they are
-incredibly useful to ensure that future code changes don't break the component.
+serve as documentation for the component's requirements (hence they are also
+called specification files or specs). Finally, they are incredibly useful to
+ensure that future code changes don't break the component.
 
 Modify the placeholder Button test to exercise its requirements. Simply
-overwrite `packages/ui-lib/src/components/Button/Button.test.tsx` with the
-following code:
+overwrite `Button.test.tsx` with the following code:
 
-```tsx
+```tsx title="packages/ui-lib/src/components/Button/Button.test.tsx"
 import { render } from '@testing-library/react';
 import { Button } from './Button';
 
@@ -234,23 +232,19 @@ npm test
 
 • Packages in scope: @movie-magic/ui-lib, eslint-config-custom, jest-config-custom, typescript-config-custom
 • Running test in 4 packages
-@movie-magic/ui-lib:test: cache miss, executing 7cd43a8f278966ce
+@movie-magic/ui-lib:test: cache miss, executing 7d238535d8761951
 @movie-magic/ui-lib:test:
 @movie-magic/ui-lib:test: > @movie-magic/ui-lib@0.0.1 test
 @movie-magic/ui-lib:test: > jest --coverage
 @movie-magic/ui-lib:test:
 @movie-magic/ui-lib:test: PASS src/components/Button/Button.test.tsx
 @movie-magic/ui-lib:test:  › 2 snapshots written.
-@movie-magic/ui-lib:test: -------------------|---------|----------|---------|---------|-------------------
-@movie-magic/ui-lib:test: File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
-@movie-magic/ui-lib:test: -------------------|---------|----------|---------|---------|-------------------
-@movie-magic/ui-lib:test: All files          |   90.47 |      100 |     100 |   89.47 |
-@movie-magic/ui-lib:test:  components        |       0 |      100 |     100 |       0 |
-@movie-magic/ui-lib:test:   index.ts         |       0 |      100 |     100 |       0 | 1
-@movie-magic/ui-lib:test:  components/Button |      95 |      100 |     100 |   94.44 |
-@movie-magic/ui-lib:test:   Button.tsx       |     100 |      100 |     100 |     100 |
-@movie-magic/ui-lib:test:   index.ts         |       0 |      100 |     100 |       0 | 1
-@movie-magic/ui-lib:test: -------------------|---------|----------|---------|---------|-------------------
+@movie-magic/ui-lib:test: ------------|---------|----------|---------|---------|-------------------
+@movie-magic/ui-lib:test: File        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+@movie-magic/ui-lib:test: ------------|---------|----------|---------|---------|-------------------
+@movie-magic/ui-lib:test: All files   |     100 |      100 |     100 |     100 |
+@movie-magic/ui-lib:test:  Button.tsx |     100 |      100 |     100 |     100 |
+@movie-magic/ui-lib:test: ------------|---------|----------|---------|---------|-------------------
 @movie-magic/ui-lib:test:
 @movie-magic/ui-lib:test: Snapshot Summary
 @movie-magic/ui-lib:test:  › 2 snapshots written from 1 test suite.
@@ -258,12 +252,12 @@ npm test
 @movie-magic/ui-lib:test: Test Suites: 1 passed, 1 total
 @movie-magic/ui-lib:test: Tests:       2 passed, 2 total
 @movie-magic/ui-lib:test: Snapshots:   2 written, 2 total
-@movie-magic/ui-lib:test: Time:        6.933 s
+@movie-magic/ui-lib:test: Time:        4.15 s, estimated 6 s
 @movie-magic/ui-lib:test: Ran all test suites.
 
  Tasks:    1 successful, 1 total
 Cached:    0 cached, 1 total
-  Time:    12.85s
+  Time:    8.595s
 ```
 
 ## Commit your code

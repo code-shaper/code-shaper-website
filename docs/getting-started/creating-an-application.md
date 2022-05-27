@@ -14,7 +14,7 @@ shaper
 ? Which plugin would you like to run? React
 ? Which generator would you like to run? app
 ? Application name? movie-magic
-? Parent directory? ./apps
+? Parent directory? apps
 ? Package name used for publishing? @movie-magic/movie-magic
 
 # Add a dependency to ui-lib in apps/movie-magic/package.json
@@ -177,7 +177,7 @@ Here's a snapshot of the updated Storybook interface.
 ## Implement unit tests
 
 The final step is to implement a unit test for `MovieList`. Update the
-placeholder test with the code below to test `MovieList`.
+placeholder test with the code below.
 
 ```tsx title="apps/movie-magic/src/components/MovieList/MovieList.test.tsx"
 import { render, screen } from '../../test/test-utils';
@@ -248,52 +248,52 @@ import { Movie } from '../models';
 
 export const mockMovies: Array<Movie> = [
   {
-    name: 'The Shawshank Redemption [mock]',
+    name: 'The Shawshank Redemption',
     year: 1994,
     rating: 9.3,
   },
   {
-    name: 'The Godfather [mock]',
+    name: 'The Godfather',
     year: 1972,
     rating: 9.2,
   },
   {
-    name: 'The Godfather: Part II [mock]',
+    name: 'The Godfather: Part II',
     year: 1974,
     rating: 9.0,
   },
   {
-    name: 'The Dark Knight [mock]',
+    name: 'The Dark Knight',
     year: 2008,
     rating: 9.0,
   },
   {
-    name: '12 Angry Men [mock]',
+    name: '12 Angry Men',
     year: 1957,
     rating: 8.9,
   },
   {
-    name: "Schindler's List [mock]",
+    name: "Schindler's List",
     year: 1993,
     rating: 8.9,
   },
   {
-    name: 'The Lord Of The Rings: The Return Of The King [mock]',
+    name: 'The Lord Of The Rings: The Return Of The King',
     year: 2003,
     rating: 8.9,
   },
   {
-    name: 'Pulp Fiction [mock]',
+    name: 'Pulp Fiction',
     year: 1994,
     rating: 8.9,
   },
   {
-    name: 'The Good, The Bad And The Ugly [mock]',
+    name: 'The Good, The Bad And The Ugly',
     year: 1966,
     rating: 8.8,
   },
   {
-    name: 'The Lord Of The Rings: The Fellowship Of The Rings [mock]',
+    name: 'The Lord Of The Rings: The Fellowship Of The Rings',
     year: 2001,
     rating: 8.8,
   },
@@ -428,7 +428,14 @@ export function HomePage() {
 }
 ```
 
-Here's a snapshot of the updated home page showing the movie list.
+Run the app:
+
+```bash
+npm run dev
+```
+
+Point your browser to `http://localhost:3000`. You should see the updated home
+page with the movie list.
 
 ![Final Home Page](./img/home-page.png)
 
