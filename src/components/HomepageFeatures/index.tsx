@@ -20,7 +20,7 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Modular & Extensible',
+    title: 'Modular and Extensible',
     Svg: require('@site/static/img/undraw_building_blocks.svg').default,
     description: (
       <>
