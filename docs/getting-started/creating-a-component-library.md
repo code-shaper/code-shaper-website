@@ -9,7 +9,7 @@ one there.
 
 ## Create a React library
 
-```bash
+```shell
 shaper
 ? Which plugin would you like to run? React
 ? Which generator would you like to run? react-library
@@ -45,7 +45,7 @@ git commit -m "added ui-lib"
 
 Now let's add a button component to `ui-lib`.
 
-```bash
+```shell
 shaper
 ? Which plugin would you like to run? React
 ? Which generator would you like to run? component
@@ -109,12 +109,12 @@ interface ButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const Button = ({
+export function Button({
   rootClass,
   color = 'default',
   children,
   onClick,
-}: ButtonProps) => {
+}: ButtonProps) {
   const classes = [];
 
   if (rootClass) {
@@ -143,7 +143,7 @@ export const Button = ({
       {children}
     </button>
   );
-};
+}
 ```
 
 ## Implement a Storybook story
@@ -224,7 +224,7 @@ describe('<Button />', () => {
 
 Run the tests from the repo's root directory:
 
-```bash
+```shell
 npm test
 
 > movie-magic@0.0.1 test

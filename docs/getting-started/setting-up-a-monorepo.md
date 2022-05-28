@@ -20,7 +20,7 @@ Before running through this tutorial:
 Install Code Shaper as a global plugin. This will make it easier to run it
 repeatedly with a minimum number of keystrokes.
 
-```bash
+```shell
 npm install -g code-shaper
 ```
 
@@ -29,7 +29,7 @@ npm install -g code-shaper
 The monorepo generator is built right into Code Shaper. You don't need to
 install any plugins for it. Create an empty monorepo using Code Shaper.
 
-```bash
+```shell
 # Change directory to a location where you create projects, e.g.
 cd ~/projects
 
@@ -57,7 +57,7 @@ components in isolation. It forces us to design the component to be standalone,
 without coupling it to other parts of the application. Let's add Storybook
 support to our repo.
 
-```bash
+```shell
 shaper
 ? Which plugin would you like to run? Repo
 ? Which generator would you like to run? storybook
@@ -80,7 +80,7 @@ git commit -m "added storybook"
 
 ## Add Code Shaper libraries and plugins
 
-```bash
+```shell
 # Code Shaper utilities library
 npm install -D @code-shaper/shaper-utils
 

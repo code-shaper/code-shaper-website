@@ -34,7 +34,8 @@ Here's our plan to implement this app:
    components, such as buttons, tabs and menus.
 3. Create another workspace called **movie-magic** where we will house the main
    application. This app will use components from the ui-lib.
-4. Write a generator to ... [TBD]
+4. Write a generator to replace `fetch` based hooks to `react-query` and
+   `axios`.
 
 ![Monorepo Structure](./img/monorepo-structure.png)
 
@@ -45,10 +46,10 @@ By convention, we store apps under the **apps** folder and libraries under the
 
 As we progress through the tutorial, you will notice that we use different
 plugins for different aspects of the application. Code Shaper itself is
-unopinionated about technologies, however plugins usually are. Choose from the
-many off-the-shelf plugins designed to work with specific technologies or roll
-your own to fit your unique needs. We will look at the second option in the last
-part of the tutorial.
+unopinionated about the technologies you use, however plugins usually are.
+Choose from the many off-the-shelf plugins designed to work with specific
+technologies or roll your own to fit your unique needs. We will look at the
+second option in the last part of the tutorial.
 
 :::
 

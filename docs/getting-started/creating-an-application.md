@@ -9,7 +9,7 @@ one there.
 
 ## Create a React app
 
-```bash
+```shell
 shaper
 ? Which plugin would you like to run? React
 ? Which generator would you like to run? app
@@ -49,7 +49,7 @@ data.
 We created a `<Button>` component in the last section. The process to create the
 `<MovieList>` component is exactly the same. Follow the steps below:
 
-```bash
+```shell
 shaper
 ? Which plugin would you like to run? React
 ? Which generator would you like to run? component
@@ -99,7 +99,7 @@ interface MovieListProps {
   movies: Array<Movie>;
 }
 
-export const MovieList = ({ movies }: MovieListProps) => {
+export function MovieList({ movies }: MovieListProps) {
   return (
     <table data-testid="movie-table">
       <thead>
@@ -126,7 +126,7 @@ export const MovieList = ({ movies }: MovieListProps) => {
       </tbody>
     </table>
   );
-};
+}
 ```
 
 We also need to modify the story to supply a list of movies. Overwrite the story
@@ -229,7 +229,7 @@ To work around this issue disable coverage for the movie-magic app. Edit
 
 Run the tests from the root directory. All tests should pass.
 
-```bash
+```shell
 npm test
 ```
 
@@ -325,22 +325,22 @@ Create a file called `useMovies.ts` under the **HomePage** folder to fetch top
 10 movies.
 
 ```ts title="apps/movie-magic/src/pages/HomePage/useMovies.ts"
-import { useEffect, useState } from 'react';
+import * as React from 'react';
 import { Movie } from '../../models';
 
 /**
  * Hook to fetch movies
  */
-export const useMovies = () => {
+export function useMovies() {
   const apiUrl = import.meta.env.VITE_API_URL;
   const failMessage = 'Failed to get movies';
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [error, setError] = useState<Error>();
-  const [movies, setMovies] = useState<Array<Movie>>([]);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [isError, setIsError] = React.useState(false);
+  const [error, setError] = React.useState<Error>();
+  const [movies, setMovies] = React.useState<Array<Movie>>([]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const fetchMovies = async () => {
       try {
         setIsLoading(true);
@@ -366,7 +366,7 @@ export const useMovies = () => {
     fetchMovies();
   }, [apiUrl]);
   return { isLoading, isError, error, movies };
-};
+}
 ```
 
 ## Create a container to fetch movies
@@ -377,7 +377,7 @@ the movies are received, it renders them using the `MovieList` component we
 created earlier.
 
 ```tsx title="apps/movie-magic/src/pages/HomePage/MovieListContainer.tsx"
-import { Fragment } from 'react';
+import * as React from 'react';
 import { MovieList } from '../../components';
 import { useMovies } from './useMovies';
 
@@ -393,10 +393,10 @@ export function MovieListContainer() {
   }
 
   return (
-    <Fragment>
+    <React.Fragment>
       <h2 className="h5 line-height-none mb-2">Top 10 Movies Of All Time</h2>
       <MovieList movies={movies} />
-    </Fragment>
+    </React.Fragment>
   );
 }
 ```
@@ -430,7 +430,7 @@ export function HomePage() {
 
 Run the app:
 
-```bash
+```shell
 npm run dev
 ```
 
@@ -441,7 +441,7 @@ page with the movie list.
 
 ## Commit your code
 
-```bash
+```shell
 # Commit
 git add .
 git commit -m "added movie-magic app"
