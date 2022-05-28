@@ -158,9 +158,9 @@ as before. The only difference is the implementation of the `useMovies` hook.
 
 ## Create a plugin + a generator
 
-Now that we have `useMovies` working, we know the pattern we need to generate.
-All we need to do is to ask the user what type of data they need to fetch, and
-we can generate a custom hook for them.
+Now that we have `useMovies` working again, we know the pattern that needs to be
+generated. We will have to ask the user a few questions so that we can do proper
+substitutions in our templates.
 
 :::tip Terminology
 
@@ -173,7 +173,7 @@ Let's start by generating a new plugin and a generator. We will name the plugin
 `react-patterns` because it's going to house our custom React patterns.
 
 ```shell
-# Run shaper in the repo root directory
+# Run shaper in the repo's root directory
 shaper
 ? Which plugin would you like to run? Plugin
 ? Which generator would you like to run? plugin
@@ -237,14 +237,39 @@ const reactPatternsPlugin: Plugin = {
 export default reactPatternsPlugin;
 ```
 
-Rebuild and make sure that you can run the generator. This is just a trial run.
-It will not generate anything, so feel free to experiment.
+Rebuild the generator by running the following command in the root directory.
 
 ```shell
-# In the root directory, run:
 npm run build
+```
 
-# Run the placeholder fetch hook generator:
+Now the generator is ready, but Code Shaper needs to load it dynamically. To
+make this work, add the `react-patterns` plugin as a devDependency in the root
+`package.json` file of your repo.
+
+```json title="package.json"
+{
+  ...
+  "devDependencies": {
+    "@code-shaper/plugin": "^0.0.7",
+    "@code-shaper/react": "^0.0.6",
+    "@code-shaper/shaper-utils": "^0.0.11",
+    "@code-shaper/typescript": "^0.0.6",
+    "@movie-magic/react-patterns": "*",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
+    "turbo": "latest"
+  },
+  ...
+}
+```
+
+Now run the generator. This is just a trial run. It will not generate anything,
+so feel free to experiment.
+
+```shell
 shaper
 ? Which plugin would you like to run? React Patterns
 ? Which generator would you like to run? fetch-hook
@@ -386,29 +411,30 @@ async function generateFetchHook(inputOptions: Options) {
 
 ## Write a template
 
-Now that the generator has created a good set of options, we can write a
+Now that the generator is creating a good set of options, we can write a
 template to generate the fetch hook. Start with `useMovies.ts` and generalize it
 to fetch any type of object.
 
 :::tip Templates
 
-In this example we have only one template. However, in more complex cases we may
-have multiple templates spread over a nested tree structure. Code Shaper can
+In this example we have only one template. However, in more complex scenarios we
+may have multiple templates spread over a nested tree structure. Code Shaper can
 handle such scenarios without breaking a sweat!
 
 :::
 
 Create a folder called `templates` under the `fetchHookGenerator` and copy
-`useMovies.ts` under it. So this file will be located at
+`useMovies.ts` under it. Specifically, copy
+`apps/movie-magic/src/pages/HomePage/useMovies.ts` to
 `plugins/react-patterns/src/fetchHookGenerator/templates/useMovies.ts`.
 
 Now rename this file to `[filename].ts.ejs.t`. Why? Remember that our generator
-outputs a `filename` option. When the generator copies the file over to the
-destination, it will replace the `[filename]` part with that option. Also, the
-`.ejs.t` suffix tells the generator to do option substitutions before copying
-the file over. The suffix will be removed. What does this all mean? If the value
-of the `filename` option is `useMovies`, the file created at the destination
-will be called `useMovies.ts` - which is exactly what we want.
+outputs a `filename` option. When the generator copies this file over to the
+destination, it will replace the `[filename]` part with that option. Moreover,
+the `.ejs.t` suffix tells the generator to do option substitutions before
+copying the file over. The suffix will be removed. What does this all mean? If
+the value of the `filename` option is `useMovies`, the file created at the
+destination will be called `useMovies.ts` - which is exactly what we want.
 
 :::tip Static Templates
 
@@ -418,7 +444,7 @@ as is, without any substitutions.
 
 :::
 
-Finally, edit the `[filename].ts.ejs.t` to turn it into a template. Here's the
+Finally, edit `[filename].ts.ejs.t` to turn it into a template. Here's the
 final content:
 
 ```
@@ -427,12 +453,12 @@ import { useQuery } from 'react-query';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-function fetch<%= itemNameCamelCase %>(): Promise<<%= returnType %>> {
+function fetch<%= itemNamePascalCase %>(): Promise<<%= returnType %>> {
   return axios.get(`${apiUrl}/<%= itemNameKebabCase %>`).then((response) => response.data);
 }
 
 export function <%= hookName %>() {
-  return useQuery('<%= itemNameCamelCase %>', fetch<%= itemNameCamelCase %>);
+  return useQuery('<%= itemNameCamelCase %>', fetch<%= itemNamePascalCase %>);
 }
 ```
 
