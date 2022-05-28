@@ -255,6 +255,7 @@ make this work, add the `react-patterns` plugin as a devDependency in the root
     "@code-shaper/react": "^0.0.6",
     "@code-shaper/shaper-utils": "^0.0.11",
     "@code-shaper/typescript": "^0.0.6",
+    // highlight-next-line
     "@movie-magic/react-patterns": "*",
     "husky": "^8.0.1",
     "lint-staged": "^12.4.1",
