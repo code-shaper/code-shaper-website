@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Code Shaper',
-  tagline: 'A delightful modular code generator',
+  tagline: 'A delightful, modular code generator',
   url: 'https://code-shaper.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',

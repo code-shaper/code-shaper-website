@@ -31,7 +31,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="A delightful modular code generator"
+      description="A delightful, modular code generator"
     >
       <HomepageHeader />
       <main>
