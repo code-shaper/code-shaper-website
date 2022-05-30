@@ -445,8 +445,8 @@ as is, without any substitutions.
 
 :::
 
-Finally, edit `[filename].ts.ejs.t` to turn it into a template. Here's the
-final content:
+Finally, edit `[filename].ts.ejs.t` to turn it into a template. Here's the final
+content:
 
 ```
 import axios from 'axios';
@@ -465,15 +465,75 @@ export function <%= hookName %>() {
 
 ## Test the generator
 
-It's time to test our hard work. First build the generator:
+Let's write a test for our `fetchHookGenerator`. A placeholder test is already
+provided for us. Edit it to add the generator specific options:
 
-```shell
-npm run build
+```ts title="plugins/react-patterns/src/fetchHookGenerator/fetchHookGenerator.test.ts"
+import plugin from '../index';
+
+describe('fetchHookGenerator', () => {
+  test('should create a fetchHook from templates', async () => {
+    // suppress console logs
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    jest.spyOn(console, 'log').mockImplementation(() => {});
+
+    await plugin.run({
+      generator: 'fetch-hook',
+      // highlight-start
+      itemName: 'Movies',
+      returnType: 'Movie[]',
+      parentDir: 'test-output/fetch-hook',
+      // highlight-end
+    });
+
+    // TODO: Compare test-output with expected-output
+    expect(true).toBeTruthy();
+
+    // restore console logs
+    jest.restoreAllMocks();
+  });
+});
 ```
 
-Now delete `useMovies` that we handwrote in the app. It's located at
-`apps/movie-magic/src/pages/HomePage/useMovies.ts`. Finally, regenerate it using
-our generator:
+:::danger Compare utility is pending
+
+Note the TODO above. Code Shaper will provide a directory compare utility that
+you will be able to use there. For now, we will just manually inspect to make
+sure that the generator output is correct.
+
+:::
+
+Run the test:
+
+```shell
+npm test
+```
+
+Make sure that the generated output at
+`plugins/react-patterns/test-output/fetch-hook/useMovies.ts` matches the
+expected output below:
+
+```ts title="Expected Output"
+import axios from 'axios';
+import { useQuery } from 'react-query';
+
+const apiUrl = import.meta.env.VITE_API_URL;
+
+function fetchMovies(): Promise<Movie[]> {
+  return axios.get(`${apiUrl}/movies`).then((response) => response.data);
+}
+
+export function useMovies() {
+  return useQuery('movies', fetchMovies);
+}
+```
+
+## Generate useMovies
+
+Now let's generate the real `useMovies` hook in the app. Delete the existing
+`useMovies` hook that we handwrote
+(`apps/movie-magic/src/pages/HomePage/useMovies.ts`). Regenerate it using
+our new fetch-hook generator:
 
 ```shell
 shaper
