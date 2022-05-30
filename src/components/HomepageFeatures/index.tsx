@@ -24,7 +24,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_building_blocks.svg').default,
     description: (
       <>
-        Build a custom stack with the technologies you want. Choose from the
+        Build a custom stack with the technologies you prefer. Choose from the
         many off-the-shelf plugins or roll out your own.
       </>
     ),

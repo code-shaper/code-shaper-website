@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Code Shaper',
   tagline: 'A delightful modular code generator',
-  url: 'https://code-shaper.org',
+  url: 'https://code-shaper.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -36,15 +36,17 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/code-shaper/code-shaper-website/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: ({ docPath }) => {
+            return `https://github.com/code-shaper/code-shaper-website/edit/main/docs/${docPath}`;
+          },
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/code-shaper/code-shaper-website/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: ({ blogDirPath, blogPath }) => {
+            return `https://github.com/code-shaper/code-shaper-website/edit/main/${blogDirPath}/${blogPath}`;
+          },
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -65,7 +67,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'getting-started/intro',
+            docId: 'introduction',
             position: 'left',
             label: 'Docs',
           },
@@ -84,8 +86,12 @@ const config = {
             title: 'Docs',
             items: [
               {
+                label: 'Introduction',
+                to: '/docs/introduction',
+              },
+              {
                 label: 'Getting Started',
-                to: '/docs/getting-started/intro',
+                to: '/docs/getting-started/overview',
               },
             ],
           },

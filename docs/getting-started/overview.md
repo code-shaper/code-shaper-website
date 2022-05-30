@@ -2,11 +2,7 @@
 sidebar_position: 1
 ---
 
-# Introduction
-
-Code Shaper is an easy-to-use code generator that will save you time whenever
-you start a new project and everytime you create a component, helper or another
-artifact that follows a pattern.
+# Overview
 
 The goal of this tutorial is to get you started with Code Shaper as quickly as
 possible. It is divided into four parts:

@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Writing a custom generator
 
-As mentioned in the [intro](./intro.md) section, Code Shaper itself is
+As mentioned in the [Overview](./overview.md) section, Code Shaper itself is
 unopinionated about the technologies you use, however plugins usually are. You
 can choose from the many off-the-shelf plugins designed to work with specific
 technologies or roll your own to fit your unique needs. In this section, we will

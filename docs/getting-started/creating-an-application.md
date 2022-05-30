@@ -108,7 +108,7 @@ export function MovieList({ movies }: MovieListProps) {
           <th>Name</th>
           <th className="text-center">Year</th>
           <th className="text-center">Rating</th>
-          <th></th>
+          <td></td>
         </tr>
       </thead>
       <tbody>
@@ -317,7 +317,8 @@ export const handlers = [
 ];
 ```
 
-This completes the implementation of the mock API handler.
+This completes the implementation of the mock API handler. We will call this API
+from the client using a fetch hook.
 
 ## Create a hook to fetch movies
 

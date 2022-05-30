@@ -38,7 +38,23 @@ shaper
 ? Which plugin would you like to run? Repo
 ? Which generator would you like to run? turborepo
 ? Repository name? movie-magic
+```
 
+:::tip Specifying options on the command line
+
+As seen above, you don't need to remember any options to run Code Shaper. It
+basically asks you a few questions and generates what you want. However, you can
+specify options on the command line to skip some or all the questions. For
+example, the command line below specifies all the options, allowing Code Shaper
+to generate the movie-magic repo without asking any questions:
+
+```shell
+shaper @code-shaper/repo --generator=turborepo --itemName=movie-magic
+```
+
+:::
+
+```shell
 # Install dependencies
 cd movie-magic
 git init
