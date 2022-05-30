@@ -532,8 +532,8 @@ export function useMovies() {
 
 Now let's generate the real `useMovies` hook in the app. Delete the existing
 `useMovies` hook that we handwrote
-(`apps/movie-magic/src/pages/HomePage/useMovies.ts`). Regenerate it using
-our new fetch-hook generator:
+(`apps/movie-magic/src/pages/HomePage/useMovies.ts`). Regenerate it using our
+new fetch-hook generator:
 
 ```shell
 shaper

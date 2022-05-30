@@ -1,0 +1,8 @@
+{
+  "label": "Community",
+  "position": 6,
+  "link": {
+    "type": "generated-index",
+    "description": "This section contains ways you can connect with the Code Shaper community. You can also explore a directory of all available plugins contributed by the core team as well as the community."
+  }
+}

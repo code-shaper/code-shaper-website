@@ -46,6 +46,11 @@ Code Shaper was designed with the following guiding principles in mind:
   languages and frameworks people use it for. Opinions are expected to be
   embedded in the plugins and generators that people write.
 
+- **Modular**: Code Shaper should allow end users to build their tech stack in a
+  modular fashion. For example, they should be able to start with their choice
+  of repository structure and then layer on further decisions for frameworks,
+  libraries, patterns, coding conventions, CI/CD pipelines etc.
+
 - **Extensible**: Code Shaper should be easily extensible using a plugin
   architecture and a simple utility library to perform common tasks. Anyone with
   a basic knowledge of TypeScript should be able to write plugins - PhD degree
