@@ -24,6 +24,13 @@ repeatedly with a minimum number of keystrokes.
 npm install -g code-shaper
 ```
 
+:::tip Open new shells/terminals
+
+You may have to close existing shells/terminals and open new ones to access Code
+Shaper.
+
+:::
+
 ## Create an empty monorepo
 
 The monorepo generator is built right into Code Shaper. You don't need to
@@ -95,6 +102,9 @@ git commit -m "Added storybook"
 ```
 
 ## Add Code Shaper libraries and plugins
+
+Execute the following commands in the repo root directory to add Code Shaper
+libraries and plugins to the repo.
 
 ```shell
 # Code Shaper utilities library
