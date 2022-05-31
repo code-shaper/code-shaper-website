@@ -63,7 +63,7 @@ npm install
 # Commit
 # (we will commit at the end of each step to mark its completion)
 git add .
-git commit -m "initial commit"
+git commit -m "Initial commit"
 ```
 
 ## Add Storybook
@@ -91,7 +91,7 @@ cd ..
 
 # Commit
 git add .
-git commit -m "added storybook"
+git commit -m "Added storybook"
 ```
 
 ## Add Code Shaper libraries and plugins
@@ -111,7 +111,7 @@ npm install -D @code-shaper/typescript
 
 # Commit
 git add .
-git commit -m "added code-shaper libraries and plugins"
+git commit -m "Added code-shaper libraries and plugins"
 
 # Next time when you run shaper, you will magically see 3 more plugins:
 # Plugin, React & TypeScript

@@ -588,7 +588,7 @@ auto-generated.
 ```shell
 # Commit
 git add .
-git commit -m "added react-patterns plugin and fetch-hook generator"
+git commit -m "Added react-patterns plugin and fetch-hook generator"
 ```
 
 Congratulations! You have now learned how to write Code Shaper plugins and

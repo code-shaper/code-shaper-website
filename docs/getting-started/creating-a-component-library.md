@@ -38,7 +38,7 @@ npm install
 
 # Commit
 git add .
-git commit -m "added ui-lib"
+git commit -m "Added ui-lib"
 ```
 
 ## Add a component
@@ -267,7 +267,7 @@ We are now done with our button implementation. Let's commit the code.
 ```
 # Commit
 git add .
-git commit -m "added button component"
+git commit -m "Added button component"
 ```
 
 We are now ready to create our first web app using Code Shaper. Navigate to

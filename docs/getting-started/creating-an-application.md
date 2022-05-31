@@ -445,7 +445,7 @@ page with the movie list.
 ```shell
 # Commit
 git add .
-git commit -m "added movie-magic app"
+git commit -m "Added movie-magic app"
 ```
 
 Congratulations! You have now learned how to use Code Shaper using off-the-shelf
