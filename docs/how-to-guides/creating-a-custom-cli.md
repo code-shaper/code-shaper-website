@@ -494,11 +494,15 @@ CLI package is not taken already. Here are the rough steps to publish to npm:
 # Remember to unlink your local react-shaper
 npm unlink -g react-shaper
 
-# Publish to npm
+# Publish react-shaper CLI to npm
 cd apps/react-shaper
 npm publish
 
-# Install the npm version
+# Publish react-starter plugin to npm
+cd ../../plugins/react-starter
+npm publish
+
+# Install react-shaper from npm
 cd ~/projects
 npm install -g react-shaper
 
