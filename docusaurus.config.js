@@ -59,10 +59,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Code Shaper',
         logo: {
           alt: 'Code Shaper Logo',
           src: 'img/logo.svg',
+          srcDark: 'img/logo-dark-mode.svg'
         },
         items: [
           {
