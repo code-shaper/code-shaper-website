@@ -12,7 +12,9 @@ single repo. This guide shows you how to create a custom CLI to do just that.
 
 Let's create a CLI to generate an opinionated React app. This CLI will be
 similar to [create-react-app](https://create-react-app.dev/), but we will use
-Code Shaper to build it. We will call this cli `react-shaper`.
+Code Shaper to build it. We will call it `react-shaper`. You can also look at
+the [finished example](https://github.com/code-shaper/react-shaper) to get an
+idea of what we will build.
 
 ## Create an empty monorepo
 

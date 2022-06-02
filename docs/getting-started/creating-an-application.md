@@ -91,7 +91,6 @@ We are now ready to implement `MovieList`. Overwrite the placeholder
 implementation with the one below.
 
 ```tsx title="apps/movie-magic/src/components/MovieList/MovieList.tsx"
-import * as React from 'react';
 import { Button } from '@movie-magic/ui-lib';
 import { Movie } from '../../models';
 
