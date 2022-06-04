@@ -38,37 +38,20 @@ page with just a header.
 
 ![Placeholder Home Page](./img/placeholder-home-page.png)
 
-The goal of this section is to show a list of top 10 movies on this page. We
-will start by creating a `MovieList` component that receives a list of movies
-and displays it. Such components are called _presentational_ components - they
-don't worry about how the data was obtained, their job is to simply render the
-data.
+The goal of this section is to show a list of top 10 movies on this page.
 
-## Create a MovieList component
-
-We created a `<Button>` component in the last section. The process to create the
-`<MovieList>` component is exactly the same. Follow the steps below:
+Before we go forward, let's commit the generated code:
 
 ```shell
-shaper
-? Which plugin would you like to run? React
-? Which generator would you like to run? component
-? Component name? MovieList
-? Which workspace should this go to? apps/movie-magic
-
-# A placeholder MovieList component has been created for you.
-# Now let's implement it interactively using Storybook.
-npm run storybook
-
-# Point your browser to http://localhost:6006.
-# Storybook shows a placeholder implementation of MovieList.
+# Commit
+git add .
+git commit -m "Added movie-magic app"
 ```
 
 ## Create a Movie model
 
-Before implementing `MovieList`, let's create the TypeScript definition for a
-movie. Add a file called `Movie.ts` under `apps/movie-magic/src/models` with the
-following content.
+Let's start by creating a TypeScript definition for a movie. Add a file called
+`Movie.ts` under `apps/movie-magic/src/models` with the following content.
 
 ```ts title="apps/movie-magic/src/models/Movie.ts"
 export interface Movie {
@@ -83,6 +66,32 @@ is called _barreling_.
 
 ```ts title="apps/movie-magic/src/models/index.ts"
 export * from './Movie';
+```
+
+## Create a MovieList component
+
+Now we will create a `MovieList` component that receives a list of movies and
+displays it. Such components are called _presentational_ components - they don't
+worry about how the data was obtained, their job is to simply render it.
+
+The process of generating the `<MovieList>` component is exactly the same as
+that for the `<Button>` component from the last section. Follow the steps below:
+
+```shell
+shaper
+? Which plugin would you like to run? React
+? Which generator would you like to run? component
+? Component name? MovieList
+? Which workspace should this go to? apps/movie-magic
+? Parent directory within workspace? src/components/MovieList
+
+# A placeholder MovieList component has been created for you.
+# Also a placeholder Storybook story has been created for you.
+# Let's implement MovieList interactively using Storybook.
+npm run storybook
+
+# Point your browser to http://localhost:6006.
+# Storybook shows a placeholder implementation of MovieList.
 ```
 
 ## Implement MovieList
@@ -232,6 +241,14 @@ Run the tests from the root directory. All tests should pass.
 npm test
 ```
 
+MovieList is now fully implemented, let's commit the code:
+
+```shell
+# Commit
+git add .
+git commit -m "Added MovieList"
+```
+
 ## Mock API request
 
 Now that we have implemented the `MovieList` component, we need to think about
@@ -317,7 +334,13 @@ export const handlers = [
 ```
 
 This completes the implementation of the mock API handler. We will call this API
-from the client using a fetch hook.
+from the client using a fetch hook. Before we do that, let's commit our code:
+
+```shell
+# Commit
+git add .
+git commit -m "Added mock API for fetching top 10 movies"
+```
 
 ## Create a hook to fetch movies
 
@@ -444,7 +467,7 @@ page with the movie list.
 ```shell
 # Commit
 git add .
-git commit -m "Added movie-magic app"
+git commit -m "Added movie list to the home page"
 ```
 
 Congratulations! You have now learned how to use Code Shaper using off-the-shelf

@@ -51,9 +51,25 @@ shaper
 ? Which generator would you like to run? component
 ? Component name? Button
 ? Which workspace should this go to? packages/ui-lib
+? Parent directory within workspace? src/components/Button
 
+Creating Button...
+```
+
+:::tip Parent directory within workspace?
+
+Whenever Code Shaper asks you for the parent directory of a component, it gives
+you the default location as `src/components/ComponentName` (see above). If you
+are good with this location, just hit Enter - no need to type anything. If you
+want to override that location, just type the preferred pathname and hit Enter.
+This gives you full control over where components are created.
+
+:::
+
+```shell
 # A placeholder Button component has been created for you.
-# Now let's implement it interactively using Storybook.
+# Also a placeholder Storybook story has been created for you.
+# Let's implement the button interactively using Storybook.
 npm run storybook
 ```
 

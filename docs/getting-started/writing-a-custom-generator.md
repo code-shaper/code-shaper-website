@@ -20,8 +20,8 @@ fetch hooks based on these libraries.
 
 ## Install react-query and axios
 
-Start by adding the two libraries to movie-magic. Run the following command in
-the repository root:
+Start by adding react-query and axios to movie-magic. Run the following command
+in the repository root:
 
 ```shell
 npm install axios react-query --workspace @movie-magic/movie-magic
@@ -503,9 +503,10 @@ sure that the generator output is correct.
 
 :::
 
-Run the test:
+Build & test:
 
 ```shell
+npm run build
 npm test
 ```
 
