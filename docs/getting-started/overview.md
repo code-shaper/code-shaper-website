@@ -16,7 +16,8 @@ possible. It is divided into four parts:
 
 During the course of the tutorial, we will build a simple web app called _Movie
 Magic_. It shows a list of top 10 movies and allows the user to watch any of
-them.
+them. You can look at the finished source code in the
+[Movie Magic repo](https://github.com/code-shaper/movie-magic).
 
 ![Top 10 Movies](./img/home-page.png)
 
