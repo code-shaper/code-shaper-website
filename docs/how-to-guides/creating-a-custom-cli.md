@@ -4,17 +4,18 @@ sidebar_position: 1
 
 # Creating a custom CLI
 
-Code Shaper provides a modular way to construct your projects in a monorepo. But
-in some cases, you may want to generate a fully opinionated starter app in a
-single repo. This guide shows you how to create a custom CLI to do just that.
+Code Shaper provides the `shaper` CLI for generating code. However, in some
+cases you may want to create your own CLI which is customized to your project.
+You can use the `custom-cli` plugin to do just that.
 
 ## Example CLI
 
-Let's create a CLI to generate an opinionated React app. This CLI will be
-similar to [create-react-app](https://create-react-app.dev/), but we will use
-Code Shaper to build it. We will call it `react-shaper`. You can also look at
-the [finished example](https://github.com/code-shaper/react-shaper) to get an
-idea of what we will build.
+Code Shaper's `shaper` CLI gives you a modular way to construct your projects in
+a monorepo. In this example, we will create a custom CLI called `react-shaper`
+with single focus - to generate a React app along with an opinionated stack all
+in one shot (similar to [create-react-app](https://create-react-app.dev/)). You
+can look at the [finished example](https://github.com/code-shaper/react-shaper)
+to get an idea of what we will build.
 
 ## Create an empty monorepo
 

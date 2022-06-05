@@ -7,4 +7,49 @@ sidebar_position: 1
 This page contains a list of all available plugins contributed by the Code
 Shaper core team as well as the community.
 
-### Work In Progress...
+## Code Shaper Plugins
+
+### @code-shaper/custom-cli
+
+This plugin allows you to create a CLI which is customized to your project.
+Please see [Creating a custom CLI](../how-to-guides/creating-a-custom-cli) for
+details.
+
+### @code-shaper/plugin
+
+This plugin generates scaffolding for creating your own plugins and generators.
+Please see [Plugin plugin](../getting-started/writing-a-custom-generator.md) for
+details.
+
+### @code-shaper/react
+
+This plugin generates React related artifacts such as React apps and libraries,
+components, pages and contexts. Please see
+[React plugin](../reference/react-plugin.md) for details.
+
+### @code-shaper/repo
+
+This plugin generates an empty repository and repository-wide artifacts such as
+Storybook support. Please see [Repo plugin](../reference/repo-plugin.md) for
+details.
+
+### @code-shaper/typescript
+
+This plugin contains a single generator to scaffold reusable TypeScript
+libraries. Please see [TypeScript plugin](../reference/typescript-plugin.md) for
+details.
+
+## Community Plugins
+
+:::tip Listing your plugin
+
+To list your plugin in this section, open a discussion on the Code Shaper repo
+and provide us with the following information:
+
+1. **Plugin name**: e.g. @code-shaper/custom-cli
+2. **Docs URL**: e.g.
+   https://code-shaper.dev/docs/how-to-guides/creating-a-custom-cli
+3. **Short description**: e.g. "This plugin allows you to create a CLI which is
+   customized to your project."
+
+:::
