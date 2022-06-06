@@ -6,13 +6,13 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary-lightest: #387aff;
-  --ifm-color-primary-lighter: #1f69ff;
-  --ifm-color-primary-light: #004eeb;
-  --ifm-color-primary: #003DB8;
-  --ifm-color-primary-dark: #00359e;
-  --ifm-color-primary-darker: #002c85;
-  --ifm-color-primary-darkest: #00246b;
+  --ifm-color-primary-lightest: #2E45DA;
+  --ifm-color-primary-lighter: #2537AF;
+  --ifm-color-primary-light: #27348b;
+  --ifm-color-primary: #1c2a85;
+  --ifm-color-primary-dark: #101c7e;
+  --ifm-color-primary-darker: #131D5A;
+  --ifm-color-primary-darkest: #0A0F30;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
@@ -27,4 +27,8 @@
   --ifm-color-primary-darker: #6b9cff;
   --ifm-color-primary-darkest: #518bff;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.hero-gradient {
+  background-image: linear-gradient(to bottom right, #27348b, #1c2a85, #101c7e);
 }

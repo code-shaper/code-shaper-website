@@ -4,8 +4,13 @@ sidebar_position: 2
 
 # React plugin
 
-This plugin generates React related artifacts. It consists of the following
-generators:
+This plugin generates React related artifacts using opinionated coding
+conventions and patterns. See the following references for further details:
+
+- [Coding Conventions and Patterns](https://github.com/nareshbhatia/react-learning-resources/blob/main/docs/coding-conventions-and-patterns.md)
+- [Recommended Folder Structure](https://github.com/nareshbhatia/react-learning-resources/blob/main/docs/folder-structure.md)
+
+This plugin consists of five generators:
 
 1. **React app generator**: based on [Vite](https://vitejs.dev/) builder
 2. **React library generator**: for generating a reusable library of React

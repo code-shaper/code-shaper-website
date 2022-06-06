@@ -62,3 +62,21 @@ Code Shaper was designed with the following guiding principles in mind:
 
 - **Community driven**: Contributors and users should encourage discussion,
   suggestions and contributions to form a strong community and ecosystem.
+
+## Documentation Structure
+
+We strive to provide first-class documentation for Code Shaper. A high-level
+overview of how it is organized will help you know where to look for certain
+things:
+
+- [Getting Started](./getting-started/overview.md) is a hands-on introduction to
+  Code Shaper. Start here if you’re new to this tool.
+- [Concepts](./category/concepts) contains a discussion of key topics at a
+  fairly high level and provides useful background information and explanation.
+- [Reference](./category/reference) contains technical reference for Code Shaper
+  utilities, plugins and other aspects of its machinery. This section assumes
+  that you have a basic understanding of key concepts.
+- [How-to guides](./category/how-to-guides) are recipes. They guide you through
+  the steps involved in addressing key problems and use-cases. They are more
+  advanced than the getting started tutorials and assume some knowledge of how
+  Code Shaper works.
