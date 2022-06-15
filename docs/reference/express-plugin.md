@@ -56,6 +56,10 @@ Done.
 4. Point your browser to http://localhost:8080/top-10-movies to call the sample API.
 ```
 
+## Example of generated code
+
+https://github.com/code-shaper/movie-magic/tree/main/apps/movie-magic-api
+
 ## Source Code
 
 https://github.com/code-shaper/code-shaper/tree/main/plugins/express
