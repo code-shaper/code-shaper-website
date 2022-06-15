@@ -198,7 +198,7 @@ async function generateApp(inputOptions: Options) {
   console.log('  git init');
   console.log('  npm install');
   console.log('  git add .');
-  console.log('  git commit -m "initial commit"');
+  console.log('  git commit -m "Initial commit"');
   console.log();
 
   return Promise.resolve();

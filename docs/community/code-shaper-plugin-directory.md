@@ -15,6 +15,11 @@ This plugin allows you to create a CLI which is customized to your project.
 Please see [Creating a custom CLI](../how-to-guides/creating-a-custom-cli) for
 details.
 
+### @code-shaper/express
+
+This plugin contains a single generator to scaffold an Express server to host
+APIs. Please see [Express plugin](../reference/express-plugin.md) for details.
+
 ### @code-shaper/plugin
 
 This plugin generates scaffolding for creating your own plugins and generators.

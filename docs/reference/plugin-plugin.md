@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 ---
 
 # Plugin plugin
@@ -12,7 +12,16 @@ It consists of two generators:
 
 ## Installation
 
-Add a dev dependency at the root of your repository:
+:::tip Prerequisites
+
+Before installing this plugin, make sure that you have installed the `shaper`
+CLI and created a monorepo for your code. See
+[Setting up a monorepo](../getting-started/setting-up-a-monorepo.md) for
+instructions.
+
+:::
+
+Add a dev dependency at the root of your code repository:
 
 ```shell
 npm install -D @code-shaper/plugin

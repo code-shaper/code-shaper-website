@@ -1,12 +1,11 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 ---
 
 # Shaper Utils
 
 Shaper Utils is the foundational library that provides code generation support
-for all plugins and generators. This guide describes the API provided by
-`@code-shaper/shaper-utils`.
+for all plugins and generators.
 
 ## Installation
 
