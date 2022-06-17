@@ -412,12 +412,12 @@ export function MovieListContainer() {
   }
 
   if (isError) {
-    return <h2 className="h5">{error?.message}</h2>;
+    return <h1 className="text-2xl font-semibold mb-2">{error?.message}</h1>;
   }
 
   return (
     <React.Fragment>
-      <h2 className="h5 line-height-none mb-2">Top 10 Movies Of All Time</h2>
+      <h1 className="text-2xl font-semibold mb-2">Top 10 Movies Of All Time</h1>
       <MovieList movies={movies} />
     </React.Fragment>
   );
@@ -441,7 +441,7 @@ export function HomePage() {
       <Header />
       // highlight-start
       <div className="p-3">
-        <div className="card p-2">
+        <div className="card p-3">
           <MovieListContainer />
         </div>
       </div>

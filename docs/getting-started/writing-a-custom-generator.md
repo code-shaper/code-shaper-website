@@ -125,22 +125,22 @@ export function MovieListContainer() {
 
   if (movies.error) {
     return (
-      <h2 className="h5">
+      <h1 className="text-2xl font-semibold mb-2">
         Error:
         {movies.error instanceof Error
           ? movies.error.message
           : 'Something went wrong'}
-      </h2>
+      </h1>
     );
   }
 
   if (!movies.data) {
-    return <h2 className="h5">No movies found</h2>;
+    return <h1 className="text-2xl font-semibold mb-2">No movies found</h1>;
   }
 
   return (
     <React.Fragment>
-      <h2 className="h5 line-height-none mb-2">Top 10 Movies Of All Time</h2>
+      <h1 className="text-2xl font-semibold mb-2">Top 10 Movies Of All Time</h1>
       <MovieList movies={movies.data} />
     </React.Fragment>
   );
