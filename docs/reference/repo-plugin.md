@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # Repo plugin
@@ -24,6 +24,10 @@ npm install -g code-shaper
 For step-by-step instructions on how to use the repo plugin, see
 [Setting up a monorepo](../getting-started/setting-up-a-monorepo.md).
 
-## Source Code
+## Example
+
+https://github.com/code-shaper/movie-magic
+
+## Repository
 
 https://github.com/code-shaper/code-shaper/tree/main/plugins/repo

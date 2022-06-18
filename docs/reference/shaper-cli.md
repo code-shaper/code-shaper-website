@@ -26,6 +26,6 @@ shaper
 For step-by-step instructions on using `shaper`, see
 [Setting up a monorepo](../getting-started/setting-up-a-monorepo.md).
 
-## Source Code
+## Repository
 
 https://github.com/code-shaper/code-shaper/tree/main/apps/code-shaper

@@ -30,6 +30,10 @@ npm install -D @code-shaper/plugin
 For step-by-step instructions on how to use this plugin, see
 [Writing a custom generator](../getting-started/writing-a-custom-generator.md).
 
-## Source Code
+## Example
+
+https://github.com/code-shaper/movie-magic/tree/main/plugins/react-patterns
+
+## Repository
 
 https://github.com/code-shaper/code-shaper/tree/main/plugins/react

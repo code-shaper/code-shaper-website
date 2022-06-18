@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 # TypeScript plugin
@@ -24,6 +24,6 @@ Add a dev dependency at the root of your code repository:
 npm install -D @code-shaper/typescript
 ```
 
-## Source Code
+## Repository
 
 https://github.com/code-shaper/code-shaper/tree/main/plugins/typescript

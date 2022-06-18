@@ -4,8 +4,9 @@ sidebar_position: 5
 
 # React plugin
 
-This plugin generates React related artifacts using opinionated coding
-conventions and patterns. See the following references for further details:
+This plugin generates [React](https://reactjs.org/) related artifacts using
+opinionated coding conventions and patterns. See the following references for
+further details:
 
 - [Coding Conventions and Patterns](https://github.com/nareshbhatia/react-learning-resources/blob/main/docs/coding-conventions-and-patterns.md)
 - [Recommended Folder Structure](https://github.com/nareshbhatia/react-learning-resources/blob/main/docs/folder-structure.md)
@@ -43,6 +44,11 @@ npm install -D @code-shaper/react
 For step-by-step instructions on how to use this plugin, see
 [Getting Started](../getting-started/overview.md).
 
-## Source Code
+## Examples
+
+1. https://github.com/code-shaper/movie-magic/tree/main/apps/movie-magic-react
+2. https://github.com/code-shaper/movie-magic/tree/main/packages/ui-lib
+
+## Repository
 
 https://github.com/code-shaper/code-shaper/tree/main/plugins/react
