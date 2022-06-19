@@ -343,8 +343,10 @@ async function generateFetchHook(inputOptions: Options) {
     {
       type: 'directory',
       name: 'parentDir',
-      // highlight-next-line
+      // highlight-start
       message: 'Parent directory?',
+      pageSize: 20,
+      // highlight-end
       basePath: '.',
     },
   ];

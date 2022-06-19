@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # React plugin
@@ -18,7 +18,7 @@ This plugin consists of five generators:
    components
 3. **Component generator**: for generating React components in a standardized
    format
-4. **Page generator**: for generating Application pages
+4. **Page generator**: for generating application pages
 5. **Context generator**: for generating React context using the pattern
    described in
    [How to use React Context effectively](https://kentcdodds.com/blog/how-to-use-react-context-effectively)
