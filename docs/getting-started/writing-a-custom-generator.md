@@ -156,7 +156,7 @@ npm run dev
 Point your browser to `http://localhost:3000`. It should look exactly the same
 as before. The only difference is the implementation of the `useMovies` hook.
 
-## Create a plugin + a generator
+## Create a plugin + generator
 
 Now that we have `useMovies` working again, we know the pattern that needs to be
 generated. We will have to ask the user a few questions so that we can do proper
@@ -230,7 +230,7 @@ const reactPatternsPlugin: Plugin = {
       return Promise.resolve();
     }
 
-    return generator.generate(inputOptions);
+    return generator.generate(process.cwd(), inputOptions);
   },
 };
 
@@ -251,10 +251,10 @@ make this work, add the `react-patterns` plugin as a devDependency in the root
 {
   ...
   "devDependencies": {
-    "@code-shaper/plugin": "^0.0.7",
-    "@code-shaper/react": "^0.0.6",
-    "@code-shaper/shaper-utils": "^0.0.11",
-    "@code-shaper/typescript": "^0.0.6",
+    "@code-shaper/plugin": "latest",
+    "@code-shaper/react": "latest",
+    "@code-shaper/shaper-utils": "latest",
+    "@code-shaper/typescript": "latest",
     // highlight-next-line
     "@movie-magic/react-patterns": "*",
     "husky": "^8.0.1",
@@ -325,7 +325,7 @@ export const fetchHookGenerator: Generator = {
   generate: generateFetchHook,
 };
 
-async function generateFetchHook(inputOptions: Options) {
+async function generateFetchHook(rootDir: string, inputOptions: Options) {
   const questions = [
     {
       type: 'input',
@@ -343,11 +343,10 @@ async function generateFetchHook(inputOptions: Options) {
     {
       type: 'directory',
       name: 'parentDir',
-      // highlight-start
-      message: 'Parent directory?',
       pageSize: 20,
-      // highlight-end
-      basePath: '.',
+      // highlight-next-line
+      message: 'Parent directory?',
+      basePath: rootDir,
     },
   ];
 
@@ -471,39 +470,39 @@ Let's write a test for our `fetchHookGenerator`. A placeholder test is already
 provided for us. Edit it to add the generator specific options:
 
 ```ts title="plugins/react-patterns/src/fetchHookGenerator/fetchHookGenerator.test.ts"
-import plugin from '../index';
+import path from 'path';
+import { FileUtils } from '@code-shaper/shaper-utils';
+import { fetchHookGenerator } from './index';
 
 describe('fetchHookGenerator', () => {
-  test('should create a fetchHook from templates', async () => {
+  test('should create a new fetchHook from templates', async () => {
     // suppress console logs
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     jest.spyOn(console, 'log').mockImplementation(() => {});
 
-    await plugin.run({
-      generator: 'fetch-hook',
+    // Delete test-output if it exists
+    const testOutput = path.join(__dirname, 'test-output');
+    FileUtils.deletePath(testOutput);
+
+    // Run the generator
+    await fetchHookGenerator.generate(testOutput, {
       // highlight-start
       itemName: 'Movies',
       returnType: 'Movie[]',
-      parentDir: 'test-output/fetch-hook',
+      parentDir: path.join(testOutput),
       // highlight-end
     });
 
-    // TODO: Compare test-output with expected-output
-    expect(true).toBeTruthy();
+    // Compare test-output with expected-output
+    const expectedOutput = path.join(__dirname, 'expected-output');
+    const result = FileUtils.compareDirectories(expectedOutput, testOutput);
+    expect(result.same).toBe(true);
 
     // restore console logs
     jest.restoreAllMocks();
   });
 });
 ```
-
-:::danger Compare utility is pending
-
-Note the TODO above. Code Shaper will provide a directory compare utility that
-you will be able to use there. For now, we will just manually inspect to make
-sure that the generator output is correct.
-
-:::
 
 Build & test:
 
@@ -512,11 +511,14 @@ npm run build
 npm test
 ```
 
-Make sure that the generated output at
-`plugins/react-patterns/test-output/fetch-hook/useMovies.ts` matches the
-expected output below:
+The test generates its output at
+`plugins/react-patterns/src/fetchHookGenerator/test-output/useMovies`. However,
+it fails because there is no `expected-output` folder to compare against.
 
-```ts title="Expected Output"
+Let's first make sure that the generated output in `useMovies.ts` matches the
+code shown below:
+
+```ts
 import axios from 'axios';
 import { useQuery } from 'react-query';
 
@@ -530,6 +532,17 @@ export function useMovies() {
   return useQuery('movies', fetchMovies);
 }
 ```
+
+Assuming the code matches, rename the `test-output` folder to `expected-output`.
+We are essentially capturing a snapshot of what the output should look like. Now
+rerun the test.
+
+```shell
+npm test
+```
+
+It should pass this time because `test-output` should match `expected-output`
+exactly.
 
 ## Generate useMovies
 

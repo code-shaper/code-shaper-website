@@ -103,21 +103,33 @@ git commit -m "Added storybook"
 
 ## Add Code Shaper libraries and plugins
 
-Execute the following commands in the repo root directory to add Code Shaper
-libraries and plugins to the repo.
+Add the following Code Shaper packages to the `devDependencies` section of the
+root `package.json` file:
+
+```json title="package.json"
+{
+  ...
+  "devDependencies": {
+    // highlight-start
+    "@code-shaper/plugin": "latest",
+    "@code-shaper/react": "latest",
+    "@code-shaper/shaper-utils": "latest",
+    "@code-shaper/typescript": "latest",
+    // highlight-end
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.1",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "turbo": "latest"
+  }
+  ...
+}
+```
+
+Now execute the following commands in the repo's root directory:
 
 ```shell
-# Code Shaper utilities library
-npm install -D @code-shaper/shaper-utils
-
-# Plugin to generate plugins
-npm install -D @code-shaper/plugin
-
-# Plugin to generate React applications and libraries
-npm install -D @code-shaper/react
-
-# Plugin to generate TypeScript applications and libraries
-npm install -D @code-shaper/typescript
+npm install
 
 # Commit
 git add .
