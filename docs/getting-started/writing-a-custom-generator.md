@@ -14,7 +14,7 @@ explore writing our own plugin to use frameworks and patterns that we prefer.
 
 In our Movie Magic application, we used a `fetch`-based hook for fetching
 movies. A more opinionated approach would be to use
-[react-query](https://react-query.tanstack.com/) and
+[react-query](https://tanstack.com/query) and
 [axios](https://axios-http.com/) for this. Let's write a plugin to generate
 fetch hooks based on these libraries.
 
@@ -24,7 +24,7 @@ Start by adding react-query and axios to movie-magic. Run the following command
 in the repository root:
 
 ```shell
-npm install axios react-query --workspace @movie-magic/movie-magic
+npm install axios @tanstack/react-query --workspace @movie-magic/movie-magic
 ```
 
 :::tip Using workspaces
@@ -43,7 +43,7 @@ application's component tree. Edit `main.tsx` as follows.
 import * as React from 'react';
 import ReactDOM from 'react-dom/client';
 // highlight-next-line
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { App } from './App';
 import './styles/main.css';
@@ -91,8 +91,8 @@ react-query and axios.
 Replace the code in `useMovies.ts` with the following:
 
 ```ts title="apps/movie-magic/src/pages/HomePage/useMovies.ts"
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useQuery } from 'react-query';
 import { Movie } from '../../models';
 
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -102,7 +102,7 @@ function fetchMovies(): Promise<Movie[]> {
 }
 
 export function useMovies() {
-  return useQuery('movies', fetchMovies);
+  return useQuery(['movies'], fetchMovies);
 }
 ```
 
@@ -450,8 +450,8 @@ Finally, edit `[filename].ts.ejs.t` to turn it into a template. Here's the final
 content:
 
 ```
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useQuery } from 'react-query';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -460,7 +460,7 @@ function fetch<%= itemNamePascalCase %>(): Promise<<%= returnType %>> {
 }
 
 export function <%= hookName %>() {
-  return useQuery('<%= itemNameCamelCase %>', fetch<%= itemNamePascalCase %>);
+  return useQuery(['<%= itemNameCamelCase %>'], fetch<%= itemNamePascalCase %>);
 }
 ```
 
@@ -519,8 +519,8 @@ Let's first make sure that the generated output in `useMovies.ts` matches the
 code shown below:
 
 ```ts
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useQuery } from 'react-query';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -529,7 +529,7 @@ function fetchMovies(): Promise<Movie[]> {
 }
 
 export function useMovies() {
-  return useQuery('movies', fetchMovies);
+  return useQuery(['movies'], fetchMovies);
 }
 ```
 
@@ -572,8 +572,8 @@ it work. That's completely fine - we need to balance the effort vs. the
 perfection we want to achieve!
 
 ```ts
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useQuery } from 'react-query';
 // highlight-next-line
 import { Movie } from '../../models';
 
@@ -585,7 +585,7 @@ function fetchMovies(): Promise<Movie[]> {
 }
 
 export function useMovies() {
-  return useQuery('movies', fetchMovies);
+  return useQuery(['movies'], fetchMovies);
 }
 ```
 
