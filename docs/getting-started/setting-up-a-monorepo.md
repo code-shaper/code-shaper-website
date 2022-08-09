@@ -89,7 +89,7 @@ shaper
 # Add the following lines to the scripts section of your
 # root package.json:
 "storybook": "cd storybook && npm run storybook",
-"build-storybook": "cd storybook && build-storybook -s public"
+"build-storybook": "cd storybook && npm run build-storybook"
 
 # In the root directory, run:
 cd storybook
