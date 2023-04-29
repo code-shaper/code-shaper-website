@@ -80,14 +80,14 @@ It's simply a `<div>` with some text.
 ![Placeholder Button](./img/placeholder-button.png)
 
 Before implementing the button, let's add some css styles provided by the React
-plugin to Storybook. Edit `storybook/.storybook/preview.tsx` and add the
-following css import to it:
+plugin to Storybook. Edit `storybook/.storybook/preview.tsx` and uncomment the
+following line to import main.css:
 
 ```tsx
 // highlight-next-line
-import '../../packages/ui-lib/src/styles/main.css';
+// import '../../packages/ui-lib/src/styles/main.css';
 
-export const parameters = {
+const preview: Preview = {
   ...
 };
 ```
@@ -168,33 +168,36 @@ Modify the placeholder Button story to demonstrate its color variations. Simply
 overwrite `Button.stories.tsx` with the following code:
 
 ```tsx title="packages/ui-lib/src/components/Button/Button.stories.tsx"
-import { Story, Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
 
-export default {
+const meta = {
   title: 'Components/Button',
   component: Button,
-  argTypes: { onClick: { action: 'clicked' } },
-} as Meta;
+  tags: ['autodocs'],
+} satisfies Meta<typeof Button>;
 
-const Template: Story = (args) => {
-  return (
-    <Button
-      rootClass={args.rootClass}
-      color={args.color}
-      onClick={args.onClick}
-    >
-      {args.text}
-    </Button>
-  );
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const DefaultButton: Story = {
+  args: {
+    children: 'Button',
+  },
 };
 
-export const ButtonStory = Template.bind({});
-ButtonStory.storyName = 'Button';
-ButtonStory.args = {
-  text: 'Button',
-  rootClass: '',
-  color: 'primary',
+export const PrimaryButton: Story = {
+  args: {
+    color: 'primary',
+    children: 'Button',
+  },
+};
+
+export const SecondaryButton: Story = {
+  args: {
+    color: 'secondary',
+    children: 'Button',
+  },
 };
 ```
 
