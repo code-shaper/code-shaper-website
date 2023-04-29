@@ -73,34 +73,6 @@ git add .
 git commit -m "Initial commit"
 ```
 
-## Add Storybook
-
-[Storybook](https://storybook.js.org/) is an awesome tool to develop UI
-components in isolation. It forces us to design the component to be standalone,
-without coupling it to other parts of the application. Let's add Storybook
-support to our repo.
-
-```shell
-shaper
-? Which plugin would you like to run? Repo
-? Which generator would you like to run? storybook
-? Storybook will be added to movie-magic. Ok to proceed? Yes
-
-# Add the following lines to the scripts section of your
-# root package.json:
-"storybook": "cd storybook && npm run storybook",
-"build-storybook": "cd storybook && npm run build-storybook"
-
-# In the root directory, run:
-cd storybook
-npm install
-cd ..
-
-# Commit
-git add .
-git commit -m "Added storybook"
-```
-
 ## Add Code Shaper libraries and plugins
 
 Add the following Code Shaper packages to the `devDependencies` section of the
@@ -137,6 +109,34 @@ git commit -m "Added code-shaper libraries and plugins"
 
 # Next time when you run shaper, you will magically see 3 more plugins:
 # Plugin, React & TypeScript
+```
+
+## Add Storybook
+
+[Storybook](https://storybook.js.org/) is an awesome tool to develop UI
+components in isolation. It forces us to design the component to be standalone,
+without coupling it to other parts of the application. Let's add Storybook
+support to our repo.
+
+```shell
+shaper
+? Which plugin would you like to run? React
+? Which generator would you like to run? storybook
+? Storybook will be added to movie-magic. Ok to proceed? Yes
+
+# Add the following lines to the scripts section of your
+# root package.json:
+"storybook": "cd storybook && npm run storybook",
+"build-storybook": "cd storybook && npm run build-storybook"
+
+# In the root directory, run:
+cd storybook
+npm install
+cd ..
+
+# Commit
+git add .
+git commit -m "Added storybook"
 ```
 
 Your monorepo is now ready for prime time! Create your first component library
