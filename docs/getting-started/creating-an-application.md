@@ -141,40 +141,38 @@ We also need to modify the story to supply a list of movies. Overwrite the story
 with the code below:
 
 ```tsx title="apps/movie-magic/src/components/MovieList/MovieList.stories.tsx"
-import { Story, Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { MovieList } from './MovieList';
 
-export default {
+const meta = {
   title: 'Components/MovieList',
   component: MovieList,
-} as Meta;
+  tags: ['autodocs'],
+} satisfies Meta<typeof MovieList>;
 
-const Template: Story = (args) => (
-  <div className="card p-2">
-    <MovieList movies={args.movies} />
-  </div>
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const MovieListStory = Template.bind({});
-MovieListStory.storyName = 'MovieList';
-MovieListStory.args = {
-  movies: [
-    {
-      name: 'The Shawshank Redemption',
-      year: 1994,
-      rating: 9.3,
-    },
-    {
-      name: 'The Godfather',
-      year: 1972,
-      rating: 9.2,
-    },
-    {
-      name: 'The Godfather: Part II',
-      year: 1974,
-      rating: 9.0,
-    },
-  ],
+export const MovieListStory: Story = {
+  args: {
+    movies: [
+      {
+        name: 'The Shawshank Redemption',
+        year: 1994,
+        rating: 9.3,
+      },
+      {
+        name: 'The Godfather',
+        year: 1972,
+        rating: 9.2,
+      },
+      {
+        name: 'The Godfather: Part II',
+        year: 1974,
+        rating: 9.0,
+      },
+    ],
+  },
 };
 ```
 
@@ -220,20 +218,6 @@ describe('<MovieList />', () => {
   });
 });
 ```
-
-:::danger Workaround for Jest issue
-
-There appears to be an issue with Jest when coverage is turned on. The tests
-will pass, but you will see the following error when Jest is collecting coverage
-information:
-
-"ERROR: Jest worker encountered 3 child process exceptions, exceeding retry
-limit"
-
-To work around this issue disable coverage for the movie-magic app. Edit
-**apps/movie-magic/package.json** and delete the `--coverage` option for jest.
-
-:::
 
 Run the tests from the root directory. All tests should pass.
 
