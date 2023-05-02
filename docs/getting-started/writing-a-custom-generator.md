@@ -14,14 +14,14 @@ explore writing our own plugin to use frameworks and patterns that we prefer.
 
 In our Movie Magic application, we used a `fetch`-based hook for fetching
 movies. A more opinionated approach would be to use
-[react-query](https://tanstack.com/query) and
-[axios](https://axios-http.com/) for this. Let's write a plugin to generate
+[TanStack Query](https://tanstack.com/query) and
+[Axios](https://axios-http.com/) for this. Let's write a plugin to generate
 fetch hooks based on these libraries.
 
-## Install react-query and axios
+## Install TanStack Query and Axios
 
-Start by adding react-query and axios to movie-magic. Run the following command
-in the repository root:
+Start by adding TanStack Query and Axios to movie-magic. Run the following
+command in the repository root:
 
 ```shell
 npm install axios @tanstack/react-query --workspace @movie-magic/movie-magic
@@ -93,7 +93,7 @@ Replace the code in `useMovies.ts` with the following:
 ```ts title="apps/movie-magic/src/pages/HomePage/useMovies.ts"
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { Movie } from '../../models';
+import { Movie } from '@/models';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -113,7 +113,7 @@ with the following:
 
 ```tsx title="apps/movie-magic/src/pages/HomePage/MovieListContainer.tsx"
 import * as React from 'react';
-import { MovieList } from '../../components';
+import { MovieList } from '@/components/MovieList';
 import { useMovies } from './useMovies';
 
 export function MovieListContainer() {
@@ -575,7 +575,7 @@ perfection we want to achieve!
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 // highlight-next-line
-import { Movie } from '../../models';
+import { Movie } from '@/models';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
