@@ -101,7 +101,7 @@ implementation with the one below.
 
 ```tsx title="apps/movie-magic/src/components/MovieList/MovieList.tsx"
 import { Button } from '@movie-magic/ui-lib';
-import { Movie } from '../../models';
+import { Movie } from '@/models';
 
 interface MovieListProps {
   movies: Array<Movie>;
@@ -219,6 +219,20 @@ describe('<MovieList />', () => {
 });
 ```
 
+:::danger Workaround for Jest issue
+
+There appears to be an issue with Jest when coverage is turned on. The tests
+will pass, but you will see the following error when Jest is collecting coverage
+information:
+
+"ERROR: Jest worker encountered 3 child process exceptions, exceeding retry
+limit"
+
+To work around this issue disable coverage for the movie-magic app. Edit
+**apps/movie-magic/package.json** and delete the `--coverage` option for jest.
+
+:::
+
 Run the tests from the root directory. All tests should pass.
 
 ```shell
@@ -333,7 +347,7 @@ Create a file called `useMovies.ts` under the **HomePage** folder to fetch top
 
 ```ts title="apps/movie-magic/src/pages/HomePage/useMovies.ts"
 import * as React from 'react';
-import { Movie } from '../../models';
+import { Movie } from '@/models';
 
 /**
  * Hook to fetch movies
@@ -385,7 +399,7 @@ created earlier.
 
 ```tsx title="apps/movie-magic/src/pages/HomePage/MovieListContainer.tsx"
 import * as React from 'react';
-import { MovieList } from '../../components';
+import { MovieList } from '@/components/MovieList';
 import { useMovies } from './useMovies';
 
 export function MovieListContainer() {
@@ -415,7 +429,7 @@ the home page.
 
 ```tsx title="apps/movie-magic/src/pages/HomePage/HomePage.tsx"
 import * as React from 'react';
-import { Header } from '../../components';
+import { Header } from '@/components/Header';
 // highlight-next-line
 import { MovieListContainer } from './MovieListContainer';
 

@@ -8,7 +8,7 @@ sidebar_position: 2
 
 Before running through this tutorial:
 
-1. Make sure that you have Node version 14 or higher installed on your machine.
+1. Make sure that you have Node version 16 or higher installed on your machine.
    If you don't, follow the instructions
    [here](https://github.com/nareshbhatia/react-learning-resources#developer-machine-setup).
 2. Make sure that you have an IDE installed that understands TypeScript.

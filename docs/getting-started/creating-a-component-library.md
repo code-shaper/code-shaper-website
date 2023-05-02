@@ -279,6 +279,15 @@ Cached:    0 cached, 1 total
   Time:    8.595s
 ```
 
+## Export the component
+
+Now that the `Button` is fully tested, let's export it from our package. Add the
+following line to `src/index.ts`:
+
+```tsx title="packages/ui-lib/src/index.ts"
+export * from './components/Button';
+```
+
 ## Commit your code
 
 We are now done with our button implementation. Let's commit the code.
