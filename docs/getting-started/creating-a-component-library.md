@@ -118,23 +118,22 @@ button. Note that the button has a color property with 3 possible values:
 ```tsx title="packages/ui-lib/src/components/Button/Button.tsx"
 import * as React from 'react';
 
-interface ButtonProps {
-  rootClass?: string;
+type ReactButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+interface ButtonProps extends ReactButtonProps {
   color?: 'default' | 'primary' | 'secondary';
-  children?: React.ReactNode;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export function Button({
-  rootClass,
+  className,
   color = 'default',
   children,
   onClick,
 }: ButtonProps) {
   const classes = [];
 
-  if (rootClass) {
-    classes.push(rootClass);
+  if (className) {
+    classes.push(className);
   }
 
   classes.push('button button--contained button--small');
@@ -175,30 +174,27 @@ const meta = {
   title: 'Components/Button',
   component: Button,
   tags: ['autodocs'],
+  argTypes: {
+    color: {
+      description: 'The color of the component',
+      control: 'radio',
+      options: ['default', 'primary', 'secondary'],
+      table: {
+        defaultValue: { summary: 'default' },
+      },
+    },
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const DefaultButton: Story = {
-  args: {
-    children: 'Button',
-  },
-};
-
-export const PrimaryButton: Story = {
+export const Basic = {
   args: {
     color: 'primary',
     children: 'Button',
   },
-};
-
-export const SecondaryButton: Story = {
-  args: {
-    color: 'secondary',
-    children: 'Button',
-  },
-};
+} satisfies Story;
 ```
 
 The snapshot below shows the updated Storybook interface. Notice that you can

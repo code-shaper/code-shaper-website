@@ -148,12 +148,17 @@ const meta = {
   title: 'Components/MovieList',
   component: MovieList,
   tags: ['autodocs'],
+  argTypes: {
+    movies: {
+      description: 'A list of movies',
+    },
+  },
 } satisfies Meta<typeof MovieList>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const MovieListStory: Story = {
+export const Basic = {
   args: {
     movies: [
       {
@@ -173,7 +178,7 @@ export const MovieListStory: Story = {
       },
     ],
   },
-};
+} satisfies Story;
 ```
 
 Here's a snapshot of the updated Storybook interface.
