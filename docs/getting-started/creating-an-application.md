@@ -351,8 +351,8 @@ Create a file called `useMovies.ts` under the **HomePage** folder to fetch top
 10 movies.
 
 ```ts title="apps/movie-magic/src/pages/HomePage/useMovies.ts"
+import type { Movie } from '@/models';
 import * as React from 'react';
-import { Movie } from '@/models';
 
 /**
  * Hook to fetch movies
@@ -364,7 +364,7 @@ export function useMovies() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
   const [error, setError] = React.useState<Error>();
-  const [movies, setMovies] = React.useState<Array<Movie>>([]);
+  const [movies, setMovies] = React.useState<Movie[]>([]);
 
   React.useEffect(() => {
     const fetchMovies = async () => {
@@ -379,7 +379,8 @@ export function useMovies() {
           return;
         }
 
-        const movies = await response.json();
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const movies: Movie[] = await response.json();
         setMovies(movies);
         setIsLoading(false);
       } catch (error) {
@@ -389,6 +390,7 @@ export function useMovies() {
       }
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchMovies();
   }, [apiUrl]);
   return { isLoading, isError, error, movies };
