@@ -67,10 +67,21 @@ cd movie-magic
 git init
 npm install
 
-# Commit
-# (we will commit at the end of each step to mark its completion)
+# Make an initial commit
+# We will commit at the end of each step to mark its completion.
+# Note that we are using the conventional commit spec for commit messages.
+# The `npm run commit` command helps us with this using prompts.
+# This is equivalent to executing the following git command directly:
+#   git commit -m "chore: initial commit"
 git add .
-git commit -m "Initial commit"
+npm run commit
+  ? Select the TYPE of this change (required): chore
+  ? Select the SCOPE of this change (optional) (press enter to skip): <press enter>
+  ? Finish this SHORT sentence (required): "Applying this commit will...": (max 100 chars)
+  initial commit
+  ? Provide a LONGER description of the change (optional): (press enter to skip): <press enter>
+  ? Are there any breaking changes?: No
+  [master (root-commit)] chore: initial commit
 ```
 
 ## Add Code Shaper libraries and plugins
@@ -86,13 +97,10 @@ root `package.json` file:
     "@code-shaper/plugin": "latest",
     "@code-shaper/react": "latest",
     "@code-shaper/shaper-utils": "latest",
-    "@code-shaper/typescript": "latest",
     // highlight-end
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.1",
-    "prettier": "^2.7.1",
-    "rimraf": "^3.0.2",
-    "turbo": "latest"
+    "@commitlint/cz-commitlint": "^17.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.60.0",
+    ...
   }
   ...
 }
@@ -105,38 +113,49 @@ npm install
 
 # Commit
 git add .
-git commit -m "Added code-shaper libraries and plugins"
+git commit -m "chore: add code-shaper libraries and plugins"
 
-# Next time when you run shaper, you will magically see 3 more plugins:
-# Plugin, React & TypeScript
+# Next time when you run shaper, you will magically see 2 new plugins:
+# Plugin & React
 ```
 
 ## Add Storybook
 
 [Storybook](https://storybook.js.org/) is an awesome tool to develop UI
-components in isolation. It forces us to design the component to be standalone,
-without coupling it to other parts of the application. Let's add Storybook
-support to our repo.
+components in isolation. It forces us to design components to be standalone,
+without coupling them to other parts of the application. Let's add Storybook
+support to our repo. We will add it as an app under the `apps` folder.
+
+Execute the following command:
 
 ```shell
 shaper
 ? Which plugin would you like to run? React
 ? Which generator would you like to run? storybook
-? Storybook will be added to movie-magic. Ok to proceed? Yes
+? Storybook name? movie-magic-storybook
+? Parent directory? apps
+? Package name used for publishing? @movie-magic/movie-magic-storybook
+```
 
-# Add the following lines to the scripts section of your
-# root package.json:
-"storybook": "cd storybook && npm run storybook",
-"build-storybook": "cd storybook && npm run build-storybook"
+In the root directory, edit `package.json` to force the latest version of React.
+   This is done by adding the following overrides section after the devDependencies
+   section:
 
-# In the root directory, run:
-cd storybook
+```json
+  "overrides": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+```
+
+Now execute the following commands to install dependencies and commit all changes:
+
+```shell
 npm install
-cd ..
 
 # Commit
 git add .
-git commit -m "Added storybook"
+git commit -m "chore: add storybook"
 ```
 
 Your monorepo is now ready for prime time! Create your first component library

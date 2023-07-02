@@ -16,29 +16,29 @@ shaper
 ? Library name? ui-lib
 ? Parent directory? packages
 ? Package name used for publishing? @movie-magic/ui-lib
+```
 
-# In the root directory, edit package.json to force the latest version
-# of React. This is done by adding the following overrides section after
-# the devDependencies section:
-"overrides": {
-  "react": "^18.2.0",
-  "react-dom": "^18.2.0"
-},
+Since we will develop components in this library using Storybook, add it as a
+dependency in Storybook.
 
-# Edit /configs/typescript-config-custom/package.json to add a new
-# typescript configuration (react-library.json). See below:
-"files": [
-  "base.json",
-  "react-library.json"
-],
+```json title="apps/movie-magic-storybook/package.json"
+  "dependencies": {
+    // highlight-next-line
+    "@movie-magic/ui-lib": "*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+```
 
-# In the root directory, run:
-npm run clean
+Now execute the following commands to install dependencies and commit all
+changes:
+
+```shell
 npm install
 
 # Commit
 git add .
-git commit -m "Added ui-lib"
+git commit -m "chore: add ui-lib"
 ```
 
 ## Add a component
@@ -66,34 +66,41 @@ This gives you full control over where components are created.
 
 :::
 
+A placeholder `Button` component has been created for you at
+`packages/ui-lib/src/components/Button/Button.tsx`. Also a placeholder Storybook
+story has been created. Let's implement the button interactively using
+Storybook.
+
 ```shell
-# A placeholder Button component has been created for you.
-# Also a placeholder Storybook story has been created for you.
-# Let's implement the button interactively using Storybook.
-npm run storybook
+npm run dev
 ```
 
-Point your browser to `http://localhost:6006`. Storybook shows a placeholder
+This automatically opens a browser window showing Storybook. If not, open your
+browser and point it to `http://localhost:6006`. Storybook shows a placeholder
 implementation of the button. However, it does not look like a button at all.
 It's simply a `<div>` with some text.
 
 ![Placeholder Button](./img/placeholder-button.png)
 
 Before implementing the button, let's add some css styles provided by the React
-plugin to Storybook. Edit `storybook/.storybook/preview.tsx` and uncomment the
-following line to import main.css:
+plugin to Storybook. Edit `apps/movie-magic-storybook/.storybook/preview.tsx` as
+follows:
 
 ```tsx
-// highlight-next-line
-// import '../../packages/ui-lib/src/styles/main.css';
+// Import any required css here
+// highlight-start
+// Example: <--- delete this line
+// import '@movie-magic/ui-lib/src/styles/main.css'; <--- uncomment this
+// highlight-end
 
 const preview: Preview = {
   ...
 };
 ```
 
-Then add the following code to `storybook/.storybook/preview-head.html` to
-download the `Inter` font required by the CSS.
+Then uncomment the last block in
+`apps/movie-magic-storybook/.storybook/preview-head.html` to download the
+_Inter_ font required by the CSS.
 
 ```html
 <!--
@@ -112,75 +119,76 @@ download the `Inter` font required by the CSS.
 You should immediately see the change in Storybook.
 
 Finally, overwrite the code in `Button.tsx` with the real implementation of the
-button. Note that the button has a color property with 3 possible values:
-`'default' | 'primary' | 'secondary'`.
+button. Note that `Button` has a `variant` property with 3 possible values:
+`default` , `primary` & `secondary`.
 
 ```tsx title="packages/ui-lib/src/components/Button/Button.tsx"
-import * as React from 'react';
+import { clsx } from 'clsx';
+import type * as React from 'react';
 
-type ReactButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+export const buttonVariants = ['default', 'primary', 'secondary'] as const;
+export type ButtonVariant = typeof buttonVariants[number];
 
-interface ButtonProps extends ReactButtonProps {
-  color?: 'default' | 'primary' | 'secondary';
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant;
 }
+
+export const DefaultButtonProps = {
+  variant: 'default',
+} as const;
+
+// ---------- Style Mappings ----------
+const baseStyles = 'button button--contained button--small';
+
+const variantStyles: Record<ButtonVariant, string> = {
+  default: 'button--contained-default',
+  primary: 'button--contained-primary',
+  secondary: 'button--contained-secondary',
+} as const;
+// ------------------------------------
 
 export function Button({
   className,
-  color = 'default',
+  variant = DefaultButtonProps.variant,
   children,
-  onClick,
+  ...props
 }: ButtonProps) {
-  const classes = [];
-
-  if (className) {
-    classes.push(className);
-  }
-
-  classes.push('button button--contained button--small');
-
-  switch (color) {
-    case 'default': {
-      classes.push('button--contained-default');
-      break;
-    }
-    case 'primary': {
-      classes.push('button--contained-primary');
-      break;
-    }
-    case 'secondary': {
-      classes.push('button--contained-secondary');
-      break;
-    }
-  }
+  const styles = clsx(className, baseStyles, variantStyles[variant]);
 
   return (
-    <button className={classes.join(' ')} onClick={onClick}>
+    <button className={styles} {...props}>
       {children}
     </button>
   );
 }
 ```
 
+You will notice that Storybook is now showing the default button implementation.
+
 ## Implement a Storybook story
 
-Modify the placeholder Button story to demonstrate its color variations. Simply
+Modify the placeholder Button story to demonstrate all of its variations. Simply
 overwrite `Button.stories.tsx` with the following code:
 
 ```tsx title="packages/ui-lib/src/components/Button/Button.stories.tsx"
+import { Button, buttonVariants, DefaultButtonProps } from './Button';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
 
 const meta = {
   title: 'Components/Button',
   component: Button,
   tags: ['autodocs'],
   argTypes: {
-    color: {
-      description: 'The color of the component',
+    className: {
+      description: 'Additional style to apply',
+    },
+    variant: {
+      description: 'The variant to use',
       control: 'radio',
-      options: ['default', 'primary', 'secondary'],
+      options: buttonVariants,
       table: {
-        defaultValue: { summary: 'default' },
+        defaultValue: { summary: DefaultButtonProps.variant },
       },
     },
   },
@@ -189,11 +197,22 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Basic = {
+export const Default = {
   args: {
-    color: 'primary',
     children: 'Button',
   },
+} satisfies Story;
+
+export const Variants = {
+  render: () => (
+    <div>
+      {buttonVariants.map((variant) => (
+        <Button className="mr-2" key={variant} variant={variant}>
+          Button
+        </Button>
+      ))}
+    </div>
+  ),
 } satisfies Story;
 ```
 
@@ -215,23 +234,30 @@ Modify the placeholder Button test to exercise its requirements. Simply
 overwrite `Button.test.tsx` with the following code:
 
 ```tsx title="packages/ui-lib/src/components/Button/Button.test.tsx"
-import { render } from '@testing-library/react';
-import { Button } from './Button';
+import { Button, buttonVariants } from './Button';
+import { render } from '../../test/test-utils';
 
 describe('<Button />', () => {
-  test('colors render correctly', () => {
+  it('should render correct default properties', () => {
+    const { asFragment } = render(<Button>Submit</Button>);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should render correct variants', () => {
     const { asFragment } = render(
       <div>
-        <Button color="default">Submit</Button>
-        <Button color="primary">Submit</Button>
-        <Button color="secondary">Submit</Button>
+        {buttonVariants.map((variant) => (
+          <Button key={variant} variant={variant}>
+            Submit
+          </Button>
+        ))}
       </div>
     );
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('class can be added via rootClass prop', () => {
-    const { asFragment } = render(<Button rootClass="ml-2">Submit</Button>);
+  it('should allow to add a class using className prop', () => {
+    const { asFragment } = render(<Button className="ml-2">Submit</Button>);
     expect(asFragment()).toMatchSnapshot();
   });
 });
@@ -245,15 +271,16 @@ npm test
 > movie-magic@0.0.1 test
 > turbo run test
 
-• Packages in scope: @movie-magic/ui-lib, eslint-config-custom, jest-config-custom, typescript-config-custom
-• Running test in 4 packages
-@movie-magic/ui-lib:test: cache miss, executing 7d238535d8761951
+• Packages in scope: @movie-magic/movie-magic-storybook, @movie-magic/ui-lib, eslint-config-custom, jest-config-custom, typescript-config-custom
+• Running test in 5 packages
+• Remote caching disabled
+@movie-magic/ui-lib:test: cache miss, executing 4a56e6d92e7660a5
 @movie-magic/ui-lib:test:
 @movie-magic/ui-lib:test: > @movie-magic/ui-lib@0.0.1 test
 @movie-magic/ui-lib:test: > jest --coverage
 @movie-magic/ui-lib:test:
 @movie-magic/ui-lib:test: PASS src/components/Button/Button.test.tsx
-@movie-magic/ui-lib:test:  › 2 snapshots written.
+@movie-magic/ui-lib:test:  › 3 snapshots written.
 @movie-magic/ui-lib:test: ------------|---------|----------|---------|---------|-------------------
 @movie-magic/ui-lib:test: File        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 @movie-magic/ui-lib:test: ------------|---------|----------|---------|---------|-------------------
@@ -262,17 +289,13 @@ npm test
 @movie-magic/ui-lib:test: ------------|---------|----------|---------|---------|-------------------
 @movie-magic/ui-lib:test:
 @movie-magic/ui-lib:test: Snapshot Summary
-@movie-magic/ui-lib:test:  › 2 snapshots written from 1 test suite.
+@movie-magic/ui-lib:test:  › 3 snapshots written from 1 test suite.
 @movie-magic/ui-lib:test:
 @movie-magic/ui-lib:test: Test Suites: 1 passed, 1 total
-@movie-magic/ui-lib:test: Tests:       2 passed, 2 total
-@movie-magic/ui-lib:test: Snapshots:   2 written, 2 total
-@movie-magic/ui-lib:test: Time:        4.15 s, estimated 6 s
+@movie-magic/ui-lib:test: Tests:       3 passed, 3 total
+@movie-magic/ui-lib:test: Snapshots:   3 written, 3 total
+@movie-magic/ui-lib:test: Time:        1.751 s, estimated 2 s
 @movie-magic/ui-lib:test: Ran all test suites.
-
- Tasks:    1 successful, 1 total
-Cached:    0 cached, 1 total
-  Time:    8.595s
 ```
 
 ## Export the component
@@ -291,7 +314,7 @@ We are now done with our button implementation. Let's commit the code.
 ```
 # Commit
 git add .
-git commit -m "Added button component"
+git commit -m "feature: add button component"
 ```
 
 We are now ready to create our first web app using Code Shaper. Navigate to
