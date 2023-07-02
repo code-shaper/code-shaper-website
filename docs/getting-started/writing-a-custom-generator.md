@@ -40,12 +40,12 @@ Now add react-query's `QueryClientProvider` as a global provider in the
 application's component tree. Edit `main.tsx` as follows.
 
 ```tsx title="apps/movie-magic/src/main.tsx"
-import * as React from 'react';
-import ReactDOM from 'react-dom/client';
+import { App } from './App';
 // highlight-next-line
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import * as React from 'react';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { App } from './App';
 import './styles/main.css';
 
 // highlight-start
@@ -62,23 +62,26 @@ async function startMockServiceWorker() {
   }
 }
 
-startMockServiceWorker().then(() => {
-  const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
-  );
-
-  root.render(
-    <React.StrictMode>
-      // highlight-next-line
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <App />
-        </Router>
+startMockServiceWorker()
+  .then(() => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const root = createRoot(document.getElementById('root')!);
+    root.render(
+      <React.StrictMode>
         // highlight-next-line
-      </QueryClientProvider>
-    </React.StrictMode>
-  );
-});
+        <QueryClientProvider client={queryClient}>
+          <Router>
+            <App />
+          </Router>
+          // highlight-next-line
+        </QueryClientProvider>
+      </React.StrictMode>
+    );
+    return true;
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 ```
 
 ## Modify useMovies to the desired pattern
@@ -91,14 +94,15 @@ react-query and axios.
 Replace the code in `useMovies.ts` with the following:
 
 ```ts title="apps/movie-magic/src/pages/HomePage/useMovies.ts"
+import type { Movie } from '@/models';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { Movie } from '@/models';
 
-const apiUrl = import.meta.env.VITE_API_URL;
+async function fetchMovies(): Promise<Movie[]> {
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const resMovies = await axios.get<Movie[]>(`${apiUrl}/top-10-movies`);
 
-function fetchMovies(): Promise<Movie[]> {
-  return axios.get(`${apiUrl}/top-10-movies`).then((response) => response.data);
+  return resMovies.data;
 }
 
 export function useMovies() {
@@ -112,37 +116,34 @@ Modify `MovieListContainer` to use `useMovies` correctly. Replace its contents
 with the following:
 
 ```tsx title="apps/movie-magic/src/pages/HomePage/MovieListContainer.tsx"
-import * as React from 'react';
-import { MovieList } from '@/components/MovieList';
 import { useMovies } from './useMovies';
+import { MovieList } from '@/components/MovieList';
 
 export function MovieListContainer() {
-  const movies = useMovies();
+  const { data, error, isLoading } = useMovies();
 
-  if (movies.isLoading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  if (movies.error) {
+  if (error !== undefined && error !== null) {
     return (
-      <h1 className="text-2xl font-semibold mb-2">
+      <h1 className="mb-2 text-2xl font-semibold">
         Error:
-        {movies.error instanceof Error
-          ? movies.error.message
-          : 'Something went wrong'}
+        {error instanceof Error ? error.message : 'Something went wrong'}
       </h1>
     );
   }
 
-  if (!movies.data) {
-    return <h1 className="text-2xl font-semibold mb-2">No movies found</h1>;
+  if (!data) {
+    return <h1 className="mb-2 text-2xl font-semibold">No movies found</h1>;
   }
 
   return (
-    <React.Fragment>
-      <h1 className="text-2xl font-semibold mb-2">Top 10 Movies Of All Time</h1>
-      <MovieList movies={movies.data} />
-    </React.Fragment>
+    <>
+      <h1 className="mb-2 text-2xl font-semibold">Top 10 Movies Of All Time</h1>
+      <MovieList movies={data} />
+    </>
   );
 }
 ```
@@ -155,6 +156,14 @@ npm run dev
 
 Point your browser to `http://localhost:3000`. It should look exactly the same
 as before. The only difference is the implementation of the `useMovies` hook.
+
+## Commit your code
+
+```shell
+# Commit
+git add .
+git commit -m "chore: refactor use-movies hook to use tanstack query"
+```
 
 ## Create a plugin + generator
 
@@ -169,8 +178,8 @@ generate full react applications, components, contexts and many other artifacts.
 
 :::
 
-Let's start by generating a new plugin and a generator. We will name the plugin
-`react-patterns` because it's going to house our custom React patterns.
+Let's start by generating a new plugin. We will name the plugin `react-patterns`
+because it's going to house our custom React patterns.
 
 ```shell
 # Run shaper in the repo's root directory
@@ -180,14 +189,47 @@ shaper
 ? Plugin name? react-patterns
 ? Parent directory? plugins
 ? Package name used for publishing? @movie-magic/react-patterns
+```
 
+Now the plugin is ready, but Code Shaper needs to load it dynamically. To make
+this work, add the `react-patterns` plugin as a devDependency in the root
+`package.json` file of your repo.
+
+```json title="package.json"
+{
+  ...
+  "devDependencies": {
+    "@code-shaper/plugin": "latest",
+    "@code-shaper/react": "latest",
+    "@code-shaper/shaper-utils": "latest",
+    "@commitlint/cz-commitlint": "^17.5.0",
+    // highlight-next-line
+    "@movie-magic/react-patterns": "*",
+    "@typescript-eslint/eslint-plugin": "^5.60.0",
+    ...
+  },
+  ...
+}
+```
+
+Install dependencies and run shaper to verify that the plugin shows up.
+
+```shell
 # In the root directory, run:
 npm install
 
-# To make sure that everything is set up correctly, run a build
+# Run a build
 npm run build
 
-# Run shaper again to generate a generator
+# Run shaper to verify that the plugin shows up
+shaper
+? Which plugin would you like to run? React Patterns
+? Which generator would you like to run? <press control-c - no generators yet>
+```
+
+Now let's run shaper again to generate a new generator.
+
+```shell
 shaper
 ? Which plugin would you like to run? Plugin
 ? Which generator would you like to run? generator
@@ -243,30 +285,6 @@ Rebuild the generator by running the following command in the root directory.
 npm run build
 ```
 
-Now the generator is ready, but Code Shaper needs to load it dynamically. To
-make this work, add the `react-patterns` plugin as a devDependency in the root
-`package.json` file of your repo.
-
-```json title="package.json"
-{
-  ...
-  "devDependencies": {
-    "@code-shaper/plugin": "latest",
-    "@code-shaper/react": "latest",
-    "@code-shaper/shaper-utils": "latest",
-    "@code-shaper/typescript": "latest",
-    // highlight-next-line
-    "@movie-magic/react-patterns": "*",
-    "husky": "^8.0.1",
-    "lint-staged": "^12.4.1",
-    "prettier": "^2.6.2",
-    "rimraf": "^3.0.2",
-    "turbo": "latest"
-  },
-  ...
-}
-```
-
 Now run the generator. This is just a trial run. It will not generate anything,
 so feel free to experiment.
 
@@ -309,13 +327,13 @@ the highlighted lines below:
 ```ts title="plugins/react-patterns/src/fetchHookGenerator/index.ts"
 // highlight-next-line
 import { cc, FileUtils, Generator, Options } from '@code-shaper/shaper-utils';
-import inquirer from 'inquirer';
+import { prompt, registerPrompt } from 'inquirer';
 // @ts-ignore
 import inquirerDirectory from 'inquirer-directory';
 import path from 'path';
 
 // Register inquirer prompts
-inquirer.registerPrompt('directory', inquirerDirectory);
+registerPrompt('directory', inquirerDirectory);
 
 export const fetchHookGenerator: Generator = {
   id: 'fetch-hook',
@@ -350,7 +368,7 @@ async function generateFetchHook(rootDir: string, inputOptions: Options) {
     },
   ];
 
-  const options = await inquirer.prompt(questions, inputOptions);
+  const options = await prompt(questions, inputOptions);
   const { itemName, parentDir } = options;
 
   // --------------------------------------------------------------------------
@@ -453,10 +471,11 @@ content:
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
-const apiUrl = import.meta.env.VITE_API_URL;
+async function fetch<%= itemNamePascalCase %>(): Promise<<%= returnType %>> {
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const res<%= itemNamePascalCase %> = await axios.get<<%= returnType %>>(`${apiUrl}/<%= itemNameKebabCase %>`);
 
-function fetch<%= itemNamePascalCase %>(): Promise<<%= returnType %>> {
-  return axios.get(`${apiUrl}/<%= itemNameKebabCase %>`).then((response) => response.data);
+  return res<%= itemNamePascalCase %>.data;
 }
 
 export function <%= hookName %>() {
@@ -522,10 +541,11 @@ code shown below:
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
-const apiUrl = import.meta.env.VITE_API_URL;
+async function fetchMovies(): Promise<Movie[]> {
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const resMovies = await axios.get<Movie[]>(`${apiUrl}/movies`);
 
-function fetchMovies(): Promise<Movie[]> {
-  return axios.get(`${apiUrl}/movies`).then((response) => response.data);
+  return resMovies.data;
 }
 
 export function useMovies() {
@@ -572,16 +592,17 @@ it work. That's completely fine - we need to balance the effort vs. the
 perfection we want to achieve!
 
 ```ts
+// highlight-next-line
+import type { Movie } from '@/models';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-// highlight-next-line
-import { Movie } from '@/models';
 
-const apiUrl = import.meta.env.VITE_API_URL;
-
-function fetchMovies(): Promise<Movie[]> {
+async function fetchMovies(): Promise<Movie[]> {
+  const apiUrl = import.meta.env.VITE_API_URL;
   // highlight-next-line
-  return axios.get(`${apiUrl}/top-10-movies`).then((response) => response.data);
+  const resMovies = await axios.get<Movie[]>(`${apiUrl}/top-10-movies`);
+
+  return resMovies.data;
 }
 
 export function useMovies() {
@@ -604,7 +625,7 @@ auto-generated.
 ```shell
 # Commit
 git add .
-git commit -m "Added react-patterns plugin and fetch-hook generator"
+git commit -m "feature: add react-patterns plugin and fetch-hook generator"
 ```
 
 Congratulations! You have now learned how to write Code Shaper plugins and
