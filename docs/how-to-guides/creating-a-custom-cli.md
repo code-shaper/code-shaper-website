@@ -26,7 +26,7 @@ Create an empty monorepo using Code Shaper.
 cd ~/projects
 
 # Run Code Shaper and follow the prompts to create an empty monorepo
-shaper
+npx shaper
 ? Which plugin would you like to run? Repo
 ? Which generator would you like to run? turborepo
 ? Repository name? react-shaper
@@ -49,7 +49,7 @@ git commit -m "Initial commit"
 Now let's create `react-shaper`, our custom CLI.
 
 ```shell
-shaper
+npx shaper
 ? Which plugin would you like to run? Custom CLI
 ? Which generator would you like to run? cli
 ? CLI name? react-shaper
@@ -74,7 +74,7 @@ app.
 
 ```shell
 # Run shaper in the repo's root directory
-shaper
+npx shaper
 ? Which plugin would you like to run? Plugin
 ? Which generator would you like to run? plugin
 ? Plugin name? react-starter
@@ -88,7 +88,7 @@ npm install
 npm run build
 
 # Run shaper again to generate a generator
-shaper
+npx shaper
 ? Which plugin would you like to run? Plugin
 ? Which generator would you like to run? generator
 ? Generator name? app

@@ -8,43 +8,45 @@ sidebar_position: 2
 
 Before running through this tutorial:
 
-1. Make sure that you have Node version 16 or higher installed on your machine.
-   If you don't, follow the instructions
-   [here](https://github.com/nareshbhatia/react-learning-resources#developer-machine-setup).
-2. Make sure that you have an IDE installed that understands TypeScript.
+1. Make sure that you have **Node Version Manager** (NVM) installed on your
+   machine. NVM allows you to use different versions of node via the command
+   line. To install NVM, follow the instructions below:
+
+   - [NVM for MacOS](https://github.com/nvm-sh/nvm)
+   - [NVM for Windows](https://github.com/coreybutler/nvm-windows)
+
+2. Install the LTS (Long Time Support) version of Node following the
+   instructions above. This is recommended for deterministic and reliable
+   builds. As of this writing, the LTS version is 18.16.0. If, for whatever
+   reason, you want to use a different version of node, that's fine. Just be
+   prepared for minor deviations from this tutorial.
+
+3. Make sure that you have an IDE installed that understands TypeScript.
    [Visual Studio Code](https://code.visualstudio.com/) (free) and
    [WebStorm](https://www.jetbrains.com/webstorm/) (paid) are both good choices.
 
-## Install Code Shaper
-
-Install Code Shaper as a global plugin. This will make it easier to run it
-repeatedly with a minimum number of keystrokes.
-
-```shell
-npm install -g code-shaper
-```
-
-:::tip Open new shells/terminals
-
-You may have to close existing shells/terminals and open new ones to access Code
-Shaper.
-
-:::
-
-## Create an empty monorepo
-
-The monorepo generator is built right into Code Shaper. You don't need to
-install any plugins for it. Create an empty monorepo using Code Shaper.
+## Bootstrap an empty monorepo
 
 ```shell
 # Change directory to a location where you create projects, e.g.
 cd ~/projects
 
-# Run Code Shaper and follow the prompts to create an empty monorepo
-shaper
+# Create and empty directory for our repo and cd into it
+mkdir movie-magic
+cd movie-magic
+
+# Create an empty package.json file
+npm init -y
+
+# Install Code Shaper and its repo plugin
+npm install -D code-shaper @code-shaper/repo
+
+# Run Code Shaper and follow the prompts to initialize turborepo
+npx shaper
 ? Which plugin would you like to run? Repo
 ? Which generator would you like to run? turborepo
-? Repository name? movie-magic
+? This generator will overwrite some files in your repo. Ok to proceed? y
+? Repository name? (e.g. movie-magic) movie-magic
 ```
 
 :::tip Specifying options on the command line
@@ -56,16 +58,25 @@ example, the command line below specifies all the options, allowing Code Shaper
 to generate the movie-magic repo without asking any questions:
 
 ```shell
-shaper @code-shaper/repo --generator=turborepo --itemName=movie-magic
+npx shaper @code-shaper/repo --generator=turborepo --okToProceed=true --itemName=movie-magic
 ```
 
 :::
 
+Code Shaper has now initialized the repository with Turborepo and a new package.json file.
+Execute the following commands for further setup:
+
 ```shell
-# Install dependencies
-cd movie-magic
+# Do a clean install with the newly generated package.json file
+rm -rf package-lock.json node_modules
+nvm use        # use the required version of node
+npm install    # install dependencies
+
+# Install Code Shaper plugins that we will need for this project
+npm install @code-shaper/react @code-shaper/plugin
+
+# Initialize the git repo
 git init
-npm install
 
 # Make an initial commit
 # We will commit at the end of each step to mark its completion.
@@ -84,41 +95,6 @@ npm run commit
   [master (root-commit)] chore: initial commit
 ```
 
-## Add Code Shaper libraries and plugins
-
-Add the following Code Shaper packages to the `devDependencies` section of the
-root `package.json` file:
-
-```json title="package.json"
-{
-  ...
-  "devDependencies": {
-    // highlight-start
-    "@code-shaper/plugin": "latest",
-    "@code-shaper/react": "latest",
-    "@code-shaper/shaper-utils": "latest",
-    // highlight-end
-    "@commitlint/cz-commitlint": "^17.5.0",
-    "@typescript-eslint/eslint-plugin": "^5.60.0",
-    ...
-  }
-  ...
-}
-```
-
-Now execute the following commands in the repo's root directory:
-
-```shell
-npm install
-
-# Commit
-git add .
-git commit -m "chore: add code-shaper libraries and plugins"
-
-# Next time when you run shaper, you will magically see 2 new plugins:
-# Plugin & React
-```
-
 ## Add Storybook
 
 [Storybook](https://storybook.js.org/) is an awesome tool to develop UI
@@ -129,7 +105,7 @@ support to our repo. We will add it as an app under the `apps` folder.
 Execute the following command:
 
 ```shell
-shaper
+npx shaper
 ? Which plugin would you like to run? React
 ? Which generator would you like to run? storybook
 ? Storybook name? movie-magic-storybook
@@ -137,18 +113,8 @@ shaper
 ? Package name used for publishing? @movie-magic/movie-magic-storybook
 ```
 
-In the root directory, edit `package.json` to force the latest version of React.
-   This is done by adding the following overrides section after the devDependencies
-   section:
-
-```json
-  "overrides": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-```
-
-Now execute the following commands to install dependencies and commit all changes:
+Now execute the following commands to install dependencies and commit all
+changes:
 
 ```shell
 npm install

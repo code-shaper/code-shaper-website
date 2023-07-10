@@ -27,7 +27,7 @@ npm install -D @code-shaper/express
 Now you can run the `shaper` CLI to generate an express server. For example:
 
 ```shell
-shaper
+npx shaper
 ? Which plugin would you like to run? Express
 ? Which generator would you like to run? app
 ? Application name? movie-magic-api

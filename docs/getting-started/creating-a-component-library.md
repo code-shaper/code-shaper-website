@@ -10,7 +10,7 @@ one there.
 ## Create a React library
 
 ```shell
-shaper
+npx shaper
 ? Which plugin would you like to run? React
 ? Which generator would you like to run? react-library
 ? Library name? ui-lib
@@ -46,7 +46,7 @@ git commit -m "chore: add ui-lib"
 Now let's add a button component to `ui-lib`.
 
 ```shell
-shaper
+npx shaper
 ? Which plugin would you like to run? React
 ? Which generator would you like to run? component
 ? Component name? Button

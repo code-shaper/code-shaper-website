@@ -10,7 +10,7 @@ one there.
 ## Create a React app
 
 ```shell
-shaper
+npx shaper
 ? Which plugin would you like to run? React
 ? Which generator would you like to run? app
 ? Application name? movie-magic
@@ -96,7 +96,7 @@ The process of generating the `<MovieList>` component is exactly the same as
 that for the `<Button>` component from the last section. Follow the steps below:
 
 ```shell
-shaper
+npx shaper
 ? Which plugin would you like to run? React
 ? Which generator would you like to run? component
 ? Component name? MovieList

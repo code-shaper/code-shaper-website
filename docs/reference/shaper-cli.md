@@ -17,7 +17,7 @@ npm install -g code-shaper
 Now you can run shaper on your command line as follows:
 
 ```shell
-shaper
+npx shaper
 ? Which plugin would you like to run? Repo
 ? Which generator would you like to run? turborepo
 ? Repository name? movie-magic

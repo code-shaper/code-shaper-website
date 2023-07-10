@@ -23,16 +23,21 @@ them. You can look at the finished source code in the
 
 ## Implementation Plan
 
+Code Shaper is a modular code generator. We will build our web app
+layer-by-layer, simulating how we might build a mission critical application in
+real life.
+
 Here's our plan to implement this app:
 
-1. Create a **monorepo** where we will build this app modularly. We will use
+1. Bootstrap a **monorepo** from scratch where we will house our app, a
+   component library, Storybook and a custom generator. We will use
    [Turborepo](https://turborepo.org/) for this.
 2. Create a workspace called **ui-lib** which will house reusable React
    components, such as buttons, tabs and menus.
 3. Create another workspace called **movie-magic** where we will house the main
    application. This app will use components from the ui-lib.
-4. Write a generator to replace `fetch` based hooks to `react-query` and
-   `axios`.
+4. Write a **generator** to replace the `fetch` based hook in movie-magic with
+   `react-query` and `axios`.
 
 ![Monorepo Structure](./img/monorepo-structure.png)
 

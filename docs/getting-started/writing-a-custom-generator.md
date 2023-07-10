@@ -183,7 +183,7 @@ because it's going to house our custom React patterns.
 
 ```shell
 # Run shaper in the repo's root directory
-shaper
+npx shaper
 ? Which plugin would you like to run? Plugin
 ? Which generator would you like to run? plugin
 ? Plugin name? react-patterns
@@ -222,7 +222,7 @@ npm install
 npm run build
 
 # Run shaper to verify that the plugin shows up
-shaper
+npx shaper
 ? Which plugin would you like to run? React Patterns
 ? Which generator would you like to run? <press control-c - no generators yet>
 ```
@@ -230,7 +230,7 @@ shaper
 Now let's run shaper again to generate a new generator.
 
 ```shell
-shaper
+npx shaper
 ? Which plugin would you like to run? Plugin
 ? Which generator would you like to run? generator
 ? Generator name? fetch-hook
@@ -289,7 +289,7 @@ Now run the generator. This is just a trial run. It will not generate anything,
 so feel free to experiment.
 
 ```shell
-shaper
+npx shaper
 ? Which plugin would you like to run? React Patterns
 ? Which generator would you like to run? fetch-hook
 ? Fetch Hook name? useMovies
@@ -572,7 +572,7 @@ Now let's generate the real `useMovies` hook in the app. Delete the existing
 new fetch-hook generator:
 
 ```shell
-shaper
+npx shaper
 ? Which plugin would you like to run? React Patterns
 ? Which generator would you like to run? fetch-hook
 ? What are you fetching? Movies
