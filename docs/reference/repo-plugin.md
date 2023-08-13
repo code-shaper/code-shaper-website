@@ -4,13 +4,11 @@ sidebar_position: 8
 
 # Repo plugin
 
-This plugin generates an empty repository and repository-wide artifacts. It
-consists of the following generators:
+This plugin generates an empty repository. It consists of the following
+generator:
 
 1. **Turborepo generator**: generates an empty
    [Turborepo](https://turborepo.org/)
-2. **Storybook generator**: Generates repository-wide support for
-   [Storybook](https://storybook.js.org/)
 
 ## Installation
 

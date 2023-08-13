@@ -108,9 +108,8 @@ Execute the following command:
 npx shaper
 ? Which plugin would you like to run? React
 ? Which generator would you like to run? storybook
-? Storybook name? movie-magic-storybook
+? Repository name? movie-magic
 ? Parent directory? apps
-? Package name used for publishing? @movie-magic/movie-magic-storybook
 ```
 
 Now execute the following commands to install dependencies and commit all

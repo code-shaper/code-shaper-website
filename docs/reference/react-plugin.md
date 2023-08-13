@@ -23,6 +23,10 @@ This plugin consists of five generators:
    described in
    [How to use React Context effectively](https://kentcdodds.com/blog/how-to-use-react-context-effectively)
    by Kent C. Dodds
+6. **Storybook generator**: Generates repository-wide support for
+   [Storybook](https://storybook.js.org/)
+7. **Playwright generator**: Generates repository-wide support for
+   [Playwright](https://playwright.dev/) end-to-end tests
 
 ## Installation
 

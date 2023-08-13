@@ -34,9 +34,8 @@ components, pages and contexts. Please see
 
 ### @code-shaper/repo
 
-This plugin generates an empty repository and repository-wide artifacts such as
-Storybook support. Please see [Repo plugin](../reference/repo-plugin.md) for
-details.
+This plugin generates an empty repository based on TurboRepo. Please see
+[Repo plugin](../reference/repo-plugin.md) for details.
 
 ### @code-shaper/typescript
 
