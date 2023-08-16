@@ -73,7 +73,7 @@ nvm use        # use the required version of node
 npm install    # install dependencies
 
 # Install Code Shaper plugins that we will need for this project
-npm install @code-shaper/react @code-shaper/plugin
+npm install -D @code-shaper/react @code-shaper/plugin
 
 # Initialize the git repo
 git init
