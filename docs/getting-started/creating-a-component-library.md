@@ -314,7 +314,7 @@ We are now done with our button implementation. Let's commit the code.
 ```
 # Commit
 git add .
-git commit -m "feature: add button component"
+git commit -m "feat: add button component"
 ```
 
 We are now ready to create our first web app using Code Shaper. Navigate to

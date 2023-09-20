@@ -277,7 +277,7 @@ MovieList is now fully implemented, let's commit the code:
 ```shell
 # Commit
 git add .
-git commit -m "feature: add movie-list"
+git commit -m "feat: add movie-list"
 ```
 
 ## Mock API request
@@ -524,7 +524,7 @@ page with the movie list.
 ```shell
 # Commit
 git add .
-git commit -m "feature: add movie list to the home page"
+git commit -m "feat: add movie list to the home page"
 ```
 
 Congratulations! You have now learned how to use Code Shaper using off-the-shelf
