@@ -7,10 +7,10 @@ sidebar_position: 1
 The goal of this tutorial is to get you started with Code Shaper as quickly as
 possible. It is divided into four parts:
 
-1. [Setting up a monorepo](./setting-up-a-monorepo)
-2. [Creating a component library](./creating-a-component-library.md)
-3. [Creating an application](./creating-an-application.md)
-4. [Writing your own custom generator](./writing-a-custom-generator)
+1. [Set up a monorepo](./set-up-a-monorepo)
+2. [Add component to library](./add-component-to-library.md)
+3. [Create application](./create-application.md)
+4. [Write a custom generator](./write-a-custom-generator)
 
 ## The Tutorial App
 
