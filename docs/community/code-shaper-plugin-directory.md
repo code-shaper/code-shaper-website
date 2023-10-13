@@ -23,7 +23,7 @@ APIs. Please see [Express plugin](../reference/express-plugin.md) for details.
 ### @code-shaper/plugin
 
 This plugin generates scaffolding for creating your own plugins and generators.
-Please see [Plugin plugin](../getting-started/writing-a-custom-generator.md) for
+Please see [Plugin plugin](../getting-started/write-a-custom-generator.md) for
 details.
 
 ### @code-shaper/react

@@ -32,9 +32,8 @@ This plugin is intended to be used in conjunction with
 
 :::tip Prerequisites
 
-Before installing this plugin, make sure that you have installed the `shaper`
-CLI and created a monorepo for your code. See
-[Setting up a monorepo](../getting-started/setting-up-a-monorepo.md) for
+Before installing this plugin, make sure that you have created a monorepo for
+your code. See [Set up a monorepo](../getting-started/set-up-a-monorepo.md) for
 instructions.
 
 :::

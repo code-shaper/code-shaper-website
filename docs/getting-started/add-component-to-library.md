@@ -43,9 +43,9 @@ It's simply a `<div>` with some text.
 
 ![Placeholder Button](./img/placeholder-button.png)
 
-Overwrite the code in `Button.tsx` with the real implementation of the
-button. Note that `Button` has a `variant` property with 3 possible values:
-`default` , `primary` & `secondary`.
+Overwrite the code in `Button.tsx` with the real implementation of the button.
+Note that `Button` has a `variant` property with 3 possible values: `default` ,
+`primary` & `secondary`.
 
 ```tsx title="packages/ui-lib/src/components/Button/Button.tsx"
 import { clsx } from 'clsx';
@@ -243,4 +243,4 @@ git commit -m "feat: add button component"
 ```
 
 We are now ready to create our first web app using Code Shaper. Navigate to
-[Create application](./creating-application.md).
+[Create application](./create-application.md).

@@ -63,8 +63,8 @@ npx shaper @code-shaper/repo --generator=turborepo --okToProceed=true --itemName
 
 :::
 
-Code Shaper has now initialized the repository with Turborepo and a new package.json file.
-Execute the following commands for further setup:
+Code Shaper has now initialized the repository with Turborepo and a new
+package.json file. Execute the following commands for further setup:
 
 ```shell
 # Do a clean install with the newly generated package.json file
@@ -156,6 +156,9 @@ git commit -m "chore: add movie-magic app"
 ```
 
 ## What's Next?
-Our monorepo is now ready for prime time! It contains a workspace for our component library and another workspace for our application.
 
-Let's start by [adding a component to our component library](./add-component-to-library.md).
+Our monorepo is now ready for prime time! It contains a workspace for our
+component library and another workspace for our application.
+
+Let's start by
+[adding a component to our component library](./add-component-to-library.md).

@@ -4,7 +4,8 @@ sidebar_position: 4
 
 # Create application
 
-We have already created a starter application called `movie-magic` under the apps directory. Run it using the following command:
+We have already created a starter application called `movie-magic` under the
+apps directory. Run it using the following command:
 
 ```shell
 npm run dev

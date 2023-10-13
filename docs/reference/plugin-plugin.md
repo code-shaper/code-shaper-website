@@ -14,9 +14,8 @@ It consists of two generators:
 
 :::tip Prerequisites
 
-Before installing this plugin, make sure that you have installed the `shaper`
-CLI and created a monorepo for your code. See
-[Setting up a monorepo](../getting-started/setting-up-a-monorepo.md) for
+Before installing this plugin, make sure that you have created a monorepo for
+your code. See [Set up a monorepo](../getting-started/set-up-a-monorepo.md) for
 instructions.
 
 :::
@@ -28,7 +27,7 @@ npm install -D @code-shaper/plugin
 ```
 
 For step-by-step instructions on how to use this plugin, see
-[Writing a custom generator](../getting-started/writing-a-custom-generator.md).
+[Write a custom generator](../getting-started/write-a-custom-generator.md).
 
 ## Example
 

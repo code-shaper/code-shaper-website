@@ -20,7 +20,7 @@ npm install -g code-shaper
 ```
 
 For step-by-step instructions on how to use the repo plugin, see
-[Setting up a monorepo](../getting-started/setting-up-a-monorepo.md).
+[Set up a monorepo](../getting-started/set-up-a-monorepo.md).
 
 ## Example
 
