@@ -62,4 +62,4 @@ meticulously. A missed step could mean a lot of wasted of time and frustration.
 
 :::
 
-Let's get started. Navigate to [Setting up a monorepo](./setting-up-a-monorepo).
+Let's get started. Navigate to [Set up a monorepo](./set-up-a-monorepo).

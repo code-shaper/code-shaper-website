@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Writing a custom generator
+# Write a custom generator
 
 As mentioned in the [Overview](./overview.md) section, Code Shaper itself is
 unopinionated about the technologies you use, however plugins usually are. You

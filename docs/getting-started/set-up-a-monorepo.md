@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Setting up a monorepo
+# Set up a monorepo
 
 ## Prerequisites
 
@@ -95,21 +95,18 @@ npm run commit
   [master (root-commit)] chore: initial commit
 ```
 
-## Add Storybook
+## Create a workspace for our component library
 
-[Storybook](https://storybook.js.org/) is an awesome tool to develop UI
-components in isolation. It forces us to design components to be standalone,
-without coupling them to other parts of the application. Let's add Storybook
-support to our repo. We will add it as an app under the `apps` folder.
-
-Execute the following command:
+By convention, libraries are created in the **packages** directory. Let's create
+one there called `ui-lib`.
 
 ```shell
 npx shaper
 ? Which plugin would you like to run? React
-? Which generator would you like to run? storybook
-? Repository name? movie-magic
-? Parent directory? apps
+? Which generator would you like to run? react-library
+? Library name? ui-lib
+? Parent directory? packages
+? Package name used for publishing? @movie-magic/ui-lib
 ```
 
 Now execute the following commands to install dependencies and commit all
@@ -120,9 +117,45 @@ npm install
 
 # Commit
 git add .
-git commit -m "chore: add storybook"
+git commit -m "chore: add ui-lib"
 ```
 
-Your monorepo is now ready for prime time! Create your first component library
-by navigating to
-[Creating a component library](./creating-a-component-library.md)
+## Create a workspace for our application
+
+By convention, applications are created in the **apps** directory. Let's create
+one there.
+
+```shell
+npx shaper
+? Which plugin would you like to run? React
+? Which generator would you like to run? app
+? Application name? movie-magic
+? Parent directory? apps
+? Package name used for publishing? @movie-magic/movie-magic
+```
+
+Add a dependency in `apps/movie-magic/package.json` to `ui-lib`:
+
+```json title="apps/movie-magic/package.json"
+"dependencies": {
+  "@movie-magic/ui-lib": "*",
+  ...
+}
+```
+
+Now execute the following commands to install dependencies and commit all
+changes:
+
+```shell
+# In the root directory, run:
+npm install
+
+# Commit
+git add .
+git commit -m "chore: add movie-magic app"
+```
+
+## What's Next?
+Our monorepo is now ready for prime time! It contains a workspace for our component library and another workspace for our application.
+
+Let's start by [adding a component to our component library](./add-component-to-library.md).

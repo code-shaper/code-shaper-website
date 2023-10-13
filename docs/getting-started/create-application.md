@@ -2,51 +2,11 @@
 sidebar_position: 4
 ---
 
-# Creating an application
+# Create application
 
-By convention, applications are created in the **apps** directory. Let's create
-one there.
-
-## Create a React app
+We have already created a starter application called `movie-magic` under the apps directory. Run it using the following command:
 
 ```shell
-npx shaper
-? Which plugin would you like to run? React
-? Which generator would you like to run? app
-? Application name? movie-magic
-? Parent directory? apps
-? Package name used for publishing? @movie-magic/movie-magic
-```
-
-Add a dependency in `apps/movie-magic/package.json` to `ui-lib`:
-
-```json title="apps/movie-magic/package.json"
-"dependencies": {
-  "@movie-magic/ui-lib": "*",
-  ...
-}
-```
-
-Since we will develop components in this app using Storybook, add it as a
-dependency in Storybook.
-
-```json title="apps/movie-magic-storybook/package.json"
-  "dependencies": {
-    // highlight-next-line
-    "@movie-magic/movie-magic": "*",
-    "@movie-magic/ui-lib": "*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-```
-
-Install dependencies and run the app:
-
-```shell
-# In the root directory, run:
-npm install
-
-# Run the app from the root directory
 npm run dev
 ```
 
@@ -56,14 +16,6 @@ page with just a header.
 ![Placeholder Home Page](./img/placeholder-home-page.png)
 
 The goal of this section is to show a list of top 10 movies on this page.
-
-Before we go forward, let's commit the generated code:
-
-```shell
-# Commit
-git add .
-git commit -m "chore: add movie-magic app"
-```
 
 ## Create a Movie model
 
@@ -109,7 +61,7 @@ Storybook story has been created. Let's implement MovieList interactively using
 Storybook.
 
 ```shell
-npm run dev
+npm run storybook
 ```
 
 Point your browser to `http://localhost:6006`. Storybook shows a placeholder
@@ -529,4 +481,4 @@ git commit -m "feat: add movie list to the home page"
 
 Congratulations! You have now learned how to use Code Shaper using off-the-shelf
 generators. Now let's learn
-[how to write your own custom generator](./writing-a-custom-generator)
+[how to write your own custom generator](./write-a-custom-generator)

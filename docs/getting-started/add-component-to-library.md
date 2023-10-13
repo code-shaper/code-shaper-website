@@ -2,48 +2,9 @@
 sidebar_position: 3
 ---
 
-# Creating a component library
+# Add component to library
 
-By convention, libraries are created in the **packages** directory. Let's create
-one there.
-
-## Create a React library
-
-```shell
-npx shaper
-? Which plugin would you like to run? React
-? Which generator would you like to run? react-library
-? Library name? ui-lib
-? Parent directory? packages
-? Package name used for publishing? @movie-magic/ui-lib
-```
-
-Since we will develop components in this library using Storybook, add it as a
-dependency in Storybook.
-
-```json title="apps/movie-magic-storybook/package.json"
-  "dependencies": {
-    // highlight-next-line
-    "@movie-magic/ui-lib": "*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-```
-
-Now execute the following commands to install dependencies and commit all
-changes:
-
-```shell
-npm install
-
-# Commit
-git add .
-git commit -m "chore: add ui-lib"
-```
-
-## Add a component
-
-Now let's add a button component to `ui-lib`.
+Let's add a button component to our component library `ui-lib`.
 
 ```shell
 npx shaper
@@ -72,7 +33,7 @@ story has been created. Let's implement the button interactively using
 Storybook.
 
 ```shell
-npm run dev
+npm run storybook
 ```
 
 This automatically opens a browser window showing Storybook. If not, open your
@@ -82,43 +43,7 @@ It's simply a `<div>` with some text.
 
 ![Placeholder Button](./img/placeholder-button.png)
 
-Before implementing the button, let's add some css styles provided by the React
-plugin to Storybook. Edit `apps/movie-magic-storybook/.storybook/preview.tsx` as
-follows:
-
-```tsx
-// Import any required css here
-// highlight-start
-// Example: <--- delete this line
-// import '@movie-magic/ui-lib/src/styles/main.css'; <--- uncomment this
-// highlight-end
-
-const preview: Preview = {
-  ...
-};
-```
-
-Then uncomment the last block in
-`apps/movie-magic-storybook/.storybook/preview-head.html` to download the
-_Inter_ font required by the CSS.
-
-```html
-<!--
-  Use this file to add any extra elements to the head of your
-  Storybook preview iframe.
--->
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
-/>
-```
-
-You should immediately see the change in Storybook.
-
-Finally, overwrite the code in `Button.tsx` with the real implementation of the
+Overwrite the code in `Button.tsx` with the real implementation of the
 button. Note that `Button` has a `variant` property with 3 possible values:
 `default` , `primary` & `secondary`.
 
@@ -318,4 +243,4 @@ git commit -m "feat: add button component"
 ```
 
 We are now ready to create our first web app using Code Shaper. Navigate to
-[Creating an application](./creating-an-application.md).
+[Create application](./creating-application.md).
