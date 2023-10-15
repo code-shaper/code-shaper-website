@@ -169,7 +169,7 @@ placeholder test with the code below.
 
 ```tsx title="apps/movie-magic/src/components/MovieList/MovieList.test.tsx"
 import { MovieList } from './MovieList';
-import { render, screen } from '../../test/test-utils';
+import { render, screen } from '@/test/test-utils';
 
 const movies = [
   {
@@ -244,7 +244,7 @@ start testing our front-end without having to wait for the real API to be ready.
 Add the following file containing movie data under the `mocks` directory:
 
 ```ts title="apps/movie-magic/src/mocks/mockMovies.ts"
-import type { Movie } from '../models';
+import type { Movie } from '@/models';
 
 export const mockMovies: Movie[] = [
   {

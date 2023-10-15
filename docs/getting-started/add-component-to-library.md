@@ -160,7 +160,7 @@ overwrite `Button.test.tsx` with the following code:
 
 ```tsx title="packages/ui-lib/src/components/Button/Button.test.tsx"
 import { Button, buttonVariants } from './Button';
-import { render } from '../../test/test-utils';
+import { render } from '@/test/test-utils';
 
 describe('<Button />', () => {
   it('should render correct default properties', () => {
