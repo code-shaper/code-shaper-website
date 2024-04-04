@@ -39,7 +39,7 @@ cd movie-magic
 npm init -y
 
 # Install Code Shaper and its repo plugin
-npm install -D code-shaper @code-shaper/repo
+npm install code-shaper @code-shaper/repo
 
 # Run Code Shaper and follow the prompts to initialize turborepo
 npx shaper
@@ -73,7 +73,7 @@ nvm use        # use the required version of node
 npm install    # install dependencies
 
 # Install Code Shaper plugins that we will need for this project
-npm install -D @code-shaper/react @code-shaper/plugin
+npm install @code-shaper/react @code-shaper/plugin
 
 # Initialize the git repo
 git init
