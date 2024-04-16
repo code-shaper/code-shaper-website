@@ -46,7 +46,6 @@ npx shaper
 ? Which plugin would you like to run? Repo
 ? Which generator would you like to run? turborepo
 ? This generator will overwrite some files in your repo. Ok to proceed? y
-? Repository name? (e.g. movie-magic) movie-magic
 ```
 
 :::tip Specifying options on the command line
@@ -58,7 +57,7 @@ example, the command line below specifies all the options, allowing Code Shaper
 to generate the movie-magic repo without asking any questions:
 
 ```shell
-npx shaper @code-shaper/repo --generator=turborepo --okToProceed=true --itemName=movie-magic
+npx shaper @code-shaper/repo --generator=turborepo --okToProceed=true
 ```
 
 :::
