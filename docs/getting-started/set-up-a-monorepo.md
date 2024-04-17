@@ -31,7 +31,8 @@ Before running through this tutorial:
 # Change directory to a location where you create projects, e.g.
 cd ~/projects
 
-# Create and empty directory for our repo and cd into it
+# Create and empty directory for our repo and cd into it.
+# Repos are usually named with kebab-case.
 mkdir movie-magic
 cd movie-magic
 
