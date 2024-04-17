@@ -64,7 +64,8 @@ npx shaper @code-shaper/repo --generator=turborepo --okToProceed=true
 :::
 
 Code Shaper has now initialized the repository with Turborepo and a new
-package.json file. Execute the following commands for further setup:
+package.json file. Execute the following commands to install the new
+dependencies:
 
 ```shell
 # Do a clean install with the newly generated package.json file
@@ -72,10 +73,7 @@ rm -rf package-lock.json node_modules
 nvm use        # use the required version of node
 npm install    # install dependencies
 
-# Install Code Shaper plugins that we will need for this project
-npm install @code-shaper/react @code-shaper/plugin
-
-# Initialize the git repo
+# Initialize a git repo in the current directory
 git init
 
 # Make an initial commit
@@ -97,8 +95,15 @@ npm run commit
 
 ## Create a workspace for our component library
 
-By convention, libraries are created in the **packages** directory. Let's create
-one there called `ui-lib`.
+Install Code Shaper plugins that we will need for this tutorial.
+
+```shell
+npm install @code-shaper/react @code-shaper/plugin
+```
+
+Now let's create a component library using the react plugin. By convention,
+libraries are created in the **packages** directory. Let's create one there
+called `ui-lib`.
 
 ```shell
 npx shaper
