@@ -148,12 +148,20 @@ Add a dependency in `apps/movie-magic/package.json` to `ui-lib`:
 }
 ```
 
-Now execute the following commands to install dependencies and commit all
-changes:
+Now execute the following commands for further setup and commit all the changes:
 
 ```shell
-# In the root directory, run:
+# Create a local environment file for movie-magic
+cp apps/movie-magic/.env.example apps/movie-magic/.env.local
+
+# Install dependencies:
 npm install
+
+# Build and run the app to make sure it works
+npm run build
+npm run dev
+
+# Point your browser to http://localhost:3000/ to make sure the app runs.
 
 # Commit
 git add .
