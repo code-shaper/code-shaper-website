@@ -78,6 +78,7 @@ import type { Movie } from '@/models';
 import { Button } from '@movie-magic/ui-lib';
 
 export interface MovieListProps {
+  /** Movies to be displayed */
   movies: Movie[];
 }
 
@@ -123,9 +124,7 @@ const meta = {
   component: MovieList,
   tags: ['autodocs'],
   argTypes: {
-    movies: {
-      description: 'A list of movies',
-    },
+    movies: { control: false },
   },
 } satisfies Meta<typeof MovieList>;
 
