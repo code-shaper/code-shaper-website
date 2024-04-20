@@ -68,13 +68,13 @@ package.json file. Execute the following commands to install the new
 dependencies:
 
 ```shell
+# Initialize a git repo in the current directory
+git init
+
 # Do a clean install with the newly generated package.json file
 rm -rf package-lock.json node_modules
 nvm use        # use the required version of node
 npm install    # install dependencies
-
-# Initialize a git repo in the current directory
-git init
 
 # Make an initial commit
 # We will commit at the end of each step to mark its completion.
@@ -137,6 +137,7 @@ npx shaper
 ? Application name? movie-magic
 ? Parent directory? apps
 ? Package name used for publishing? @movie-magic/movie-magic
+? Would you like to use Tailwind CSS? Yes
 ```
 
 Add a dependency in `apps/movie-magic/package.json` to `ui-lib`:
@@ -162,6 +163,11 @@ npm run build
 npm run dev
 
 # Point your browser to http://localhost:3000/ to make sure the app runs.
+
+# Run Storybook to make sure it works
+npm run storybook
+
+# Point your browser to http://localhost:6006/ to make sure Storybook runs.
 
 # Commit
 git add .
