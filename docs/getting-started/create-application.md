@@ -204,21 +204,6 @@ describe('<MovieList />', () => {
 });
 ```
 
-:::danger Workaround for Jest issue
-
-There appears to be an issue with Jest when coverage is turned on. The tests
-will pass, but you will see the following error when Jest is collecting coverage
-information:
-
-"ERROR: Jest worker encountered 3 child process exceptions, exceeding retry
-limit"
-
-To work around this issue we have disabled coverage for the movie-magic app. If
-you want to enable it, edit **apps/movie-magic/package.json** and add the
-`--coverage` option for jest.
-
-:::
-
 Run the tests from the root directory. All tests should pass.
 
 ```shell
