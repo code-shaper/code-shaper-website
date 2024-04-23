@@ -8,7 +8,7 @@ Let's add a button component to our component library `ui-lib`.
 
 ```shell
 npx shaper
-? Which plugin would you like to run? React
+? Which plugin would you like to run? Vite
 ? Which generator would you like to run? component
 ? Component name? Button
 ? Which workspace should this go to? packages/ui-lib

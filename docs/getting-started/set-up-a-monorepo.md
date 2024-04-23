@@ -98,7 +98,7 @@ npm run commit
 Install Code Shaper plugins that we will need for this tutorial.
 
 ```shell
-npm install @code-shaper/react @code-shaper/plugin
+npm install @code-shaper/vite @code-shaper/plugin
 ```
 
 Now let's create a component library using the react plugin. By convention,
@@ -107,7 +107,7 @@ called `ui-lib`.
 
 ```shell
 npx shaper
-? Which plugin would you like to run? React
+? Which plugin would you like to run? Vite
 ? Which generator would you like to run? react-library
 ? Library name? ui-lib
 ? Parent directory? packages
@@ -132,7 +132,7 @@ one there.
 
 ```shell
 npx shaper
-? Which plugin would you like to run? React
+? Which plugin would you like to run? Vite
 ? Which generator would you like to run? app
 ? Application name? movie-magic
 ? Parent directory? apps

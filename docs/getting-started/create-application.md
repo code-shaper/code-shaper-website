@@ -50,7 +50,7 @@ that for the `<Button>` component from the last section. Follow the steps below:
 
 ```shell
 npx shaper
-? Which plugin would you like to run? React
+? Which plugin would you like to run? Vite
 ? Which generator would you like to run? component
 ? Component name? MovieList
 ? Which workspace should this go to? apps/movie-magic
