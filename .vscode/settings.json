@@ -1,8 +1,13 @@
 {
-    "cSpell.words": [
-        "commitlint",
-        "tanstack",
-        "turborepo",
-        "unopinionated"
-    ]
+  "cSpell.words": [
+    "clsx",
+    "codebases",
+    "commitlint",
+    "nextjs",
+    "Shadcn",
+    "tanstack",
+    "turborepo",
+    "typecheck",
+    "unopinionated"
+  ]
 }

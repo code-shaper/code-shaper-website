@@ -62,7 +62,7 @@ const config = {
         logo: {
           alt: 'Code Shaper Logo',
           src: 'img/logo.svg',
-          srcDark: 'img/logo-dark-mode.svg'
+          srcDark: 'img/logo-dark-mode.svg',
         },
         items: [
           {
@@ -91,7 +91,7 @@ const config = {
               },
               {
                 label: 'Getting Started',
-                to: '/docs/getting-started/overview',
+                to: '/docs/getting-started/core-concepts',
               },
             ],
           },
