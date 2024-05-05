@@ -67,7 +67,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'introduction',
+            docId: 'why-code-shaper',
             position: 'left',
             label: 'Docs',
           },
@@ -86,8 +86,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Introduction',
-                to: '/docs/introduction',
+                label: 'Why Code Shaper',
+                to: '/docs/why-code-shaper',
               },
               {
                 label: 'Getting Started',
