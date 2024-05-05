@@ -230,7 +230,7 @@ import axios from 'axios';
 export const api = axios.create();
 ```
 
-### Setup Tanstack React Query to make REST calls
+## Setup Tanstack React Query
 
 In addition to Axios, we'll setup
 [Tanstack React Query](https://tanstack.com/query) to make REST calls. This is
@@ -257,7 +257,7 @@ import { useMockServiceWorker } from './useMockServiceWorker';
 }
 ```
 
-### Update HomePage to fetch movies data
+## Update HomePage to fetch movies
 
 We now have all the REST infrastructure set. Let's use it to fetch data from the
 mock server and show it on the home page. Replace the entire content of
