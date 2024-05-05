@@ -30,7 +30,7 @@ application
 ## Prerequisite
 
 Make sure that you have the `movie-magic` repository set up as described in
-[Create a new repo](./create-a-new-repo.md).
+[Create a new repo](./create-a-new-repo).
 
 ## Install Next.js plugin and generate an app
 

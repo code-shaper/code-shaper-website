@@ -18,31 +18,31 @@ details.
 ### @code-shaper/express
 
 This plugin contains a single generator to scaffold an Express server to host
-APIs. Please see [Express plugin](../reference/express-plugin.md) for details.
+APIs. Please see [Express plugin](../reference/express-plugin) for details.
 
 ### @code-shaper/plugin
 
 This plugin generates scaffolding for creating your own plugins and generators.
 Please see
-[Creating a Custom Generator](../how-to-guides/creating-a-custom-generator.md)
-for details.
+[Create a Custom Generator](../getting-started/create-a-custom-generator) for
+details.
 
 ### @code-shaper/repo
 
 This plugin generates an empty repository based on TurboRepo. Please see
-[Repo plugin](../reference/repo-plugin.md) for details.
+[Repo plugin](../reference/repo-plugin) for details.
 
 ### @code-shaper/typescript
 
 This plugin contains a single generator to scaffold reusable TypeScript
-libraries. Please see [TypeScript plugin](../reference/typescript-plugin.md) for
+libraries. Please see [TypeScript plugin](../reference/typescript-plugin) for
 details.
 
 ### @code-shaper/vite
 
 This plugin generates React related artifacts such as React apps and libraries,
 components, pages and contexts. Please see
-[React plugin](../reference/vite-plugin.md) for details.
+[React plugin](../reference/vite-plugin) for details.
 
 ## Community Plugins
 

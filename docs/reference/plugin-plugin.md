@@ -15,7 +15,7 @@ consists of two generators:
 :::tip Prerequisites
 
 Before installing this plugin, make sure that you have created a monorepo for
-your code. See [Create a New Repo](../getting-started/create-a-new-repo.md) for
+your code. See [Create a New Repo](../getting-started/create-a-new-repo) for
 instructions.
 
 :::
@@ -27,7 +27,7 @@ npm install -D @code-shaper/plugin
 ```
 
 For step-by-step instructions on how to use this plugin, see
-[Creating a Custom Generator](../how-to-guides/creating-a-custom-generator.md).
+[Create a Custom Generator](../getting-started/create-a-custom-generator).
 
 ## Example
 

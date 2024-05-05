@@ -5,8 +5,8 @@ sidebar_position: 2
 # Create a New Repo
 
 In this section, we will create a new repo that will be used as a foundation for
-adding applications and packages. You can find a completed example of this repo
-[here](https://github.com/code-shaper/movie-magic).
+adding various artifacts like apps and libraries. You can find a completed
+example of this repo [here](https://github.com/code-shaper/movie-magic).
 
 ## Prerequisites
 
@@ -94,8 +94,18 @@ npm run commit
   [master (root-commit)] chore: initial commit
 ```
 
-This completes the installation of Turborepo. Now let's proceed to step 2 –
-adding an app or a package. Choose an option below:
+This completes the installation of Turborepo.
+
+## Add an artifact
+
+Now that our repository is all set up, let's add any artifact to it. Choose from
+the options below:
+
+### Web Applications
 
 1. [Create a Next.js app](./create-a-nextjs-app)
-2. [Create a Vite + React app](./create-a-vite-plus-react-app.md)
+2. [Create a Vite + React app](./create-a-vite-plus-react-app)
+
+### Code Generators
+
+1. [Create a custom generator](./create-a-custom-generator)

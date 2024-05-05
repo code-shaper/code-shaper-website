@@ -143,4 +143,4 @@ options.
 
 Code Shaper provides a plugin to scaffold your own plugins and generators. You
 can learn how to use this plugin under
-[Creating a Custom Generator](../how-to-guides/creating-a-custom-generator.md).
+[Create a Custom Generator](../getting-started/create-a-custom-generator).

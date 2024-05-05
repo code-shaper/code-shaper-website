@@ -56,5 +56,5 @@ The workspaces are intended to be used as follows:
    generally satisfy project specific standards and patterns. However, plugins
    that are reusable across projects can also be housed here and published to
    npm (or elsewhere) for easier consumption and adoption. Please see
-   [Code Shaper Plugin Directory](../community/code-shaper-plugin-directory.md)
-   for a list of publicly available plugins.
+   [Code Shaper Plugin Directory](../community/code-shaper-plugin-directory) for
+   a list of publicly available plugins.
