@@ -24,7 +24,7 @@ npx shaper
 ```
 
 For step-by-step instructions on using `shaper`, see
-[Set up a monorepo](../getting-started/set-up-a-monorepo.md).
+[Create a New Repo](../getting-started/create-a-new-repo.md).
 
 ## Repository
 

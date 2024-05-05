@@ -33,7 +33,7 @@ This plugin is intended to be used in conjunction with
 :::tip Prerequisites
 
 Before installing this plugin, make sure that you have created a monorepo for
-your code. See [Set up a monorepo](../getting-started/set-up-a-monorepo.md) for
+your code. See [Create a New Repo](../getting-started/create-a-new-repo.md) for
 instructions.
 
 :::
@@ -45,7 +45,7 @@ npm install -D @code-shaper/react @code-shaper/remix
 ```
 
 For step-by-step instructions on how to use plugins, see
-[Getting Started](../getting-started/overview.md).
+[Getting Started](../getting-started/core-concepts.md).
 
 ## Example
 

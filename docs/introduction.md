@@ -69,8 +69,8 @@ We strive to provide first-class documentation for Code Shaper. A high-level
 overview of how it is organized will help you know where to look for certain
 things:
 
-- [Getting Started](./getting-started/overview.md) is a hands-on introduction to
-  Code Shaper. Start here if you’re new to this tool.
+- [Getting Started](./getting-started/core-concepts.md) is a hands-on
+  introduction to Code Shaper. Start here if you’re new to this tool.
 - [Concepts](./category/concepts) contains a discussion of key topics at a
   fairly high level and provides useful background information and explanation.
 - [Reference](./category/reference) contains technical reference for Code Shaper
