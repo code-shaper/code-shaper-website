@@ -98,4 +98,4 @@ This completes the installation of Turborepo. Now let's proceed to step 2 –
 adding an app or a package. Choose an option below:
 
 1. [Create a Next.js app](./create-a-nextjs-app)
-2. [Create a Vite app](./create-a-vite-app)
+2. [Create a Vite + React app](./create-a-vite-plus-react-app.md)

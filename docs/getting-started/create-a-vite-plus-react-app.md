@@ -1,13 +1,13 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
-# Create a Next.js App
+# Create a Vite + React App
 
-The Next.js plugin generates an opinionated web application using the following
-key technologies:
+The Vite plugin generates an opinionated web application using the following key
+technologies:
 
-1. Framework: [React 18](https://react.dev/) + [Next.js](https://nextjs.org/)
+1. Framework: [React 18](https://react.dev/) + [Vite](https://vitejs.dev/)
 2. Styling: Plain CSS or [Tailwind CSS](https://tailwindcss.com/)
 3. Linting:
    [Code Shaper ESLint configuration](https://github.robot.car/cruise/cruise-ui/tree/master/configs/eslint-config)
@@ -19,11 +19,11 @@ key technologies:
 You can add additional libraries and frameworks depending on your needs.
 
 This section provides basic instructions for generating a web application using
-the Next.js plugin. We'll then show you how to extend this application using
+the Vite plugin. We'll then show you how to extend this application using
 additional generators and popular libraries. The final application will show a
 list of top 10 movies as shown below. You can find the completed example of this
 application
-[here](https://github.com/code-shaper/movie-magic/tree/main/apps/movie-magic-nextjs).
+[here](https://github.com/code-shaper/movie-magic/tree/main/apps/movie-magic-vite).
 
 ![Home Page](./img/home-page.png)
 
@@ -32,24 +32,24 @@ application
 Make sure that you have the `movie-magic` repository set up as described in
 [Create a new repo](./create-a-new-repo.md).
 
-## Install Next.js plugin and generate an app
+## Install Vite plugin and generate an app
 
-Install Code Shaper plugin for Next.js.
+Install Code Shaper plugin for Vite.
 
 ```shell
-npm install @code-shaper/nextjs
+npm install @code-shaper/vite
 ```
 
-Now generate a Next.js application. By convention, applications are created in
-the **apps** directory. Let's create one there.
+Now generate a Vite application. By convention, applications are created in the
+**apps** directory. Let's create one there.
 
 ```shell
 npx shaper
-? Which plugin would you like to run? Next.js
+? Which plugin would you like to run? Vite
 ? Which generator would you like to run? app
-? Application name? movie-magic-nextjs
+? Application name? movie-magic-vite
 ? Parent directory? apps
-? Package name used for publishing? @movie-magic/movie-magic-nextjs
+? Package name used for publishing? @movie-magic/movie-magic-vite
 ? Would you like to use Tailwind CSS? Yes
 ```
 
@@ -57,7 +57,7 @@ Now execute the following commands for further setup and commit of all changes:
 
 ```shell
 # Create a local environment file for movie-magic
-cp apps/movie-magic-nextjs/.env.example apps/movie-magic-nextjs/.env.local
+cp apps/movie-magic-vite/.env.example apps/movie-magic-vite/.env.local
 
 # Install dependencies:
 npm install
@@ -77,7 +77,7 @@ npm run storybook
 
 # Commit
 git add .
-git commit -m "chore: add movie-magic-nextjs app"
+git commit -m "chore: add movie-magic-vite app"
 ```
 
 The app is now ready to customize to your needs.
@@ -96,7 +96,7 @@ for this example.
 > regarding this.
 
 ```
-npm install clsx axios @tanstack/react-query --workspace @movie-magic/movie-magic-nextjs
+npm install clsx axios @tanstack/react-query --workspace @movie-magic/movie-magic-vite
 ```
 
 Here's a short explanation of the libraries we installed:
@@ -113,8 +113,8 @@ Here's a short explanation of the libraries we installed:
 
 Let's start by creating TypeScript definitions for data structures that we will
 need in our app. Copy the following 4 files from
-[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-nextjs/src/models)
-into your `apps/movie-magic-nextjs/src/models` folder:
+[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-vite/src/models)
+into your `apps/movie-magic-vite/src/models` folder:
 
 1. `index.ts`
 2. `Movie.ts`
@@ -136,14 +136,14 @@ displays it. Such components are called _presentational_ components - they don't
 worry about how the data was obtained, their job is to simply render it.
 
 We will generate the `<MovieList>` component using the component generator
-provided by the Next.js plugin. Follow the steps below:
+provided by the Vite plugin. Follow the steps below:
 
 ```shell
 npx shaper
-? Which plugin would you like to run? Next.js
+? Which plugin would you like to run? Vite
 ? Which generator would you like to run? component
 ? Component name? MovieList
-? Which workspace should this go to? apps/movie-magic-nextjs
+? Which workspace should this go to? apps/movie-magic-vite
 ? Parent directory within workspace? src/components/MovieList
 ```
 
@@ -163,14 +163,14 @@ implementation of `MovieList`.
 We are now ready to implement the real `MovieList`.
 
 1. Create the data to render movies. Copy the `movies.ts` file from
-   [the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-nextjs/src/mocks/movies.ts)
-   into your `apps/movie-magic-nextjs/src/mocks` folder.
+   [the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-vite/src/mocks/movies.ts)
+   into your `apps/movie-magic-vite/src/mocks` folder.
 2. Overwrite the placeholder implementation of `MovieList` at
-   `apps/movie-magic-nextjs/src/components/MovieList/MovieList.tsx` from
-   [the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-nextjs/src/components/MovieList/MovieList.tsx).
+   `apps/movie-magic-vite/src/components/MovieList/MovieList.tsx` from
+   [the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-vite/src/components/MovieList/MovieList.tsx).
 3. Overwrite the placeholder story for `MovieList` at
-   `apps/movie-magic-nextjs/src/components/MovieList/MovieList.stories.tsx` from
-   [the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-nextjs/src/components/MovieList/MovieList.stories.tsx).
+   `apps/movie-magic-vite/src/components/MovieList/MovieList.stories.tsx` from
+   [the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-vite/src/components/MovieList/MovieList.stories.tsx).
 
 Here's a snapshot of the final Storybook story.
 
@@ -196,8 +196,8 @@ testing in
 [React Testing Techniques](https://github.com/nareshbhatia/react-testing-techniques).
 
 Overwrite the placeholder test for `MovieList` at
-`apps/movie-magic-nextjs/src/components/MovieList/MovieList.test.tsx` from
-[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-nextjs/src/components/MovieList/MovieList.test.tsx).
+`apps/movie-magic-vite/src/components/MovieList/MovieList.test.tsx` from
+[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-vite/src/components/MovieList/MovieList.test.tsx).
 
 Run the tests from the root directory. All tests should pass.
 
@@ -222,20 +222,23 @@ test our app independent of a real server. To do this, we will use a tool called
 [Mock Service Worker](https://mswjs.io/) (MSW). MSW intercepts API requests at
 the network level and returns mock responses.
 
-Replace the placeholder content in
-`apps/movie-magic-nextjs/src/mocks/handlers.ts` from
-[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-nextjs/src/mocks/handlers.ts).
+Replace the placeholder content in `apps/movie-magic-vite/src/mocks/handlers.ts`
+from
+[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-vite/src/mocks/handlers.ts).
 
-Now create a file called `api.ts` under `apps/movie-magic-nextjs/src/utils` (you
+Now create a file called `api.ts` under `apps/movie-magic-vite/src/utils` (you
 will have to create the `utils` directory). Add the following content to this
 file. It sets up an [axios instance](https://axios-http.com/docs/instance) that
 we will use to fetch data from the real or mock server.
 
-```ts title="apps/movie-magic-nextjs/src/utils/api.ts"
+```ts title="apps/movie-magic-vite/src/utils/api.ts"
 import axios from 'axios';
 
 // Create an axios instance
-export const api = axios.create();
+const baseApiUrl = import.meta.env.VITE_API_URL as string;
+export const api = axios.create({
+  baseURL: baseApiUrl,
+});
 ```
 
 ## Setup Tanstack React Query
@@ -246,22 +249,26 @@ done by creating a `QueryProvider` and adding it near the root of our component
 tree.
 
 Copy the `QueryProvider.tsx` file from
-[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-nextjs/src/providers/QueryProvider.tsx)
-into your `apps/movie-magic-nextjs/src/providers` folder.
+[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-vite/src/providers/QueryProvider.tsx)
+into your `apps/movie-magic-vite/src/providers` folder.
 
 Now add `QueryProvider` near the root of our component tree. To do this edit
-`AppProvider.tsx` under `apps/movie-magic-nextjs/src/providers` as shown below:
+`AppProvider.tsx` under `apps/movie-magic-vite/src/providers` as shown below:
 
-```diff title="apps/movie-magic-nextjs/src/providers/AppProvider.tsx"
-'use client';
-
+```diff title="apps/movie-magic-vite/src/providers/AppProvider.tsx"
 + import { QueryProvider } from './QueryProvider';
-import { useMockServiceWorker } from './useMockServiceWorker';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 ...
 
--  return <>{children}</>;
-+  return <QueryProvider baseApiUrl={baseApiUrl}>{children}</QueryProvider>;
+  return (
+-    <>
+-      <Router>{children}</Router>
+-    </>
++    <QueryProvider>
++      <Router>{children}</Router>
++    </QueryProvider>
+  );
 }
 ```
 
@@ -269,8 +276,8 @@ import { useMockServiceWorker } from './useMockServiceWorker';
 
 We now have all the REST infrastructure set. Let's use it to fetch data from the
 mock server and show it on the home page. Replace the entire content of
-`apps/movie-magic-nextjs/src/app/page.tsx` from
-[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-nextjs/src/app/page.tsx).
+`apps/movie-magic-vite/src/pages/HomePage/HomePage.tsx` from
+[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-vite/src/pages/HomePage/HomePage.tsx).
 
 Now run the following command in the root directory of your repo. You should see
 the app running in your browser (http://localhost:3000/) showing the list of top
@@ -288,5 +295,5 @@ git add .
 git commit -m "feat: add MovieList to the home page"
 ```
 
-Congratulations! You have successfully built a Next.js web application from
-scratch in just a few minutes. This is the power of Code Shaper.
+Congratulations! You have successfully built a Vite web application from scratch
+in just a few minutes. This is the power of Code Shaper.

@@ -4,8 +4,7 @@ sidebar_position: 3
 
 # Express plugin
 
-This plugin contains a single generator to scaffold an
-[Express](https://expressjs.com/) server to host APIs.
+This plugin generates an [Express](https://expressjs.com/) server to host APIs.
 
 ## Installation
 

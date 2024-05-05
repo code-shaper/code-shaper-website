@@ -27,12 +27,6 @@ Please see
 [Creating a Custom Generator](../how-to-guides/creating-a-custom-generator.md)
 for details.
 
-### @code-shaper/react
-
-This plugin generates React related artifacts such as React apps and libraries,
-components, pages and contexts. Please see
-[React plugin](../reference/react-plugin.md) for details.
-
 ### @code-shaper/repo
 
 This plugin generates an empty repository based on TurboRepo. Please see
@@ -43,6 +37,12 @@ This plugin generates an empty repository based on TurboRepo. Please see
 This plugin contains a single generator to scaffold reusable TypeScript
 libraries. Please see [TypeScript plugin](../reference/typescript-plugin.md) for
 details.
+
+### @code-shaper/vite
+
+This plugin generates React related artifacts such as React apps and libraries,
+components, pages and contexts. Please see
+[React plugin](../reference/vite-plugin.md) for details.
 
 ## Community Plugins
 

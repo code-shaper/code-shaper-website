@@ -1,12 +1,11 @@
 ---
-sidebar_position: 6
+sidebar_position: 9
 ---
 
-# React plugin
+# Vite plugin
 
-This plugin generates [React](https://reactjs.org/) related artifacts using
-opinionated coding conventions and patterns. See the following references for
-further details:
+This plugin generates [React](https://reactjs.org/) applications using
+[Vite](https://vitejs.dev/). See the following references for further details:
 
 - [Coding Conventions and Patterns](https://github.com/nareshbhatia/react-learning-resources/blob/main/docs/coding-conventions-and-patterns.md)
 - [Recommended Folder Structure](https://github.com/nareshbhatia/react-learning-resources/blob/main/docs/folder-structure.md)

@@ -1,11 +1,11 @@
 ---
-sidebar_position: 8
+sidebar_position: 7
 ---
 
 # Repo plugin
 
-This plugin generates an empty repository. It consists of the following
-generator:
+This plugin generates a base repository ready for further generation of
+applications and packages. It consists of the following generator:
 
 1. **Turborepo generator**: generates an empty
    [Turborepo](https://turborepo.org/)

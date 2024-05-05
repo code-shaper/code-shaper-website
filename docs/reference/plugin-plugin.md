@@ -4,8 +4,8 @@ sidebar_position: 5
 
 # Plugin plugin
 
-This plugin generates scaffolding for creating your own plugins and generators.
-It consists of two generators:
+This plugin generates scaffolding to create your own plugins and generators. It
+consists of two generators:
 
 1. **Plugin generator**: Generates scaffolding for a plugin
 2. **Generator generator**: Generates scaffolding for a generator
