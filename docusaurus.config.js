@@ -122,7 +122,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()}. Made with ♥ by the Code Shaper team.`,
+        copyright: `© ${new Date().getFullYear()} Code Shaper Team`,
       },
       prism: {
         theme: lightCodeTheme,

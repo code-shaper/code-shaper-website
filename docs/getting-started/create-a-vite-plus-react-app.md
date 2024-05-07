@@ -68,12 +68,23 @@ npm run dev
 
 # Point your browser to http://localhost:3000/.
 # You should see the running app.
+#
+# Note: If you have another app in this repo that
+# runs on port 3000, you should change the port for
+# this app in `apps/movie-magic-vite/vite.config.ts`.
+# Search for `3000` (2 places) and change them to
+# something else.
 
 # Run Storybook to make sure it works
 npm run storybook
 
 # Point your browser to http://localhost:6006/.
 # You should see the running Storybook.
+#
+# Note: If you have another Storybook in this repo that
+# runs on port 6006, you should change the port for this
+# Storybook in `apps/movie-magic-nextjs/package.json`.
+# Search for `6006` and change it to something else.
 
 # Commit
 git add .
@@ -135,8 +146,8 @@ Now we will create a `MovieList` component that receives a list of movies and
 displays it. Such components are called _presentational_ components - they don't
 worry about how the data was obtained, their job is to simply render it.
 
-We will generate the `<MovieList>` component using the component generator
-provided by the Vite plugin. Follow the steps below:
+We will generate the `MovieList` component using the component generator
+provided by the Next.js plugin. Follow the steps below:
 
 ```shell
 npx shaper
@@ -147,9 +158,9 @@ npx shaper
 ? Parent directory within workspace? src/components/MovieList
 ```
 
-A placeholder MovieList component has been created for you. Also a placeholder
-Storybook story has been created. Let's implement MovieList interactively using
-Storybook.
+A placeholder `MovieList` component has been created for you. Also a placeholder
+Storybook story has been created. Let's implement `MovieList` interactively
+using Storybook.
 
 ```shell
 npm run storybook
@@ -205,7 +216,7 @@ Run the tests from the root directory. All tests should pass.
 npm test
 ```
 
-MovieList is now fully implemented, let's commit the code:
+`MovieList` is now fully implemented, let's commit the code:
 
 ```shell
 # Commit

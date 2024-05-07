@@ -7,41 +7,49 @@
 /* You can override the default Infima variables here. */
 /* Use the tool here: https://docusaurus.io/docs/styling-layout#styling-your-site-with-infima */
 :root {
-  --ifm-color-primary: #1d4ed8;
-  --ifm-color-primary-dark: #1a46c2;
-  --ifm-color-primary-darker: #1942b8;
-  --ifm-color-primary-darkest: #143797;
-  --ifm-color-primary-light: #2b5be3;
-  --ifm-color-primary-lighter: #3663e4;
-  --ifm-color-primary-lightest: #567ce8;
+  --ifm-color-primary: #193a71;
+  --ifm-color-primary-dark: #163466;
+  --ifm-color-primary-darker: #153160;
+  --ifm-color-primary-darkest: #11294f;
+  --ifm-color-primary-light: #1b407c;
+  --ifm-color-primary-lighter: #1d4382;
+  --ifm-color-primary-lightest: #204b93;
+  --ifm-background-color: #fafbff;
+
+  --ifm-navbar-background-color: var(--ifm-background-color);
+  --ifm-navbar-link-color: var(--ifm-color-primary);
+  --ifm-hero-background-color: var(--ifm-background-color);
+  --ifm-hero-text-color: var(--ifm-color-primary);
+
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --shaper-accent-color: #f0f4ff;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #9ebeff;
-  --ifm-color-primary-dark: #75a2ff;
-  --ifm-color-primary-darker: #6094ff;
-  --ifm-color-primary-darkest: #226bff;
-  --ifm-color-primary-light: #c7daff;
-  --ifm-color-primary-lighter: #dce8ff;
+  --ifm-color-primary: #c9d9f3;
+  --ifm-color-primary-dark: #a5bfeb;
+  --ifm-color-primary-darker: #93b3e7;
+  --ifm-color-primary-darkest: #5c8cdb;
+  --ifm-color-primary-light: #edf3fb;
+  --ifm-color-primary-lighter: #ffffff;
   --ifm-color-primary-lightest: #ffffff;
+  --ifm-background-color: #193a71;
+
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-.hero--primary {
-  background-image: linear-gradient(
-    to top,
-    var(--ifm-color-primary-darkest),
-    var(--ifm-color-primary-darker)
-  );
+.footer--dark {
+  --ifm-footer-background-color: var(--ifm-color-primary);
+  --ifm-footer-link-color: var(--ifm-color-secondary-dark);
+  --ifm-footer-link-hover-color: var(--ifm-color-secondary-lightest);
+  --ifm-footer-color: var(--ifm-footer-link-color);
+  --ifm-footer-title-color: var(--ifm-color-white);
 }
 
-[data-theme='dark'] .hero--primary {
-  background-image: linear-gradient(
-    to top,
-    var(--ifm-color-primary-dark),
-    var(--ifm-color-primary)
-  );
+.button.button--secondary {
+  color: var(--ifm-color-primary);
+  background-color: var(--shaper-accent-color);
 }
