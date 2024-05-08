@@ -1,0 +1,11 @@
+.footer {
+  color: var(--ifm-color-primary);
+  padding: 2rem 0;
+}
+
+.copyright {
+  font-size: 0.875rem;
+  line-height: 2;
+  margin: 0;
+  text-align: center;
+}

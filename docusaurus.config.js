@@ -99,46 +99,6 @@ const config = {
           },
         ],
       },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Why Code Shaper',
-                to: '/docs/why-code-shaper',
-              },
-              {
-                label: 'Getting Started',
-                to: '/docs/getting-started/core-concepts',
-              },
-              {
-                label: 'Custom Generator',
-                to: '/docs/getting-started/create-a-custom-generator',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/code-shaper/code-shaper',
-              },
-              {
-                label: 'Discussions',
-                href: 'https://github.com/code-shaper/code-shaper/discussions',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/code_shaper',
-              },
-            ],
-          },
-        ],
-        copyright: `© ${new Date().getFullYear()} Code Shaper Team`,
-      },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,

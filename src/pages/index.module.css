@@ -57,7 +57,7 @@
 }
 
 .quoteBy {
-  font-weight: 300;
+  font-weight: var(--ifm-font-weight-light);
   margin: 0;
   text-align: center;
 }
@@ -69,7 +69,7 @@
 }
 
 .getStartedSection {
-  margin: 4rem 0;
+  margin: 4rem 0 1rem 0;
 }
 
 .cta {
