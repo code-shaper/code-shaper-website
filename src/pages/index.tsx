@@ -52,7 +52,7 @@ function QuotesSection() {
         </p>
         <div className="avatar">
           <a
-            className="avatar__photo-link avatar__photo avatar__photo--sm"
+            className="avatar__photo-link avatar__photo avatar__photo--sm avatar--wash"
             href="https://stevehaar.com/"
             rel="noopener noreferrer"
             target="_blank"

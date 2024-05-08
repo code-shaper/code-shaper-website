@@ -6,7 +6,7 @@ function Footer() {
     <div className="container">
       <footer className={styles.footer}>
         <p className={styles.copyright}>
-          Copyright © {new Date().getFullYear()} Code Shaper
+          © {new Date().getFullYear()} Code Shaper
         </p>
       </footer>
     </div>

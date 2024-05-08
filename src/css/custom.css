@@ -33,7 +33,8 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
-  --shaper-accent-color: #f0f4ff;
+  --shaper-color-accent: #f0f4ff;
+  --shaper-color-content-inverse: #193a71;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -45,9 +46,12 @@
   --ifm-color-primary-light: #edf3fb;
   --ifm-color-primary-lighter: #ffffff;
   --ifm-color-primary-lightest: #ffffff;
-  --ifm-background-color: #193a71;
 
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme='dark'] {
+  --ifm-background-color: #060d19;
 }
 
 .footer--dark {
@@ -59,12 +63,28 @@
 }
 
 .button.button--secondary {
-  color: var(--ifm-color-primary);
-  background-color: var(--shaper-accent-color);
+  background-color: var(--shaper-color-accent);
+  color: var(--shaper-color-content-inverse);
 }
 
 .centered-column {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.avatar--wash {
+  position: relative;
+}
+
+.avatar--wash::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(171, 196, 237, 0.6);
+  mix-blend-mode: color;
 }
