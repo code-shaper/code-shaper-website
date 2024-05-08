@@ -29,6 +29,11 @@
   justify-content: center;
 }
 
+[data-theme='light'] .darkScreenshot,
+[data-theme='dark'] .lightScreenshot {
+  display: none;
+}
+
 .quotesSection {
   color: var(--ifm-color-primary);
   margin: 1rem 0 4rem 0;

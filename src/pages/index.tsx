@@ -26,7 +26,16 @@ function HomepageHeader() {
             Why Code Shaper
           </Link>
         </div>
-        <img src="/img/screenshot.png" alt="Screenshot" />
+        <img
+          className={styles.lightScreenshot}
+          src="/img/screenshot.png"
+          alt="Screenshot"
+        />
+        <img
+          className={styles.darkScreenshot}
+          src="/img/screenshot-dark-mode.png"
+          alt="Screenshot"
+        />
       </header>
     </div>
   );
