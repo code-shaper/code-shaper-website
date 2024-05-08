@@ -1,70 +1,74 @@
-import React from 'react';
-import clsx from 'clsx';
 import styles from './styles.module.css';
+import clsx from 'clsx';
+import { CheckCheckIcon, FilesIcon, ZapIcon } from 'lucide-react';
+import type { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react';
+import React from 'react';
+
+type ReactIconProps = SVGProps<SVGSVGElement>;
+type ReactIconComponent = ForwardRefExoticComponent<
+  Omit<ReactIconProps, 'ref'> & RefAttributes<SVGSVGElement>
+>;
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  Icon: ReactIconComponent;
   description: JSX.Element;
 };
 
-const FeatureList: FeatureItem[] = [
+const featureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_into_the_night.svg').default,
+    title: 'Speedy',
+    Icon: ZapIcon,
     description: (
       <>
-        Code Shaper was designed from the ground up to be easily installed and
-        get you up and running in minutes.
+        Code Shaper saves you time whenever you start a new project. Build a
+        robust starter repo in minutes and add more artifacts easily.
       </>
     ),
   },
   {
-    title: 'Modular and Extensible',
-    Svg: require('@site/static/img/undraw_building_blocks.svg').default,
+    title: 'Consistent',
+    Icon: CheckCheckIcon,
     description: (
       <>
-        Build a custom stack with the technologies you prefer. Choose from the
-        many off-the-shelf plugins or roll out your own.
+        By encapsulating best practices, the code you generate will be
+        consistent and of high quality across projects and team members.
       </>
     ),
   },
   {
-    title: 'Monorepo Friendly',
-    Svg: require('@site/static/img/undraw_programming.svg').default,
+    title: 'Standardized',
+    Icon: FilesIcon,
     description: (
       <>
-        Designed to support monorepo-based projects for developer productivity
-        and enterprise-grade quality.
+        Team members joining your project will be immediately familiar with the
+        folder structure, development & testing tools, and CI/CD pipeline.
+        They’ll be productive faster.
       </>
     ),
   },
 ];
 
-function Feature({ title, Svg, description }: FeatureItem) {
+function Feature({ title, Icon, description }: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+    <div className={styles.feature}>
+      <div className={styles.featureTitleRow}>
+        <Icon />
+        <h3 className={styles.featureTitle}>{title}</h3>
       </div>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
+      <p className={styles.featureDescription}>{description}</p>
     </div>
   );
 }
 
 export default function HomepageFeatures(): JSX.Element {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <div className="container">
+      <section className={clsx('centered-column', styles.features)}>
+        {featureList.map((props, idx) => (
+          <Feature key={idx} {...props} />
+        ))}
+      </section>
+    </div>
   );
 }

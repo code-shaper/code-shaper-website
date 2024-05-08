@@ -1,8 +1,5 @@
 {
   "label": "Reference",
   "position": 5,
-  "link": {
-    "type": "generated-index",
-    "description": "This section contains technical reference for APIs and other aspects of Code Shaper's machinery."
-  }
+  "link": null
 }

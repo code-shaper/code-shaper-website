@@ -29,6 +29,49 @@
   justify-content: center;
 }
 
+.quotesSection {
+  color: var(--ifm-color-primary);
+  margin: 1rem 0 4rem 0;
+}
+
+.quote {
+  font-size: 1.5rem;
+  font-weight: var(--ifm-font-weight-medium);
+  line-height: 1.3;
+  max-width: 43.75rem;
+  margin: 0 0 0.75rem 0;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .quote {
+    padding: 0 4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .quote {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+}
+
+.quoteBy {
+  font-weight: 300;
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .quoteBy {
+    font-size: 0.75rem;
+  }
+}
+
+.getStartedSection {
+  margin: 4rem 0;
+}
+
 .cta {
   width: 15rem;
 }

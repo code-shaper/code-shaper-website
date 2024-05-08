@@ -21,6 +21,15 @@
   --ifm-hero-background-color: var(--ifm-background-color);
   --ifm-hero-text-color: var(--ifm-color-primary);
 
+  --ifm-font-family-base: Inter;
+  --ifm-font-family-monospace: 'Roboto Mono';
+  --ifm-font-weight-light: 300;
+  --ifm-font-weight-normal: 400;
+  --ifm-font-weight-medium: 500;
+  --ifm-font-weight-semibold: 600;
+  --ifm-font-weight-bold: 700;
+  --ifm-font-weight-base: var(--ifm-font-weight-normal);
+  --ifm-line-height-base: 1.5;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
@@ -52,4 +61,10 @@
 .button.button--secondary {
   color: var(--ifm-color-primary);
   background-color: var(--shaper-accent-color);
+}
+
+.centered-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

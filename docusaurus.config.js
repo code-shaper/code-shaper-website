@@ -27,6 +27,26 @@ const config = {
     locales: ['en'],
   },
 
+  stylesheets: [
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.googleapis.com',
+    },
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.gstatic.com',
+      crossorigin: true,
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap',
+    },
+  ],
+
   presets: [
     [
       'classic',
@@ -93,31 +113,26 @@ const config = {
                 label: 'Getting Started',
                 to: '/docs/getting-started/core-concepts',
               },
+              {
+                label: 'Custom Generator',
+                to: '/docs/getting-started/create-a-custom-generator',
+              },
             ],
           },
           {
             title: 'Community',
             items: [
               {
-                label: 'GitHub Discussions',
+                label: 'GitHub',
+                href: 'https://github.com/code-shaper/code-shaper',
+              },
+              {
+                label: 'Discussions',
                 href: 'https://github.com/code-shaper/code-shaper/discussions',
               },
               {
                 label: 'Twitter',
                 href: 'https://twitter.com/code_shaper',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/code-shaper/code-shaper',
               },
             ],
           },

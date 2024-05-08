@@ -1,11 +1,31 @@
 .features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  width: 100%;
+  row-gap: 3rem;
+  color: var(--ifm-color-primary);
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.feature {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.75rem;
+  width: 30rem;
+}
+
+@media (max-width: 640px) {
+  .feature {
+    width: 100%;
+    padding: 0 4rem;
+  }
+}
+
+.featureTitleRow {
+  display: flex;
+  column-gap: 0.75rem;
+}
+
+.featureTitle {
+  margin: 0;
+}
+
+.featureDescription {
+  margin: 0;
 }
