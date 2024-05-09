@@ -6,6 +6,36 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import styles from './index.module.css';
 
+type QuoteItem = {
+  name: string;
+  title: string;
+  imageUrl: string;
+  profileUrl: string;
+  quote: string;
+};
+
+const steveHaarQuote: QuoteItem = {
+  name: 'Steve Haar',
+  title: 'Senior Software Engineer',
+  imageUrl: 'https://avatars.githubusercontent.com/u/2460465?s=460',
+  profileUrl: 'https://stevehaar.com/',
+  quote: `Code Shaper dramatically decreased the amount of time it
+  took to build our large component library. Its templates minimize
+  the learning curve for new engineers, allowing them to focus on
+  innovation rather than worrying about consistency.`,
+};
+
+const chrisHassonQuote: QuoteItem = {
+  name: 'Chris Hasson',
+  title: 'Senior Software Engineer',
+  imageUrl:
+    'https://media.licdn.com/dms/image/D5603AQEkB2LR3p-jTA/profile-displayphoto-shrink_400_400/0/1677897564266?e=1720656000&v=beta&t=_auB-i7ap9DVFjArVJ8nYsc8IefTrddMbAu20gpWt3s',
+  profileUrl: 'https://www.linkedin.com/in/christopherhasson/',
+  quote: `Code Shaper is a companion for engineers seeking excellence
+  in their craft. It ensures consistency and upholds best practices,
+  making it an indispensable asset for any development team.`,
+};
+
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
@@ -41,30 +71,29 @@ function HomepageHeader() {
   );
 }
 
-function QuotesSection() {
+function QuotesSection({
+  name,
+  title,
+  imageUrl,
+  profileUrl,
+  quote,
+}: QuoteItem) {
   return (
     <div className="container">
       <section className={clsx('centered-column', styles.quotesSection)}>
-        <p className={styles.quote}>
-          “Code Shaper is a companion for engineers seeking excellence in their
-          craft. It ensures consistency and upholds best practices, making it an
-          indispensable asset for any development team.”
-        </p>
+        <p className={styles.quote}>“{quote}”</p>
         <div className="avatar">
           <a
-            className="avatar__photo-link avatar__photo avatar__photo--sm avatar--wash"
-            href="https://stevehaar.com/"
+            className="avatar__photo-link avatar__photo avatar__photo--sm"
+            href={profileUrl}
             rel="noopener noreferrer"
             target="_blank"
           >
-            <img
-              alt="Steve Haar Profile"
-              src="https://avatars.githubusercontent.com/u/2460465?s=460"
-            />
+            <img alt={`${name} Profile`} src={imageUrl} />
           </a>
           <div className="avatar__intro">
             <p className={styles.quoteBy}>
-              Steve Haar, Senior Software Engineer
+              {name}, {title}
             </p>
           </div>
         </div>
@@ -94,8 +123,10 @@ export default function Home(): JSX.Element {
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <HomepageHeader />
       <main>
-        <QuotesSection />
+        <QuotesSection {...steveHaarQuote} />
         <HomepageFeatures />
+        <div className="spacer" />
+        <QuotesSection {...chrisHassonQuote} />
         <GetStartedSection />
       </main>
     </Layout>
