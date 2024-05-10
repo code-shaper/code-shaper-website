@@ -6,11 +6,13 @@
     "crossorigin",
     "Infima",
     "lucide",
+    "manypkg",
     "nextjs",
     "noopener",
     "noreferrer",
     "Shadcn",
     "tanstack",
+    "templating",
     "turborepo",
     "typecheck",
     "unopinionated"

@@ -11,10 +11,21 @@ and implementation mechanics to help you write your own plugins.
 
 ## Concepts
 
-- A _plugin_ consists of one or more generators.
-- A _generator_ (a.k.a. _item generator_) generates items based on user input.
+Code Shaper allows you to bundle multiple generators into a plugin. The plugin
+can be used within its own repository or published to a central registry (e.g.
+npm or artifactory) for use in other repositories.
+
+Thus creating a generator involves two steps:
+
+1. Create a plugin
+2. Add one or more generators to it
+
+The diagram below shows the plugin architecture visually.
 
 ![Plugin Architecture](./img/plugin-architecture.png)
+
+- A _plugin_ consists of one or more generators.
+- A _generator_ (a.k.a. _item generator_) generates items based on user input.
 
 Here's an example of a plugin that generates React code. It consists of three
 generators: Component, Page and Context.

@@ -16,6 +16,7 @@
   --ifm-color-primary-lightest: #204b93;
   --ifm-background-color: #fafbff;
 
+  --ifm-link-color: var(--shaper-color-link);
   --ifm-navbar-background-color: var(--ifm-background-color);
   --ifm-navbar-link-color: var(--ifm-color-primary);
   --ifm-hero-background-color: var(--ifm-background-color);
@@ -35,6 +36,7 @@
 
   --shaper-color-accent: #f0f4ff;
   --shaper-color-content-inverse: #193a71;
+  --shaper-color-link: #326ed2;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -47,6 +49,7 @@
   --ifm-color-primary-lighter: #ffffff;
   --ifm-color-primary-lightest: #ffffff;
 
+  --ifm-link-color: var(--ifm-color-primary-darker);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
@@ -56,14 +59,6 @@ html[data-theme='dark'] {
 
 .spacer {
   margin-top: 4rem;
-}
-
-.footer--dark {
-  --ifm-footer-background-color: var(--ifm-color-primary);
-  --ifm-footer-link-color: var(--ifm-color-secondary-dark);
-  --ifm-footer-link-hover-color: var(--ifm-color-secondary-lightest);
-  --ifm-footer-color: var(--ifm-footer-link-color);
-  --ifm-footer-title-color: var(--ifm-color-white);
 }
 
 .button.button--secondary {
