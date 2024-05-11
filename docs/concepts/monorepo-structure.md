@@ -6,19 +6,23 @@ sidebar_position: 1
 
 ## Background
 
-Many of the Code Shaper plugins are built with the assumption that the
-generators will be used within a monorepo. It is possible to use Code Shaper in
-a dedicated non-monorepo, however we recommend using a monorepo even if you
-house a single project in it. Monorepos give you a good structure to house other
-things like plugins and generators, while keeping the option to add more
-projects open.
+Code Shaper plugins are built with the assumption that its generators will be
+used in a monorepo. It is possible to use Code Shaper in a polyrepo (a repo that
+stores only one project), however we recommend using a monorepo – even if you
+house only a single project in it. Monorepos give you a good structure to house
+things like plugins, generators, and testing frameworks while keeping the option
+to add more projects if needed.
 
-This document describes the recommended structure for a monorepo. Please free to
-fine tune it based on your needs - all the plugins should work just fine.
+Having said that, your monorepo doesn't have to be enterprise-wide, with
+hundreds of projects in it. A small group of related projects should be fine.
 
-:::tip Other Monorepos
+This document describes the recommended structure for a monorepo. Please feel
+free to fine tune it based on your needs - all the plugins should work just
+fine.
 
-While Code Shaper generates a [Turborepo](https://turborepo.org/) by default,
+:::tip Monorepo Choices
+
+Code Shaper uses [Turborepo](https://turborepo.org/) as its monorepo. However,
 any monorepo with the concept of _workspaces_ should work as well. Examples of
 such monorepos are
 [npm Workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces) and
@@ -40,7 +44,7 @@ This equates to the following `workspaces` definition in package.json:
 
 ```json
 {
-  "workspaces": ["apps/*", "configs/*", "packages/*", "plugins/*"]
+  "workspaces": ["apps/*", "packages/*", "plugins/*"]
 }
 ```
 
@@ -49,10 +53,8 @@ The workspaces are intended to be used as follows:
 1. **apps**: contains full-fledged applications that can be deployed on their
    own. Examples are web apps, API servers (REST and GraphQL), microservices,
    etc.
-2. **configs**: contains project-wide configurations for tools such as ESLint,
-   Jest and TypeScript.
-3. **packages**: contains reusable libraries that apps depend on.
-4. **plugins**: contains custom plugins created by the project team. These
+2. **packages**: contains reusable libraries that apps depend on.
+3. **plugins**: contains custom plugins created by the project team. These
    generally satisfy project specific standards and patterns. However, plugins
    that are reusable across projects can also be housed here and published to
    npm (or elsewhere) for easier consumption and adoption. Please see

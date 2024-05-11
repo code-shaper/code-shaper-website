@@ -25,7 +25,7 @@ The diagram below shows the plugin architecture visually.
 ![Plugin Architecture](./img/plugin-architecture.png)
 
 - A _plugin_ consists of one or more generators.
-- A _generator_ (a.k.a. _item generator_) generates items based on user input.
+- A _generator_ generates artifacts based on user input.
 
 Here's an example of a plugin that generates React code. It consists of three
 generators: Component, Page and Context.
