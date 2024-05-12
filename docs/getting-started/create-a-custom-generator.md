@@ -125,10 +125,10 @@ function registerGenerator(generator: Generator) {
 registerGenerator(simpleWebsiteGenerator);
 // highlight-end
 
-const websitePluginPlugin: Plugin = {
-  id: '@movie-magic/website',
-  name: 'Website',
-  description: 'generates website artifacts',
+const instantSitesPlugin: Plugin = {
+  id: '@movie-magic/instant-sites',
+  name: 'Instant Sites',
+  description: 'generates Instant Sites artifacts',
   run: async (inputOptions: Options) => {
     const generator = await selectGenerator(generators, inputOptions);
     if (!generator) {
@@ -139,7 +139,7 @@ const websitePluginPlugin: Plugin = {
   },
 };
 
-export default websitePluginPlugin;
+export default instantSitesPlugin;
 ```
 
 Rebuild the plugin by running the following command in the root folder.
@@ -464,7 +464,7 @@ one-line change in `/apps/top-10-movies/package.json`:
 ```diff title="/apps/top-10-movies/package.json"
 ...
 -   "dev": "serve -p 7777 src"
--   "dev": "serve -p 7778 src"
++   "dev": "serve -p 7778 src"
 ...
 ```
 
