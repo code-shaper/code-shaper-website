@@ -10,7 +10,7 @@ key technologies:
 1. Framework: [React 18](https://react.dev/) + [Next.js](https://nextjs.org/)
 2. Styling: Plain CSS or [Tailwind CSS](https://tailwindcss.com/)
 3. Linting:
-   [Code Shaper ESLint configuration](https://github.robot.car/cruise/cruise-ui/tree/master/configs/eslint-config)
+   [Code Shaper ESLint configuration](https://github.com/code-shaper/code-shaper/tree/main/configs/eslint-config)
 4. Component development: [Storybook](https://storybook.js.org/)
 5. Unit testing: [Jest](https://jestjs.io/) +
    [React Testing Library](https://testing-library.com/)
