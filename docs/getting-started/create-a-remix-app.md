@@ -185,7 +185,7 @@ supply it to `MovieList`.
 
 Now execute the following commands to run the app and see the final page:
 
-````shell
+```shell
 # Install dependencies:
 npm install
 
@@ -203,7 +203,7 @@ npm run dev
 # Commit
 git add .
 git commit -m "feat: add MovieList to the home page"
-````
+```
 
 Congratulations! You have successfully built a Remix web application from
 scratch in just a few minutes. This is the power of Code Shaper.
