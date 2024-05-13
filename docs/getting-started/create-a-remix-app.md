@@ -76,7 +76,7 @@ npm run dev
 #
 # Note: If you have another app in this repo that
 # runs on port 3000, you should change the port for
-# this app in `apps/movie-magic-remix/remix.config.ts`.
+# this app in `apps/movie-magic-remix/package.json`.
 # Search for `3000` (2 places) and change them to
 # something else.
 
@@ -89,10 +89,14 @@ The app is now ready to customize to your needs.
 
 ## Extend the application
 
-Let's see how we can extend our application to show a list of top 10 movies
-using additional generators and some popular libraries. Run the following
-command in the root directory of your repo to install the libraries we will use
-for this example.
+Let's see how we can extend our application to show a list of top 10 movies. Run
+the following command in the root directory of your repo to install the
+[clsx](https://github.com/lukeed/clsx) library that we will use for this
+example.
+
+```
+npm install clsx --workspace @movie-magic/movie-magic-remix
+```
 
 > Note: Do not run `npm install` or `npm ci` in any of the subdirectories. It
 > will break the build. There should be only one `package-lock.json` file in the
@@ -100,31 +104,15 @@ for this example.
 > [Turborepo docs](https://turbo.build/repo/docs/handbook/package-installation#addingremovingupgrading-packages)
 > regarding this.
 
-```
-npm install clsx axios @tanstack/react-query --workspace @movie-magic/movie-magic-remix
-```
-
-Here's a short explanation of the libraries we installed:
-
-1. [clsx](https://github.com/lukeed/clsx): A tiny (239B) utility for
-   constructing `className` strings conditionally
-2. [axios](https://axios-http.com/): A promise-based HTTP Client for node.js and
-   the browser
-3. [@tanstack/react-query](https://tanstack.com/query): Asynchronous state
-   management for React, providing declarative, auto-managed queries and
-   mutations
-
 ## Create TypeScript definitions
 
 Let's start by creating TypeScript definitions for data structures that we will
-need in our app. Copy the following 4 files from
+need in our app. Copy the following 2 files from
 [the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-remix/src/models)
 into your `apps/movie-magic-remix/src/models` folder:
 
 1. `index.ts`
 2. `Movie.ts`
-3. `PaginationInfo.ts`
-4. `QueryParams.ts`
 
 :::tip Copying files from the completed example
 
@@ -140,39 +128,74 @@ Now we will create a `MovieList` component that receives a list of movies and
 displays it. Such components are called _presentational_ components - they don't
 worry about how the data was obtained, their job is to simply render it.
 
-We will generate the `MovieList` component using the component generator
-provided by the Next.js plugin. Follow the steps below:
+Copy the `MovieList` folder from
+[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-remix/src/components/MovieList)
+into your `apps/movie-magic-remix/src/components` folder.
 
-```shell
-npx shaper
-? Which plugin would you like to run? Remix
-? Which generator would you like to run? component
-? Component name? MovieList
-? Which workspace should this go to? apps/movie-magic-remix
-? Parent directory within workspace? src/components/MovieList
+## Add MovieList component to the home page
+
+Now let's add the `MovieList` component to the home page and supply it with a
+list of movies.
+
+Start by copying the `data` folder from
+[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-remix/src/data)
+into your `apps/movie-magic-remix/src` folder. `data/movies.ts` contains the
+list of top 10 movies.
+
+Now overwrite the home page with the following code:
+
+```tsx title="apps/movie-magic-remix/src/routes/_index.tsx"
+import { MovieList } from '@/components/MovieList';
+import { getMovies } from '@/data/movies';
+import type { MetaFunction } from '@remix-run/node';
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export const meta: MetaFunction = () => [
+  { title: 'Movie Magic Remix' },
+  { name: 'description', content: 'Movie Magic Remix' },
+];
+
+/**
+ * provides list of movies to the page
+ */
+export const loader = async () => {
+  const movies = await getMovies();
+  return json({ movies });
+};
+
+export default function Index() {
+  // get the list of movies from the loader
+  const { movies } = useLoaderData<typeof loader>();
+
+  return (
+    <div className="container relative mx-auto max-w-screen-xl px-8 py-4 space-y-2">
+      <h1 className="text-xl font-semibold tracking-tight">
+        Top 10 Movies Of All Time
+      </h1>
+      <MovieList movies={movies} />
+    </div>
+  );
+}
 ```
 
-A placeholder `MovieList` component has been created for you. Also a placeholder
-Storybook story has been created. Let's implement `MovieList` interactively
-using Storybook.
+Here we added a `loader` function to provide movie data to the page when
+rendering. On the client-side, we use `useLoaderData()` to get that data and
+supply it to `MovieList`.
 
-```shell
-npm run storybook
-```
+Now execute the following commands to run the app and see the final page:
 
-Point your browser to `http://localhost:6006`. Storybook shows the placeholder
-implementation of `MovieList`.
+````shell
+# Install dependencies:
+npm install
 
-## Implement the MovieList component
+# Build and run the app to make sure it works
+npm run build
+npm run dev
 
-We are now ready to implement the real `MovieList`.
+# Point your browser to http://localhost:3000/.
+# You should see the running app.
 
-1. Create the data to render movies. Copy the `movies.ts` file from
-   [the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-remix/src/mocks/movies.ts)
-   into your `apps/movie-magic-remix/src/mocks` folder.
-2. Overwrite the placeholder implementation of `MovieList` at
-   `apps/movie-magic-remix/src/components/MovieList/MovieList.tsx` from
-   [the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-remix/src/components/MovieList/MovieList.tsx).
 
 ## Commit your code
 
@@ -180,7 +203,7 @@ We are now ready to implement the real `MovieList`.
 # Commit
 git add .
 git commit -m "feat: add MovieList to the home page"
-```
+````
 
 Congratulations! You have successfully built a Remix web application from
 scratch in just a few minutes. This is the power of Code Shaper.
