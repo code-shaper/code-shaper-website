@@ -17,7 +17,13 @@ example of this repo [here](https://github.com/code-shaper/movie-magic).
    - [NVM for MacOS](https://github.com/nvm-sh/nvm)
    - [NVM for Windows](https://github.com/coreybutler/nvm-windows)
 
-2. Make sure that you have an IDE installed that understands TypeScript.
+2. Make sure that you have some version of node installed on your machine. This
+   is required to bootstrap an empty repo in the next step. Execute the
+   following command on the command line: `node -v`. If it returns a node
+   version, you are good. Otherwise run this command to install the latest
+   version: `nvm install --lts`.
+
+3. Make sure that you have an IDE installed that understands TypeScript.
    [Visual Studio Code](https://code.visualstudio.com/) (free) and
    [WebStorm](https://www.jetbrains.com/webstorm/) (paid) are both good choices.
 
