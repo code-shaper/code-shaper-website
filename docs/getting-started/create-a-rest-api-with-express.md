@@ -2,11 +2,11 @@
 sidebar_position: 6
 ---
 
-# Create an Express App
+# Create a REST API with Express
 
-The Express plugin generates an Express app that implements a starter REST API.
-You can then modify this API to meet your requirements. The plugin uses the
-following key technologies:
+The Express plugin generates a starter REST API using Express. You can then
+modify this API to meet your requirements. The plugin uses the following key
+technologies:
 
 1. Framework: [Express](https://expressjs.com/)
 2. Logging: [Morgan](https://github.com/expressjs/morgan)
