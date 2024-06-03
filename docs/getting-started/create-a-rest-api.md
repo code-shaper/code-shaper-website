@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# Create a REST API with Express
+# Create a REST API
 
 The Express plugin generates a starter REST API using Express. You can then
 modify this API to meet your requirements. The plugin uses the following key
