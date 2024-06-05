@@ -29,8 +29,7 @@ get the latest guidance on these by following the references below:
 This section provides basic instructions for generating a web application using
 the Remix plugin. We'll then show you how to extend this application using
 additional generators and popular libraries. The final application will show a
-list of top 10 movies as shown below. You can find the completed example of this
-application
+list of top 10 movies as shown below. You can find the completed example
 [here](https://github.com/code-shaper/movie-magic/tree/main/apps/movie-magic-remix).
 
 ![Home Page](./img/home-page.png)

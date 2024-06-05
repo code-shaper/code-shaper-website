@@ -18,7 +18,7 @@ You can add additional libraries and frameworks depending on your needs.
 This section provides basic instructions for generating the starter REST API.
 We'll then customize the API to return top 10 movies as required by the Movie
 Magic application discussed in other sections. You can find the completed
-example of this api
+example
 [here](https://github.com/code-shaper/movie-magic/tree/main/apps/movie-magic-rest-api).
 
 ## Prerequisite

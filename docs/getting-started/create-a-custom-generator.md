@@ -11,7 +11,8 @@ even share your code generators with other teams or open source it to share it
 with a wider audience.
 
 In this section, we'll learn how to create a custom code generator to generate a
-simple website.
+simple website. You can find the completed example
+[here](https://github.com/code-shaper/movie-magic/tree/main/plugins/instant-sites).
 
 ## Core concepts
 
