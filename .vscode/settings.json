@@ -5,6 +5,7 @@
     "codegen",
     "commitlint",
     "crossorigin",
+    "datasources",
     "Infima",
     "lucide",
     "manypkg",
