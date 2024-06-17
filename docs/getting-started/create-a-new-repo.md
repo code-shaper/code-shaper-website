@@ -110,7 +110,13 @@ the options below:
 ### Web Applications
 
 1. [Create a Next.js app](./create-a-nextjs-app)
-2. [Create a Vite + React app](./create-a-vite-plus-react-app)
+2. [Create a Remix app](./create-a-remix-app.md)
+3. [Create a Vite + React app](./create-a-vite-plus-react-app)
+
+### APIs
+
+1. [Create a REST API](./create-a-rest-api.md)
+2. [Create a GraphQL API](./create-a-graphql-api.md)
 
 ### Code Generators
 
