@@ -94,30 +94,20 @@ The app is now ready to customize to your needs.
 
 ## Extend the application
 
-Let's see how we can extend our application to show a list of top 10 movies
-using additional generators and some popular libraries. Run the following
-command in the root directory of your repo to install the libraries we will use
-for this example.
+Let's see how we can extend our application to show a list of top 10 movies. Run
+the following command in the root directory of your repo to install the
+[clsx](https://github.com/lukeed/clsx) library that we will use for this
+example.
+
+```
+npm install clsx --workspace @movie-magic/movie-magic-vite
+```
 
 > Note: Do not run `npm install` or `npm ci` in any of the subdirectories. It
 > will break the build. There should be only one `package-lock.json` file in the
 > entire repo (at the root). See
 > [Turborepo docs](https://turbo.build/repo/docs/handbook/package-installation#addingremovingupgrading-packages)
 > regarding this.
-
-```
-npm install clsx axios @tanstack/react-query --workspace @movie-magic/movie-magic-vite
-```
-
-Here's a short explanation of the libraries we installed:
-
-1. [clsx](https://github.com/lukeed/clsx): A tiny (239B) utility for
-   constructing `className` strings conditionally
-2. [axios](https://axios-http.com/): A promise-based HTTP Client for node.js and
-   the browser
-3. [@tanstack/react-query](https://tanstack.com/query): Asynchronous state
-   management for React, providing declarative, auto-managed queries and
-   mutations
 
 ## Create TypeScript definitions
 
@@ -236,57 +226,46 @@ Replace the placeholder content in `apps/movie-magic-vite/src/mocks/handlers.ts`
 from
 [the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-vite/src/mocks/handlers.ts).
 
-Now create a file called `api.ts` under `apps/movie-magic-vite/src/utils` (you
-will have to create the `utils` directory). Add the following content to this
-file. It sets up an [axios instance](https://axios-http.com/docs/instance) that
-we will use to fetch data from the real or mock server.
-
-```ts title="apps/movie-magic-vite/src/utils/api.ts"
-import axios from 'axios';
-
-// Create an axios instance
-const baseApiUrl = import.meta.env.VITE_API_URL as string;
-export const api = axios.create({
-  baseURL: baseApiUrl,
-});
-```
-
-## Setup Tanstack React Query
-
-In addition to Axios, we'll setup
-[Tanstack React Query](https://tanstack.com/query) to make REST calls. This is
-done by creating a `QueryProvider` and adding it near the root of our component
-tree.
-
-Copy the `QueryProvider.tsx` file from
-[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-vite/src/providers/QueryProvider.tsx)
-into your `apps/movie-magic-vite/src/providers` folder.
-
-Now add `QueryProvider` near the root of our component tree. To do this edit
-`AppProvider.tsx` under `apps/movie-magic-vite/src/providers` as shown below:
-
-```diff title="apps/movie-magic-vite/src/providers/AppProvider.tsx"
-+ import { QueryProvider } from './QueryProvider';
-import { HomePage } from '@/routes/home';
-
-...
-
-export function AppProvider() {
--  return <RouterProvider router={router} />;
-+  return (
-+    <QueryProvider>
-+      <RouterProvider router={router} />
-+    </QueryProvider>
-+  );
-}
-```
-
 ## Update HomePage to fetch movies
 
 We now have all the REST infrastructure set. Let's use it to fetch data from the
 mock server and show it on the home page. Replace the entire content of
 `apps/movie-magic-vite/src/routes/home.tsx` from
 [the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-vite/src/routes/home.tsx).
+
+Note that `home.tsx` contains a loader to load the movies data:
+
+```tsx
+export async function loader() {
+  ...
+  const searchParamsString = queryParamsToSearchParams(top10QueryParams);
+  return fetch(`${API_URL}/movies?${searchParamsString}`);
+}
+```
+
+This loader needs to be supplied to React Router so that it can fetch the movies
+data before rendering the home page. To do this, make a the following changes to
+`apps/movie-magic-vite/src/routes.tsx`:
+
+```diff title="apps/movie-magic-vite/src/routes.tsx"
+- import { HomePage } from './routes/home';
++ import { HomePage, loader as moviesLoader } from './routes/home';
+import { RootLayout } from './routes/root';
+import type { RouteObject } from 'react-router-dom';
+
+export const routes: RouteObject[] = [
+  {
+    element: <RootLayout />,
+    children: [
+      {
+        path: '/',
+        element: <HomePage />,
++       loader: moviesLoader,
+      },
+    ],
+  },
+];
+```
 
 Now run the following command in the root directory of your repo. You should see
 the app running in your browser (http://localhost:3000/) showing the list of top
