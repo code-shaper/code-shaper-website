@@ -267,18 +267,17 @@ Now add `QueryProvider` near the root of our component tree. To do this edit
 
 ```diff title="apps/movie-magic-vite/src/providers/AppProvider.tsx"
 + import { QueryProvider } from './QueryProvider';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HomePage } from '@/routes/home';
 
 ...
 
-  return (
--    <>
--      <Router>{children}</Router>
--    </>
+export function AppProvider() {
+-  return <RouterProvider router={router} />;
++  return (
 +    <QueryProvider>
-+      <Router>{children}</Router>
++      <RouterProvider router={router} />
 +    </QueryProvider>
-  );
++  );
 }
 ```
 
@@ -286,8 +285,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 We now have all the REST infrastructure set. Let's use it to fetch data from the
 mock server and show it on the home page. Replace the entire content of
-`apps/movie-magic-vite/src/pages/HomePage/HomePage.tsx` from
-[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-vite/src/pages/HomePage/HomePage.tsx).
+`apps/movie-magic-vite/src/routes/home.tsx` from
+[the completed example](https://github.com/code-shaper/movie-magic/blob/main/apps/movie-magic-vite/src/routes/home.tsx).
 
 Now run the following command in the root directory of your repo. You should see
 the app running in your browser (http://localhost:3000/) showing the list of top
