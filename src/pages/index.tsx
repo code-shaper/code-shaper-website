@@ -79,24 +79,25 @@ function QuotesSection({
   quote,
 }: QuoteItem) {
   return (
-    <div className="container">
-      <section className={clsx('centered-column', styles.quotesSection)}>
+    <div className="container centered-column">
+      <section className={styles.quotesSection}>
         <p className={styles.quote}>“{quote}”</p>
-        <div className="avatar">
-          <a
-            className="avatar__photo-link avatar__photo avatar__photo--sm"
-            href={profileUrl}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <img alt={`${name} Profile`} src={imageUrl} />
-          </a>
-          <div className="avatar__intro">
-            <p className={styles.quoteBy}>
-              {name}, {title}
-            </p>
+        <footer className={styles.quotedBy}>
+          <div className="avatar text--center">
+            <a
+              className="avatar__photo-link avatar__photo"
+              href={profileUrl}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <img alt={`${name} Profile`} src={imageUrl} />
+            </a>
+            <div className="avatar__intro">
+              <div className="avatar__name">{name}</div>
+              <small className="avatar__subtitle">{title}</small>
+            </div>
           </div>
-        </div>
+        </footer>
       </section>
     </div>
   );
