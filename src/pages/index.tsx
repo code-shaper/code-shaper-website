@@ -17,7 +17,7 @@ type QuoteItem = {
 const steveHaarQuote: QuoteItem = {
   name: 'Steve Haar',
   title: 'Senior Software Engineer',
-  imageUrl: 'https://avatars.githubusercontent.com/u/2460465?s=460',
+  imageUrl: '/img/steve-haar.jpg',
   profileUrl: 'https://stevehaar.com/',
   quote: `Code Shaper dramatically decreased the amount of time it
   took to build our large component library. Its templates minimize
@@ -28,8 +28,7 @@ const steveHaarQuote: QuoteItem = {
 const chrisHassonQuote: QuoteItem = {
   name: 'Chris Hasson',
   title: 'Senior Software Engineer',
-  imageUrl:
-    'https://media.licdn.com/dms/image/D5603AQEkB2LR3p-jTA/profile-displayphoto-shrink_400_400/0/1677897564266?e=1720656000&v=beta&t=_auB-i7ap9DVFjArVJ8nYsc8IefTrddMbAu20gpWt3s',
+  imageUrl: '/img/chris-hasson.jpg',
   profileUrl: 'https://www.linkedin.com/in/christopherhasson/',
   quote: `Code Shaper is a companion for engineers seeking excellence
   in their craft. It ensures consistency and upholds best practices,
