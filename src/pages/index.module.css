@@ -47,10 +47,17 @@
 }
 
 .avatar__layout {
-  font-weight: var(--ifm-font-weight-light);
   margin-top: 0.5rem;
   padding: 0 1rem;
   align-items: center;
+}
+
+.avatar__name {
+  font-weight: var(--ifm-font-weight-semibold);
+}
+
+.avatar__title {
+  font-weight: var(--ifm-font-weight-light);
 }
 
 .getStartedSection {

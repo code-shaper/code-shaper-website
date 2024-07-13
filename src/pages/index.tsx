@@ -90,9 +90,11 @@ function QuotesSection({
           >
             <img alt={`${name} Profile`} src={imageUrl} />
           </a>
-          <span>
-            {name}, {title}
-          </span>
+          <div>
+            <span className={styles.avatar__name}>{name}</span>
+            <span className={styles.avatar__title}>,</span>
+          </div>
+          <span className={styles.avatar__title}>{title}</span>
         </div>
       </section>
     </div>
