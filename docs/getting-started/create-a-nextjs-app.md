@@ -98,11 +98,15 @@ using additional generators and some popular libraries. Run the following
 command in the root directory of your repo to install the libraries we will use
 for this example.
 
-> Note: Do not run `npm install` or `npm ci` in any of the subdirectories. It
-> will break the build. There should be only one `package-lock.json` file in the
-> entire repo (at the root). See
-> [Turborepo docs](https://turbo.build/repo/docs/handbook/package-installation#addingremovingupgrading-packages)
-> regarding this.
+:::caution Warning
+
+Do not run `npm install` or `npm ci` in any of the subdirectories. It will break
+the build. There should be only one package-lock.json file in the entire repo
+(at the root). See
+[Turborepo docs](https://turbo.build/repo/docs/crafting-your-repository/managing-dependencies#install-dependencies-where-theyre-used)
+regarding this.
+
+:::
 
 ```
 npm install clsx axios @tanstack/react-query --workspace @movie-magic/movie-magic-nextjs

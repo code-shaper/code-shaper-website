@@ -2,10 +2,10 @@ import React from 'react';
 import clsx from 'clsx';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import { translate } from '@docusaurus/Translate';
-import IconLightMode from '@theme/IconLightMode';
-import IconDarkMode from '@theme/IconDarkMode';
+import IconLightMode from '@theme/Icon/LightMode';
+import IconDarkMode from '@theme/Icon/DarkMode';
 import styles from './styles.module.css';
-function ColorModeToggle({ className, value, onChange }) {
+function ColorModeToggle({ className, buttonClassName, value, onChange }) {
   const isBrowser = useIsBrowser();
   const title = translate(
     {
@@ -34,13 +34,15 @@ function ColorModeToggle({ className, value, onChange }) {
         className={clsx(
           'clean-btn',
           styles.toggleButton,
-          !isBrowser && styles.toggleButtonDisabled
+          !isBrowser && styles.toggleButtonDisabled,
+          buttonClassName
         )}
         type="button"
         onClick={() => onChange(value === 'dark' ? 'light' : 'dark')}
         disabled={!isBrowser}
         title={title}
         aria-label={title}
+        aria-live="polite"
       >
         <IconLightMode
           className={clsx(styles.toggleIcon, styles.lightToggleIcon)}

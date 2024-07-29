@@ -4,7 +4,6 @@
 }
 
 .toggleButton {
-  color: var(--ifm-color-primary);
   -webkit-tap-highlight-color: transparent;
   align-items: center;
   display: flex;

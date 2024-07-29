@@ -97,11 +97,15 @@ example.
 npm install clsx --workspace @movie-magic/movie-magic-remix
 ```
 
-> Note: Do not run `npm install` or `npm ci` in any of the subdirectories. It
-> will break the build. There should be only one `package-lock.json` file in the
-> entire repo (at the root). See
-> [Turborepo docs](https://turbo.build/repo/docs/handbook/package-installation#addingremovingupgrading-packages)
-> regarding this.
+:::caution Warning
+
+Do not run `npm install` or `npm ci` in any of the subdirectories. It will break
+the build. There should be only one package-lock.json file in the entire repo
+(at the root). See
+[Turborepo docs](https://turbo.build/repo/docs/crafting-your-repository/managing-dependencies#install-dependencies-where-theyre-used)
+regarding this.
+
+:::
 
 ## Create TypeScript definitions
 
