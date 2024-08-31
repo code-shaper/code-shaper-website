@@ -27,6 +27,15 @@ const config = {
     locales: ['en'],
   },
 
+  scripts: [
+    // Fathom Analytics (https://usefathom.com)
+    {
+      src: 'https://cdn.usefathom.com/script.js',
+      'data-site': 'XLYPKDBZ',
+      defer: true,
+    },
+  ],
+
   stylesheets: [
     {
       rel: 'preconnect',
