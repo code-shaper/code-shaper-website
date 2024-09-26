@@ -38,7 +38,7 @@ instructions.
 Add the following dev dependencies at the root of your code repository:
 
 ```shell
-npm install -D @code-shaper/react @code-shaper/remix
+npm install @code-shaper/react @code-shaper/remix
 ```
 
 For step-by-step instructions on how to use plugins, see

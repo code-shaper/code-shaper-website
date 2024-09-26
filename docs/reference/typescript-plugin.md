@@ -20,7 +20,7 @@ instructions.
 Add a dev dependency at the root of your code repository:
 
 ```shell
-npm install -D @code-shaper/typescript
+npm install @code-shaper/typescript
 ```
 
 ## Repository

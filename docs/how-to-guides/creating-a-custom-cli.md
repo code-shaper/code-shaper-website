@@ -37,7 +37,7 @@ git init
 npm install
 
 # Add Code Shaper plugins
-npm install -D @code-shaper/shaper-utils @code-shaper/custom-cli @code-shaper/plugin
+npm install @code-shaper/shaper-utils @code-shaper/custom-cli @code-shaper/plugin
 
 # Commit
 git add .

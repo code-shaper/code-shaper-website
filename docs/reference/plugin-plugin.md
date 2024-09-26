@@ -23,7 +23,7 @@ instructions.
 Add a dev dependency at the root of your code repository:
 
 ```shell
-npm install -D @code-shaper/plugin
+npm install @code-shaper/plugin
 ```
 
 For step-by-step instructions on how to use this plugin, see

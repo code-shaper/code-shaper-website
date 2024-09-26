@@ -40,7 +40,7 @@ instructions.
 Add a dev dependency at the root of your code repository:
 
 ```shell
-npm install -D @code-shaper/react
+npm install @code-shaper/react
 ```
 
 For step-by-step instructions on how to use this plugin, see

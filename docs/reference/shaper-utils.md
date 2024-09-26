@@ -12,7 +12,7 @@ for all plugins and generators.
 Add a dev dependency at the root of your repository:
 
 ```shell
-npm install -D @code-shaper/shaper-utils
+npm install @code-shaper/shaper-utils
 ```
 
 ## Documentation and source code

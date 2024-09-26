@@ -19,7 +19,7 @@ instructions.
 Add a dev dependency at the root of your code repository:
 
 ```shell
-npm install -D @code-shaper/express
+npm install @code-shaper/express
 ```
 
 Now you can run the `shaper` CLI to generate an express server. For example:
